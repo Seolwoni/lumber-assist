@@ -53,7 +53,7 @@ public final class Lumberjack {
 	private static String status = "꺼짐";
 	private static long ticks, waitUntil;
 	private static int nextPause, nextLook, walkFails;
-	private static boolean spotsDone, collected;
+	private static boolean spotsDone, collected, stored;
 	/** Trees already tried this round (their first base), so a tree we cannot finish is not retried forever. */
 	private static final Set<BlockPos> tried = new HashSet<>();
 	/** Tree kinds seen this round, so the storage trip knows which saplings to bring. */
@@ -145,6 +145,7 @@ public final class Lumberjack {
 		seenKinds.clear();
 		spotsDone = false;
 		collected = false;
+		stored = false;
 		walkFails = 0;
 		treesThisRound = 0;
 		LumberStats.round();
@@ -241,19 +242,27 @@ public final class Lumberjack {
 			add(new FellAction(next));
 			return;
 		}
-		if (!spotsDone) {
-			spotsDone = true;
-			if (cfg.replant && planEmptySpots(p, cfg)) return;
-		}
+		// Round end: pick up drops (saplings!), store the wood and fetch saplings, then plant the empty spots.
 		if (!collected) {
 			collected = true;
 			if (cfg.collectDrops && planCollect(mc, p, cfg)) return;
 		}
-		phase = Phase.STORE;
-		if (cfg.storeEnabled && !cfg.chests.isEmpty()) {
-			status("상자에 보관하러 가는 중");
-			add(new Storage.TripAction());
+		if (!stored) {
+			stored = true;
+			for (Spot s : cfg.spots) {
+				if (Blocks2.state(new BlockPos(s.x, s.y, s.z)).isAir()) seenKinds.add(s.tree);
+			}
+			if (cfg.storeEnabled && !cfg.chests.isEmpty()) {
+				status("상자에 보관하러 가는 중");
+				add(new Storage.TripAction());
+				return;
+			}
 		}
+		if (!spotsDone) {
+			spotsDone = true;
+			if (cfg.replant && planEmptySpots(p, cfg)) return;
+		}
+		phase = Phase.STORE;
 	}
 
 	private static Tree nextTree(LocalPlayer p, LumberConfig cfg) {
@@ -274,23 +283,41 @@ public final class Lumberjack {
 
 	/** Puts saplings back where trees used to stand but nothing grows now. */
 	private static boolean planEmptySpots(LocalPlayer p, LumberConfig cfg) {
-		List<Spot> todo = new ArrayList<>();
+		List<List<BlockPos>> groups = new ArrayList<>();
+		List<String> kinds = new ArrayList<>();
+		Set<BlockPos> spots = new HashSet<>();
+		for (Spot s : cfg.spots) spots.add(new BlockPos(s.x, s.y, s.z));
+		java.util.Map<Item, Integer> left = new java.util.HashMap<>();
 		for (Spot s : cfg.spots) {
 			BlockPos pos = new BlockPos(s.x, s.y, s.z);
-			if (!Blocks2.state(pos).isAir() || !Trees.soil(pos.below()) || Trees.needsFour(s.tree)) continue;
 			Item sap = Trees.sapling(s.tree);
-			if (sap == null || Inv.count(p, st -> st.is(sap)) == 0) continue;
-			todo.add(s);
+			if (sap == null) continue;
+			int have = left.computeIfAbsent(sap, k -> Inv.count(p, st -> st.is(k)));
+			if (Trees.needsFour(s.tree)) {
+				// Only the north-west corner of a free 2x2 of spots plants the square.
+				List<BlockPos> sq = List.of(pos, pos.east(), pos.south(), pos.south().east());
+				boolean ok = have >= 4;
+				for (BlockPos b : sq) ok &= spots.contains(b) && Blocks2.state(b).isAir() && Trees.soil(b.below());
+				if (!ok) continue;
+				left.put(sap, have - 4);
+				groups.add(sq);
+			} else {
+				if (have <= 0 || !Blocks2.state(pos).isAir() || !Trees.soil(pos.below())) continue;
+				left.put(sap, have - 1);
+				groups.add(List.of(pos));
+			}
+			kinds.add(s.tree);
 		}
-		if (todo.isEmpty()) return false;
-		status("빈 자리에 묘목 심는 중 (" + todo.size() + "곳)");
-		todo.sort(Comparator.comparingDouble(s -> p.blockPosition().distSqr(new BlockPos(s.x, s.y, s.z))));
-		for (Spot s : todo) {
-			BlockPos pos = new BlockPos(s.x, s.y, s.z);
-			BlockPos stand = standNear(List.of(pos), p.blockPosition());
+		if (groups.isEmpty()) return false;
+		status("빈 자리에 묘목 심는 중 (" + groups.size() + "곳)");
+		BlockPos from = p.blockPosition();
+		for (int g = 0; g < groups.size(); g++) {
+			List<BlockPos> cells = groups.get(g);
+			BlockPos stand = standNear(cells, from);
 			if (stand == null) continue;
-			add(new WalkAction(stand));
-			add(new PlantAction(pos, Trees.sapling(s.tree), s.tree));
+			add(new WalkAction(stand, true));
+			for (BlockPos c : cells) add(new PlantAction(c, Trees.sapling(kinds.get(g)), kinds.get(g)));
+			from = stand;
 		}
 		return true;
 	}
@@ -360,6 +387,61 @@ public final class Lumberjack {
 		return best;
 	}
 
+	/** Up to 8 natural leaves in reach of {@code stand}, then wait and pick up nearby drops. */
+	static List<Action> leafDrops(LocalPlayer p, BlockPos stand) {
+		Vec3 eye = new Vec3(stand.getX() + 0.5, stand.getY() + 1.62, stand.getZ() + 0.5);
+		List<BlockPos> found = new ArrayList<>();
+		for (int dx = -4; dx <= 4; dx++) {
+			for (int dy = 0; dy <= 5; dy++) {
+				for (int dz = -4; dz <= 4; dz++) {
+					BlockPos b = stand.offset(dx, dy, dz);
+					if (!Trees.isLeaves(b) || eye.distanceTo(Vec3.atCenterOf(b)) > REACH) continue;
+					var st = Blocks2.state(b);
+					if (st.hasProperty(net.minecraft.world.level.block.LeavesBlock.PERSISTENT)
+							&& st.getValue(net.minecraft.world.level.block.LeavesBlock.PERSISTENT)) continue;
+					found.add(b);
+				}
+			}
+		}
+		found.sort(Comparator.comparingDouble(b -> eye.distanceTo(Vec3.atCenterOf(b))));
+		List<Action> out = new ArrayList<>();
+		for (int i = 0; i < Math.min(8, found.size()); i++) out.add(new MineBlockAction(found.get(i), null));
+		if (out.isEmpty()) return out;
+		out.add(new WaitAction(Human.delay(10, 16)));
+		out.add(new LocalCollectAction(stand));
+		return out;
+	}
+
+	/** Picks up drops within a few blocks, then steps back. */
+	static final class LocalCollectAction implements Action {
+		private final BlockPos home;
+
+		LocalCollectAction(BlockPos home) {
+			this.home = home;
+		}
+
+		@Override
+		public int failMode() {
+			return SKIP;
+		}
+
+		@Override
+		public int tick(Minecraft mc, LocalPlayer p) {
+			List<Action> walks = new ArrayList<>();
+			for (Entity e : mc.level.getEntities(p, new AABB(home).inflate(4, 3, 4))) {
+				if (!(e instanceof ItemEntity) || !e.isAlive()) continue;
+				BlockPos at = e.blockPosition();
+				BlockPos stand = standable(at) ? at : standNear(List.of(at), at);
+				if (stand != null) walks.add(new WalkAction(stand, true));
+				if (walks.size() >= 6) break;
+			}
+			if (walks.isEmpty()) return DONE;
+			walks.add(new WalkAction(home, true));
+			pushFront(walks);
+			return DONE;
+		}
+	}
+
 	/** Feet and head free, something solid underneath. */
 	static boolean standable(BlockPos feet) {
 		for (BlockPos b : new BlockPos[] {feet, feet.above()}) {
@@ -398,6 +480,7 @@ public final class Lumberjack {
 		private List<BlockPos> logs;
 		private BlockPos stand;
 		private int stage, climbs, stuck, lastFeetY = Integer.MIN_VALUE;
+		private boolean leavesTried, counted;
 
 		FellAction(Tree tree) {
 			this.tree = tree;
@@ -512,9 +595,12 @@ public final class Lumberjack {
 					return RUN;
 				}
 				case 4 -> {
-					LumberStats.tree(tree.kind());
-					treesThisRound++;
-					remember(cfg);
+					if (!counted) {
+						counted = true;
+						LumberStats.tree(tree.kind());
+						treesThisRound++;
+						remember(cfg);
+					}
 					if (!cfg.replant) return DONE;
 					// Step out of the trunk, then plant.
 					if (inTrunk(p) || stand == null || !standable(stand)) {
@@ -524,6 +610,18 @@ public final class Lumberjack {
 					List<Action> todo = new ArrayList<>();
 					todo.add(new WalkAction(stand, true));
 					Item sap = Trees.sapling(tree.kind());
+					if (sap != null && Inv.count(p, st -> st.is(sap)) < tree.bases().size() && !leavesTried) {
+						// No sapling yet: knock down a few of the tree's own leaves (natural ones only, never
+						// player-placed) and pick up what falls, like a player would.
+						leavesTried = true;
+						List<Action> leaves = leafDrops(p, stand);
+						if (!leaves.isEmpty()) {
+							status("묘목을 얻으려고 나뭇잎 치는 중");
+							leaves.add(0, new WalkAction(stand, true));
+							pushFront(leaves);
+							return RUN;
+						}
+					}
 					if (sap != null) {
 						int have = Inv.count(p, s -> s.is(sap));
 						if (tree.bases().size() == 4 && have >= 4) {

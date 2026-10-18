@@ -146,10 +146,11 @@ public class LumberGameTest implements FabricClientGameTest {
 		cmd(sp, "clear @a");
 		cmd(sp, "give @a minecraft:iron_axe");
 		cmd(sp, "give @a minecraft:dirt 32");
-		cmd(sp, "give @a minecraft:oak_sapling 4");
-		cmd(sp, "give @a minecraft:birch_sapling 4");
-		cmd(sp, "give @a minecraft:spruce_sapling 4");
-		cmd(sp, "give @a minecraft:dark_oak_sapling 4");
+		// No saplings in hand: they have to come from the chest (the test leaves never drop any).
+		cmd(sp, "item replace block -2 101 7 container.0 with minecraft:oak_sapling 8");
+		cmd(sp, "item replace block -2 101 7 container.1 with minecraft:birch_sapling 8");
+		cmd(sp, "item replace block -2 101 7 container.2 with minecraft:spruce_sapling 8");
+		cmd(sp, "item replace block -2 101 7 container.3 with minecraft:dark_oak_sapling 8");
 		cmd(sp, "give @a minecraft:bread 16");
 		cmd(sp, "effect give @a minecraft:saturation infinite 0 true");
 		cmd(sp, "tp @a 7.5 101 7.5 0 20");
@@ -183,7 +184,7 @@ public class LumberGameTest implements FabricClientGameTest {
 				for (int i = 0; i < ct.getContainerSize(); i++) stored += ct.getItem(i).getCount();
 			}
 			o.add("info: items in chest = " + stored);
-			if (stored < 20) o.add("only " + stored + " items stored in the chest");
+			if (stored < 40) o.add("only " + stored + " items in the chest (logs should have been stored)");
 			return o;
 		});
 		for (String p : out) {
