@@ -1,0 +1,13 @@
+{
+	"schemaVersion": 1,
+	"id": "lumberassist-gametest",
+	"version": "1.0.0",
+	"name": "Lumber Assist Game Tests",
+	"environment": "client",
+	"entrypoints": {
+		"fabric-client-gametest": ["com.seolwoni.lumberassist.gametest.LumberGameTest"]
+	},
+	"depends": {
+		"lumberassist": "*"
+	}
+}

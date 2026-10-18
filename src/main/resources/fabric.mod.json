@@ -1,0 +1,25 @@
+{
+	"schemaVersion": 1,
+	"id": "lumberassist",
+	"version": "${version}",
+	"name": "Lumber Assist",
+	"description": "자동 벌목 모드 — 도끼로 Shift+우클릭해 구역을 지정하면, 나무를 통째로 베고(높은 나무는 쌓고 올라가서), 묘목을 다시 심고, 떨어진 것을 줍고, 여러 상자에 분류 보관해요. Made by seolwoni",
+	"authors": ["seolwoni"],
+	"license": "All-Rights-Reserved",
+	"icon": "assets/lumberassist/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": ["com.seolwoni.lumberassist.LumberAssistClient"],
+		"modmenu": ["com.seolwoni.lumberassist.compat.ModMenuIntegration"]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*",
+		"assistcore": ">=1.1.0"
+	},
+	"suggests": {
+		"modmenu": "*"
+	}
+}
