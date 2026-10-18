@@ -69,6 +69,13 @@ public class LumberGameTest implements FabricClientGameTest {
 				if (!Lumberjack.start(mc)) failures.add("Lumberjack.start returned false");
 			});
 			context.takeScreenshot("lumber-00-start");
+			log.add(context.computeOnClient(mc -> {
+				BlockPos b = new BlockPos(3, Y, 3);
+				return "debug: trees found=" + com.seolwoni.lumberassist.lumber.Trees.find(LumberConfig.get().areas.get(0)).size()
+						+ " isLog=" + com.seolwoni.lumberassist.lumber.Trees.isLog(b) + " kind=" + com.seolwoni.lumberassist.lumber.Trees.kind(b)
+						+ " soilBelow=" + com.seolwoni.lumberassist.lumber.Trees.soil(b.below()) + " below=" + mc.level.getBlockState(b.below())
+						+ " state=" + mc.level.getBlockState(b) + " logsTag=" + mc.level.getBlockState(b).is(BlockTags.LOGS);
+			}));
 
 			int ticks = 0, shots = 1;
 			final int limit = 20 * 60 * 12;

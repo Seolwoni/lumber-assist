@@ -18,6 +18,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 /** Finding trees in an area and working out which logs belong to them. */
@@ -95,9 +96,12 @@ public final class Trees {
 		return kind.equals("dark_oak") || kind.equals("pale_oak");
 	}
 
+	/** Ground a sapling can grow on. */
 	public static boolean soil(BlockPos p) {
 		BlockState s = Blocks2.state(p);
-		return s.is(BlockTags.DIRT) || s.is(BlockTags.SAND);
+		return s.is(BlockTags.DIRT) || s.is(BlockTags.SAND) || s.is(Blocks.GRASS_BLOCK) || s.is(Blocks.DIRT)
+				|| s.is(Blocks.PODZOL) || s.is(Blocks.COARSE_DIRT) || s.is(Blocks.ROOTED_DIRT) || s.is(Blocks.MYCELIUM)
+				|| s.is(Blocks.MOSS_BLOCK) || s.is(Blocks.MUD) || s.is(Blocks.MUDDY_MANGROVE_ROOTS) || s.is(Blocks.PALE_MOSS_BLOCK);
 	}
 
 	/** Trunk bottoms on the area's ground layer, grouped into trees. */
@@ -128,7 +132,7 @@ public final class Trees {
 	}
 
 	private static boolean isBase(BlockPos p) {
-		return isLog(p) && !isLog(p.below()) && soil(p.below());
+		return isLog(p) && !isLog(p.below()) && (soil(p.below()) || Blocks2.isSolid(p.below()));
 	}
 
 	/**
