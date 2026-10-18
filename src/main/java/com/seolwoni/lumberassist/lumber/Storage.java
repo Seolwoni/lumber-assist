@@ -99,6 +99,9 @@ public final class Storage {
 		private final List<Integer> order = new ArrayList<>();
 		private boolean[] full;
 		private int stage, idx, delay, waitTicks, moved, limit;
+		/** Assist Path walk to the chest (or back), then the last bit directly. */
+		private com.seolwoni.assistpath.walk.PathWalker walker;
+		private BlockPos walkerFor;
 		private Vec3 aim;
 		private Direction face;
 		private String reason = "";
@@ -172,6 +175,17 @@ public final class Storage {
 						aim = com.seolwoni.assistcore.util.Aim.facePoint(c, face, 0.1);
 						delay = Human.delay(2, 6);
 						stage = 3;
+						return RUN;
+					}
+					if (!c.equals(walkerFor)) {
+						walkerFor = c;
+						walker = new com.seolwoni.assistpath.walk.PathWalker(new com.seolwoni.assistpath.goals.GoalNear(c, 2));
+					}
+					if (walker != null) {
+						if (walker.tick(mc, p) == RUN) return RUN;
+						walker = null;
+						Body.resetWalk();
+						Body.newTurn();
 						return RUN;
 					}
 					Body.walkTo(p, c);

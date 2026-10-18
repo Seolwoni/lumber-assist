@@ -660,6 +660,8 @@ public final class Lumberjack {
 		private final BlockPos target;
 		private final boolean quiet;
 		private boolean started;
+		/** Assist Path walk for longer ways; falls back to walking straight at the target. */
+		private com.seolwoni.assistpath.walk.PathWalker walker;
 		private int pre, post = -1, limit, clears;
 
 		WalkAction(BlockPos target) {
@@ -695,9 +697,18 @@ public final class Lumberjack {
 				Body.resetWalk();
 				Body.newTurn();
 				limit = (int) (60 + Math.sqrt(p.blockPosition().distSqr(target)) * 14);
+				if (p.blockPosition().distManhattan(target) >= 3) walker = new com.seolwoni.assistpath.walk.PathWalker(new com.seolwoni.assistpath.goals.GoalBlock(target));
 			}
 			if (pre-- > 0) return RUN;
 			if (post >= 0) return post-- <= 0 ? DONE : RUN;
+			if (walker != null) {
+				int r = walker.tick(mc, p);
+				if (r == RUN) return RUN;
+				walker = null;
+				Body.resetWalk();
+				Body.newTurn();
+				return RUN;
+			}
 			if (Body.walkTo(p, target)) {
 				walkOk();
 				post = Human.delay(0, 3);

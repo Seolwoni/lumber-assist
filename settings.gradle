@@ -12,3 +12,4 @@ pluginManagement {
 rootProject.name = 'lumberassist'
 
 include 'core'
+include 'path'
