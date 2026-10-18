@@ -64,7 +64,7 @@ public final class Trees {
 
 	public static boolean isLog(BlockPos p) {
 		BlockState s = Blocks2.state(p);
-		return s.is(BlockTags.LOGS) && !s.is(BlockTags.CRIMSON_STEMS) && !s.is(BlockTags.WARPED_STEMS);
+		return s.is(BlockTags.LOGS_THAT_BURN);
 	}
 
 	public static boolean isLeaves(BlockPos p) {
