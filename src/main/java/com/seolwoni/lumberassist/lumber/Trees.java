@@ -64,7 +64,10 @@ public final class Trees {
 
 	public static boolean isLog(BlockPos p) {
 		BlockState s = Blocks2.state(p);
-		return s.is(BlockTags.LOGS_THAT_BURN);
+		if (!s.is(BlockTags.LOGS)) return false;
+		// Nether "trees" (stems, hyphae) are not ours.
+		String path = BuiltInRegistries.BLOCK.getKey(s.getBlock()).getPath();
+		return !path.endsWith("_stem") && !path.endsWith("_hyphae");
 	}
 
 	public static boolean isLeaves(BlockPos p) {
