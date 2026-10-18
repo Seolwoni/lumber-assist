@@ -93,6 +93,7 @@ public class LumberGameTest implements FabricClientGameTest {
 			context.takeScreenshot("lumber-99-end");
 			String stop = context.computeOnClient(mc -> Lumberjack.lastStop);
 			log.add("ended after " + ticks + " ticks, running=" + running + " waiting=" + waiting + " lastStop=" + stop);
+			log.add(com.seolwoni.assistpath.AssistPath.Stats.summary());
 			if (!running) failures.add("stopped by itself: " + stop);
 			else if (!waiting) failures.add("round not finished within " + limit + " ticks");
 			final boolean stillRunning = running;
