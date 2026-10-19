@@ -60,8 +60,8 @@ public class LumberRealTest implements FabricClientGameTest {
 			int[] best = sp.getServer().computeOnServer(server -> {
 				ServerLevel level = server.overworld();
 				int bx = 0, bz = 0, bestScore = -1;
-				for (int ox = -24; ox <= 8; ox += 8) {
-					for (int oz = -24; oz <= 8; oz += 8) {
+				for (int ox = -48; ox <= 32; ox += 8) {
+					for (int oz = -48; oz <= 32; oz += 8) {
 						int score = 0;
 						for (int x = b.getX() + ox; x < b.getX() + ox + SIZE; x++) {
 							for (int z = b.getZ() + oz; z < b.getZ() + oz + SIZE; z++) {
@@ -85,12 +85,30 @@ public class LumberRealTest implements FabricClientGameTest {
 			int[] before = count(sp, x1, z1, x2, z2);
 			log.add("before: logs=" + before[0] + " (" + before[1] + " trunk columns), ground from y " + before[2] + " to " + before[3]);
 
-			// Chest on the ground two blocks west of the area, player next to it.
-			int cx = x1 - 2, cz = (z1 + z2) / 2;
-			int cy = sp.getServer().computeOnServer(server -> ground(server.overworld(), cx, cz));
-			RealWorld.cmd(sp, "fill " + (cx - 1) + " " + cy + " " + (cz - 1) + " " + (cx + 1) + " " + (cy + 3) + " " + (cz + 1) + " minecraft:air");
+			// Chest on a flat, free spot just west of the area (two level ground cells: chest and where the player stands).
+			int[] spot = sp.getServer().computeOnServer(server -> {
+				ServerLevel level = server.overworld();
+				for (int d = 0; d < 16; d++) {
+					for (int sign : new int[] {1, -1}) {
+						int z = (z1 + z2) / 2 + sign * d;
+						for (int x = x1 - 2; x >= x1 - 6; x--) {
+							int a = ground(level, x, z), b2 = ground(level, x + 1, z);
+							if (a != b2) continue;
+							boolean free = true;
+							for (int dy = 0; dy < 3; dy++) {
+								if (!level.getBlockState(new BlockPos(x, a + dy, z)).getCollisionShape(level, new BlockPos(x, a + dy, z)).isEmpty()) free = false;
+								if (!level.getBlockState(new BlockPos(x + 1, a + dy, z)).getCollisionShape(level, new BlockPos(x + 1, a + dy, z)).isEmpty()) free = false;
+							}
+							if (free) return new int[] {x, a, z};
+						}
+					}
+				}
+				return new int[] {x1 - 2, ground(level, x1 - 2, (z1 + z2) / 2), (z1 + z2) / 2};
+			});
+			int cx = spot[0], cy = spot[1], cz = spot[2];
 			RealWorld.cmd(sp, "setblock " + cx + " " + cy + " " + cz + " minecraft:chest[facing=east]");
 			RealWorld.cmd(sp, "tp @a " + (cx + 1.5) + " " + cy + " " + (cz + 0.5) + " -90 10");
+			log.add("chest at " + cx + ", " + cy + ", " + cz);
 			RealWorld.cmd(sp, "give @a minecraft:iron_axe");
 			RealWorld.cmd(sp, "give @a minecraft:iron_axe");
 			RealWorld.cmd(sp, "give @a minecraft:dirt 64");
@@ -189,7 +207,9 @@ public class LumberRealTest implements FabricClientGameTest {
 	static int ground(ServerLevel level, int x, int z) {
 		for (int y = 200; y > level.getMinY(); y--) {
 			BlockState s = level.getBlockState(new BlockPos(x, y, z));
-			if (s.isAir() || s.is(BlockTags.LOGS) || s.is(BlockTags.LEAVES) || s.canBeReplaced() || s.is(Blocks.VINE) || s.is(Blocks.COCOA)) continue;
+			BlockPos p = new BlockPos(x, y, z);
+			// Skip trees and anything without a solid shape (grass, flowers, saplings, vines, water).
+			if (s.is(BlockTags.LOGS) || s.is(BlockTags.LEAVES) || s.getCollisionShape(level, p).isEmpty() || s.is(Blocks.COCOA)) continue;
 			return y + 1;
 		}
 		return level.getMinY();
