@@ -126,7 +126,6 @@ public class LumberRealTest implements FabricClientGameTest {
 				ch.y = chest.getY();
 				ch.z = chest.getZ();
 				c.chests.add(ch);
-				c.pace = 1;
 				log.add("trees found at the start: " + com.seolwoni.lumberassist.lumber.Trees.find(a).size());
 				if (!Lumberjack.start(mc)) failures.add("Lumberjack.start returned false");
 			});
@@ -207,7 +206,7 @@ public class LumberRealTest implements FabricClientGameTest {
 					lo = Math.min(lo, g);
 					hi = Math.max(hi, g);
 					if (level.getBlockState(new BlockPos(x, g, z)).is(BlockTags.LOGS)) trunks++;
-					if (level.getBlockState(new BlockPos(x, g, z)).is(BlockTags.SAPLINGS)) saplings++;
+					if (level.getBlockState(new BlockPos(x, g, z)).getBlock() instanceof net.minecraft.world.level.block.SaplingBlock) saplings++;
 					for (int y = g; y < g + 60; y++) {
 						BlockState s = level.getBlockState(new BlockPos(x, y, z));
 						if (s.is(BlockTags.LOGS)) logs++;
