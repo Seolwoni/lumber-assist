@@ -454,11 +454,18 @@ public final class Lumberjack {
 	static final class TreeCollectAction implements Action {
 		private final Tree tree;
 		private final int groundY, pass;
+		/** In the middle of a tree: only pick up what lies on the ground, no climbing to free caught logs. */
+		private final boolean quick;
 
 		TreeCollectAction(Tree tree, int groundY, int pass) {
+			this(tree, groundY, pass, false);
+		}
+
+		TreeCollectAction(Tree tree, int groundY, int pass, boolean quick) {
 			this.tree = tree;
 			this.groundY = groundY;
 			this.pass = pass;
+			this.quick = quick;
 		}
 
 		@Override
@@ -516,6 +523,7 @@ public final class Lumberjack {
 							}
 						}
 					}
+					if (best == null && quick) continue;
 					if (best == null) {
 						// Too high to reach from the ground (four to six blocks up): build up one to three blocks
 						// beside it, cut the leaf, and take the blocks back down, like a player would.
@@ -593,7 +601,7 @@ public final class Lumberjack {
 				return DONE;
 			}
 			status("나무 밑에 떨어진 것 줍는 중");
-			if (pass < 1) todo.add(new TreeCollectAction(tree, groundY, pass + 1)); // things that fell from the cut leaves
+			if (pass < 1) todo.add(new TreeCollectAction(tree, groundY, pass + 1, quick)); // things that fell from the cut leaves
 			pushFront(todo);
 			return DONE;
 		}
@@ -915,7 +923,10 @@ public final class Lumberjack {
 						status("떨어진 원목 먼저 주우러 내려가는 중");
 						List<Action> down = new ArrayList<>();
 						down.add(new DescendAction(groundY, tree));
-						down.add(new TreeCollectAction(tree, groundY, 0));
+						down.add(new TreeCollectAction(tree, groundY, 0, true));
+						// Back to the trunk before climbing again (picking up may have taken us a few steps away).
+						BlockPos back = standNear(tree.bases(), p.blockPosition());
+						if (back != null) down.add(new ApproachAction(tree, back));
 						pushFront(down);
 						stuck = 0;
 						lastFeetY = Integer.MIN_VALUE;
