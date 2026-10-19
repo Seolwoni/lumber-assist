@@ -191,6 +191,31 @@ public class LumberRealTest implements FabricClientGameTest {
 				return n;
 			});
 			log.add("logs in chest = " + stored);
+			// Loss count (measured only, not a failure): log items still lying around, and logs kept in the inventory.
+			final int fx1 = x1, fz1 = z1, fx2 = x2, fz2 = z2;
+			String loss = sp.getServer().computeOnServer(server -> {
+				net.minecraft.world.phys.AABB box = new net.minecraft.world.phys.AABB(fx1 - 12, -64, fz1 - 12, fx2 + 13, 320, fz2 + 13);
+				int ground = 0, stacks = 0, saplings = 0;
+				StringBuilder where = new StringBuilder();
+				for (net.minecraft.world.entity.item.ItemEntity ie : server.overworld().getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class, box)) {
+					if (ie.getItem().is(net.minecraft.tags.ItemTags.LOGS)) {
+						ground += ie.getItem().getCount();
+						stacks++;
+						if (where.length() < 400) where.append(" ").append(ie.getItem().getCount()).append("@").append(ie.blockPosition().toShortString());
+					} else if (ie.getItem().getItem() instanceof net.minecraft.world.item.BlockItem bi && bi.getBlock() instanceof net.minecraft.world.level.block.SaplingBlock) saplings += ie.getItem().getCount();
+				}
+				return ground + " logs in " + stacks + " stacks on the ground" + (where.length() > 0 ? " [" + where.toString().trim() + "]" : "")
+						+ ", saplings on the ground " + saplings;
+			});
+			int held = context.computeOnClient(mc -> {
+				int n = 0;
+				for (int i = 0; i < mc.player.getInventory().getContainerSize(); i++) {
+					if (mc.player.getInventory().getItem(i).is(net.minecraft.tags.ItemTags.LOGS)) n += mc.player.getInventory().getItem(i).getCount();
+				}
+				return n;
+			});
+			int cut = before[0] - after[0];
+			log.add("LOSS: cut " + cut + ", chest " + stored + ", inventory " + held + ", missing " + Math.max(0, cut - stored - held) + " (" + (cut > 0 ? String.format("%.1f", 100.0 * Math.max(0, cut - stored - held) / cut) : "0") + "%); " + loss);
 			for (String n : context.computeOnClient(mc -> new ArrayList<>(Lumberjack.fellLog))) {
 				log.add("  tree: " + n);
 				// A tree left partly standing (or its top floating) is a failure, whatever the log count says.
