@@ -175,6 +175,31 @@ public class LumberRealTest implements FabricClientGameTest {
 			log.add(timing.summary() + ", server tick " + String.format("%.1f", RealWorld.mspt(sp)) + " ms");
 			log.add(com.seolwoni.assistpath.AssistPath.Stats.summary());
 			if (!running) failures.add("stopped by itself: " + stop);
+			if (!running) {
+				// Diagnosis: what was around the player when it gave up (x across, z rows, levels from high to low).
+				BlockPos me = context.computeOnClient(mc -> mc.player.blockPosition());
+				log.add("blocks around " + me.toShortString() + " (each level: rows z-3..z+3, each row x-3..x+3; '.' air, 's' sapling):");
+				log.addAll(sp.getServer().computeOnServer(server -> {
+					List<String> out = new ArrayList<>();
+					for (int dy = 3; dy >= -2; dy--) {
+						out.add("  y" + (me.getY() + dy) + ":");
+						for (int dz = -3; dz <= 3; dz++) {
+							StringBuilder sb = new StringBuilder("    ");
+							for (int dx = -3; dx <= 3; dx++) {
+								var st = server.overworld().getBlockState(me.offset(dx, dy, dz));
+								String id = net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(st.getBlock()).getPath();
+								String c = st.isAir() ? "." : id.endsWith("sapling") ? "s" : id.endsWith("leaves") ? "L" : id.endsWith("log") ? "W"
+										: id.contains("dirt") || id.contains("grass_block") || id.contains("podzol") ? "d" : id.contains("stone") || id.contains("andesite") || id.contains("granite") || id.contains("diorite") ? "#"
+										: st.blocksMotion() ? "X" : "-";
+								sb.append(dx == 0 && dz == 0 ? "[" + c + "]" : " " + c + " ");
+							}
+							out.add(sb.toString());
+						}
+					}
+					return out;
+				}));
+				log.add(com.seolwoni.assistpath.AssistPath.Stats.summary());
+			}
 			else if (!waiting) failures.add("round not finished within " + limit + " ticks");
 			final boolean stillRunning = running;
 			context.runOnClient(mc -> {
