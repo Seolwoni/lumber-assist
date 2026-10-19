@@ -487,7 +487,7 @@ public final class Lumberjack {
 		private List<BlockPos> logs;
 		private BlockPos stand;
 		private int stage, climbs, stuck, lastFeetY = Integer.MIN_VALUE, approaches, intoTries;
-		private boolean leavesTried, counted;
+		private boolean leavesTried, counted, cleaned;
 
 		FellAction(Tree tree) {
 			this.tree = tree;
@@ -507,6 +507,15 @@ public final class Lumberjack {
 
 		private boolean inTrunk(LocalPlayer p) {
 			return tree.bases().stream().anyMatch(b -> b.getX() == p.blockPosition().getX() && b.getZ() == p.blockPosition().getZ());
+		}
+
+		/** Standing right next to the trunk (sideways or diagonally), on the ground or up on a pillar. */
+		private boolean beside(LocalPlayer p) {
+			for (BlockPos b : tree.bases()) {
+				double dx = p.getX() - (b.getX() + 0.5), dz = p.getZ() - (b.getZ() + 0.5);
+				if (Math.abs(dx) <= 1.6 && Math.abs(dz) <= 1.6) return true;
+			}
+			return false;
 		}
 
 		private boolean mineReachable(LocalPlayer p) {
@@ -534,7 +543,8 @@ public final class Lumberjack {
 						note(tree, "no place to stand next to it", logs.size());
 						return DONE;
 					}
-					pushFront(new WalkAction(stand));
+					// A tree we cannot get to must not stop the whole job: the walk is quiet, the tree is skipped.
+					pushFront(new WalkAction(stand, true));
 					stage = 1;
 					return RUN;
 				}
@@ -562,17 +572,23 @@ public final class Lumberjack {
 						if (near != null && far > 2.5) {
 							approaches++;
 							stand = near;
-							pushFront(new WalkAction(near));
+							pushFront(new WalkAction(near, true));
 							return RUN;
 						}
 					}
+					if (into == null && beside(p) && left.stream().anyMatch(b -> b.getY() + 0.5 > p.getEyeY() - 1)) {
+						// The trunk is still whole at the bottom (a slope, or a big 2x2 trunk): climb up right beside it.
+						status("높은 나무에 올라가는 중");
+						stage = 2;
+						return RUN;
+					}
 					if (into == null) {
-						note(tree, "no way into the trunk to climb", left.size());
+						note(tree, beside(p) ? "no way into the trunk to climb" : "could not get next to it", left.size());
 						stage = 4;
 						return RUN;
 					}
 					status("높은 나무에 올라가는 중");
-					pushFront(new WalkAction(into));
+					pushFront(new WalkAction(into, true));
 					stage = 2;
 					return RUN;
 				}
@@ -583,13 +599,13 @@ public final class Lumberjack {
 					double eyeY = p.getEyeY();
 					boolean above = left.stream().anyMatch(b -> b.getY() + 0.5 > eyeY - 1);
 					int height = p.blockPosition().getY() - groundY;
-					if (!left.isEmpty() && above && !inTrunk(p) && intoTries++ < 2) {
+					if (!left.isEmpty() && above && !inTrunk(p) && !beside(p) && intoTries++ < 2) {
 						// Did not get into the trunk (bumped into a leaf or a step): try once more from the ground.
 						stage = 1;
 						return RUN;
 					}
-					if (left.isEmpty() || !above || height >= cfg.maxHeight || !inTrunk(p)) {
-						note(tree, left.isEmpty() ? "all cut" : !above ? "rest is out of reach below" : height >= cfg.maxHeight ? "max climb height " + cfg.maxHeight : "not in the trunk", left.size());
+					if (left.isEmpty() || !above || height >= cfg.maxHeight || !(inTrunk(p) || beside(p))) {
+						note(tree, left.isEmpty() ? "all cut" : !above ? "rest is out of reach below" : height >= cfg.maxHeight ? "max climb height " + cfg.maxHeight : "not next to the trunk", left.size());
 						stage = 3;
 						return RUN;
 					}
@@ -625,7 +641,25 @@ public final class Lumberjack {
 					stage = 4;
 					return RUN;
 				}
+				case 6 -> {
+					if (mineReachable(p)) return RUN;
+					if (!remaining().isEmpty()) note(tree, "left after the last look from the ground", remaining().size());
+					stage = 4;
+					return RUN;
+				}
 				case 4 -> {
+					if (!cleaned) {
+						// Back on the ground: anything left low down (a stump on a slope, the bottom of a big trunk)?
+						cleaned = true;
+						if (!remaining().isEmpty()) {
+							BlockPos s2 = standNear(tree.bases(), p.blockPosition());
+							if (s2 != null) {
+								pushFront(new WalkAction(s2, true));
+								stage = 6;
+								return RUN;
+							}
+						}
+					}
 					if (!counted) {
 						counted = true;
 						LumberStats.tree(tree.kind());

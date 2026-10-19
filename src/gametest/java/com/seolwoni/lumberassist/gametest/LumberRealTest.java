@@ -161,7 +161,7 @@ public class LumberRealTest implements FabricClientGameTest {
 						+ " status=" + Lumberjack.status() + " trees=" + Lumberjack.treesThisRound()));
 				running = context.computeOnClient(mc -> LumberConfig.get().running);
 				waiting = context.computeOnClient(mc -> Lumberjack.waitSecondsLeft() >= 0);
-				if (ticks % 1200 == 0) context.takeScreenshot(String.format("%s-%02d-min%d", suite, shots++, ticks / 1200));
+				if (ticks % 600 == 0) context.takeScreenshot(String.format("%s-%03d-s%d", suite, shots++, ticks / 20));
 			}
 			context.takeScreenshot(suite + "-99-end");
 			String stop = context.computeOnClient(mc -> Lumberjack.lastStop);
@@ -189,7 +189,12 @@ public class LumberRealTest implements FabricClientGameTest {
 				return n;
 			});
 			log.add("logs in chest = " + stored);
-			for (String n : context.computeOnClient(mc -> new ArrayList<>(Lumberjack.fellLog))) log.add("  tree: " + n);
+			for (String n : context.computeOnClient(mc -> new ArrayList<>(Lumberjack.fellLog))) {
+				log.add("  tree: " + n);
+				// A tree left partly standing (or its top floating) is a failure, whatever the log count says.
+				java.util.regex.Matcher m = java.util.regex.Pattern.compile("\\((\\d+) logs left\\)").matcher(n);
+				if (m.find() && Integer.parseInt(m.group(1)) > 3 && !n.contains("max climb height")) failures.add("tree not finished: " + n);
+			}
 			if (after[1] > 0) {
 				log.add("trunks left: " + sp.getServer().computeOnServer(server -> {
 					ServerLevel level = server.overworld();
