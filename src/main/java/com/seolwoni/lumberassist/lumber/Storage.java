@@ -200,11 +200,13 @@ public final class Storage {
 							List<Lumberjack.MineBlockAction> cut = new ArrayList<>();
 							java.util.Set<BlockPos> seen = new HashSet<>();
 							for (double d = 0.6; d <= Math.min(2.2, len); d += 0.4) {
-								for (int up = 0; up <= 1; up++) {
+								for (int up = 0; up <= 2; up++) { // feet, head, and above the head (leaves there stop a jump up a step)
 									BlockPos q = BlockPos.containing(p.getX() + dx / len * d, p.getY() + 0.1 + up, p.getZ() + dz / len * d);
 									if (seen.add(q) && !Blocks2.isOpen(q) && (Trees.isLeaves(q) || Lumberjack.isSoft(q))) cut.add(new Lumberjack.MineBlockAction(q, null));
 								}
 							}
+							BlockPos overHead = BlockPos.containing(p.getX(), p.getY() + 2.1, p.getZ());
+							if (!Blocks2.isOpen(overHead) && (Trees.isLeaves(overHead) || Lumberjack.isSoft(overHead)) && seen.add(overHead)) cut.add(new Lumberjack.MineBlockAction(overHead, null));
 							if (!cut.isEmpty()) {
 								clears++;
 								Body.release(mc);

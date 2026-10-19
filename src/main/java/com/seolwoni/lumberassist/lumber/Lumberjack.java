@@ -654,7 +654,8 @@ public final class Lumberjack {
 					double eyeY = p.getEyeY();
 					boolean above = left.stream().anyMatch(b -> b.getY() + 0.5 > eyeY - 1);
 					int height = p.blockPosition().getY() - groundY;
-					if (!left.isEmpty() && above && !inTrunk(p) && !beside(p) && intoTries++ < 2) {
+					if (!left.isEmpty() && above && !inTrunk(p) && intoTries++ < 2) {
+						// Inside the trunk is the best place to climb (nothing in the way): try getting in again first.
 						// Did not get into the trunk (bumped into a leaf or a step): try once more from the ground.
 						stage = 1;
 						return RUN;
@@ -845,12 +846,14 @@ public final class Lumberjack {
 					double len = Math.max(0.01, Math.sqrt(dx * dx + dz * dz));
 					java.util.Set<BlockPos> seen = new java.util.HashSet<>();
 					for (double d = 0.6; d <= Math.min(2.2, len + 0.5); d += 0.4) {
-						for (int up = 0; up <= 1; up++) {
+						for (int up = 0; up <= 2; up++) { // feet, head, and above the head (leaves there stop a jump up a step)
 							BlockPos c = BlockPos.containing(p.getX() + dx / len * d, p.getY() + 0.1 + up, p.getZ() + dz / len * d);
 							if (!seen.add(c)) continue;
 							if (!Blocks2.isOpen(c) && (Trees.isLeaves(c) || isSoft(c))) clear.add(new MineBlockAction(c, null));
 						}
 					}
+					BlockPos overHead = BlockPos.containing(p.getX(), p.getY() + 2.1, p.getZ());
+					if (!Blocks2.isOpen(overHead) && (Trees.isLeaves(overHead) || isSoft(overHead)) && seen.add(overHead)) clear.add(new MineBlockAction(overHead, null));
 					if (!clear.isEmpty()) {
 						clears++;
 						Body.release(mc);
