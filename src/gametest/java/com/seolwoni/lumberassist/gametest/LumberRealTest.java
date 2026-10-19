@@ -196,6 +196,24 @@ public class LumberRealTest implements FabricClientGameTest {
 				return n;
 			});
 			log.add("logs in chest = " + stored);
+			if (after[1] > 0) {
+				log.add("trunks left: " + sp.getServer().computeOnServer(server -> {
+					ServerLevel level = server.overworld();
+					StringBuilder sb = new StringBuilder();
+					for (int x = x1; x <= x2; x++) {
+						for (int z = z1; z <= z2; z++) {
+							int g = ground(level, x, z);
+							BlockPos p = new BlockPos(x, g, z);
+							if (!level.getBlockState(p).is(BlockTags.LOGS)) continue;
+							int h = 0;
+							while (level.getBlockState(p.above(h)).is(BlockTags.LOGS)) h++;
+							sb.append(p.toShortString()).append(" ").append(net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(level.getBlockState(p).getBlock()).getPath())
+									.append(" h=").append(h).append(" on ").append(net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(level.getBlockState(p.below()).getBlock()).getPath()).append("; ");
+						}
+					}
+					return sb.toString();
+				}));
+			}
 			if (after[1] > 0) failures.add(after[1] + " trunk columns still standing in the area");
 			if (after[0] > before[0] * 0.3) failures.add(after[0] + " of " + before[0] + " logs left in the area");
 			if (stored < (before[0] - after[0]) * 0.7) failures.add("only " + stored + " logs in the chest of " + (before[0] - after[0]) + " cut");
