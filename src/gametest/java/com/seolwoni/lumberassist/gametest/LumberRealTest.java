@@ -63,10 +63,16 @@ public class LumberRealTest implements FabricClientGameTest {
 				for (int ox = -48; ox <= 32; ox += 8) {
 					for (int oz = -48; oz <= 32; oz += 8) {
 						int score = 0;
-						for (int x = b.getX() + ox; x < b.getX() + ox + SIZE; x++) {
-							for (int z = b.getZ() + oz; z < b.getZ() + oz + SIZE; z++) {
+						BlockPos mid = new BlockPos(b.getX() + ox + SIZE / 2, b.getY(), b.getZ() + oz + SIZE / 2);
+						if (!level.getBiome(mid.atY(ground(level, mid.getX(), mid.getZ()))).is(biome)) continue;
+						for (int x = b.getX() + ox; x < b.getX() + ox + SIZE - 1; x++) {
+							for (int z = b.getZ() + oz; z < b.getZ() + oz + SIZE - 1; z++) {
 								int g = ground(level, x, z);
-								if (level.getBlockState(new BlockPos(x, g, z)).is(BlockTags.LOGS)) score++;
+								if (!level.getBlockState(new BlockPos(x, g, z)).is(BlockTags.LOGS)) continue;
+								score++;
+								// A big 2x2 trunk is what this test is about: worth much more than a bush.
+								if (level.getBlockState(new BlockPos(x + 1, g, z)).is(BlockTags.LOGS) && level.getBlockState(new BlockPos(x, g, z + 1)).is(BlockTags.LOGS)
+										&& level.getBlockState(new BlockPos(x + 1, g, z + 1)).is(BlockTags.LOGS)) score += 10;
 							}
 						}
 						if (score > bestScore) {

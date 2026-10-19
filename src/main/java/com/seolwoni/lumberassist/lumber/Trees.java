@@ -105,7 +105,7 @@ public final class Trees {
 	}
 
 	/** How far above and below the marked ground heights tree bottoms are still looked for (hills, slopes). */
-	public static final int MARGIN = 4;
+	public static final int MARGIN = 8;
 
 	/** Trunk bottoms on the area's ground (within {@link #MARGIN} of the marked heights), grouped into trees. */
 	public static List<Tree> find(AreaEntry a) {
