@@ -93,8 +93,6 @@ public class LumberRealTest implements FabricClientGameTest {
 						for (int x = x1 - 2; x >= x1 - 6; x--) {
 							int a = ground(level, x, z), b2 = ground(level, x + 1, z);
 							if (a != b2 || Math.abs(a - mid) > 3) continue;
-							// Out in the open (not shut in under a giant mushroom or a solid canopy).
-							if (!level.canSeeSky(new BlockPos(x, a, z)) && !level.canSeeSky(new BlockPos(x + 1, a, z))) continue;
 							boolean free = true;
 							for (int dy = 0; dy < 3; dy++) {
 								if (!level.getBlockState(new BlockPos(x, a + dy, z)).getCollisionShape(level, new BlockPos(x, a + dy, z)).isEmpty()) free = false;
@@ -107,6 +105,8 @@ public class LumberRealTest implements FabricClientGameTest {
 				return new int[] {x1 - 2, ground(level, x1 - 2, (z1 + z2) / 2), (z1 + z2) / 2};
 			});
 			int cx = spot[0], cy = spot[1], cz = spot[2];
+			// Make room like a player would (cut away leaves or a bush where the chest and the player go).
+			RealWorld.cmd(sp, "fill " + cx + " " + cy + " " + cz + " " + (cx + 1) + " " + (cy + 2) + " " + cz + " minecraft:air");
 			RealWorld.cmd(sp, "setblock " + cx + " " + cy + " " + cz + " minecraft:chest[facing=east]");
 			RealWorld.cmd(sp, "tp @a " + (cx + 1.5) + " " + cy + " " + (cz + 0.5) + " -90 10");
 			log.add("chest at " + cx + ", " + cy + ", " + cz);

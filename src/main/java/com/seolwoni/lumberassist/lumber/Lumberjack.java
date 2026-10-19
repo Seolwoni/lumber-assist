@@ -503,10 +503,28 @@ public final class Lumberjack {
 		@Override
 		public int tick(Minecraft mc, LocalPlayer p) {
 			if (walker == null) {
-				BlockPos t = tree.first();
-				double near = Math.sqrt(t.distToCenterSqr(p.position()));
-				if (near <= 2.2) return DONE;
-				walker = new com.seolwoni.assistpath.walk.PathWalker(new com.seolwoni.assistpath.goals.GoalNear(t, 2));
+				// Any free cell right next to the trunk (sideways or diagonally, a step up or down) will do.
+				List<com.seolwoni.assistpath.goals.Goal> goals = new ArrayList<>();
+				java.util.Set<BlockPos> bases = new java.util.HashSet<>(tree.bases());
+				for (BlockPos b : tree.bases()) {
+					for (int dx = -1; dx <= 1; dx++) {
+						for (int dz = -1; dz <= 1; dz++) {
+							for (int dy = -1; dy <= 1; dy++) {
+								BlockPos c = b.offset(dx, dy, dz);
+								if (bases.contains(c.atY(b.getY())) || !standable(c)) continue;
+								goals.add(new com.seolwoni.assistpath.goals.GoalBlock(c));
+							}
+						}
+					}
+				}
+				for (com.seolwoni.assistpath.goals.Goal g : goals) {
+					if (g.isInGoal(com.seolwoni.assistpath.walk.PathWalker.feet(p))) return DONE;
+				}
+				if (goals.isEmpty()) {
+					pushFront(new WalkAction(stand, true));
+					return DONE;
+				}
+				walker = new com.seolwoni.assistpath.walk.PathWalker(new com.seolwoni.assistpath.goals.GoalComposite(goals.toArray(new com.seolwoni.assistpath.goals.Goal[0])));
 			}
 			int r = walker.tick(mc, p);
 			if (r == RUN) return RUN;
