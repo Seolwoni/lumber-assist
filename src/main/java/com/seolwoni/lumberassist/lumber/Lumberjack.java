@@ -110,11 +110,15 @@ public final class Lumberjack {
 		cfg.running = true;
 		LumberConfig.save();
 		Alerts.actionBar("벌목 시작: 구역 " + cfg.areas.size() + "개", 0xFF55FF55);
+		com.seolwoni.assistcore.log.UsageLog.start("lumber", "구역 " + cfg.areas.size() + "개, 상자 " + cfg.chests.size() + "개, 다시 심기 " + (cfg.replant ? "켬" : "끔"));
 		return true;
 	}
 
 	public static void stop(String title, String sub, boolean alert) {
 		lastStop = (title == null ? "" : title) + (sub == null ? "" : " / " + sub);
+		com.seolwoni.lumberassist.hud.LumberStats ls = com.seolwoni.lumberassist.hud.LumberStats.session;
+		com.seolwoni.assistcore.log.UsageLog.end("lumber", lastStop.isEmpty() ? "직접 껐어요" : lastStop, "나무 " + ls.trees + ", 원목 " + ls.totalLogs() + ", 심은 묘목 " + ls.planted + ", 상자 왕복 " + ls.trips
+				+ "번 | " + com.seolwoni.assistpath.AssistPath.Stats.summary());
 		Minecraft mc = Minecraft.getInstance();
 		LumberConfig cfg = LumberConfig.get();
 		cfg.running = false;
@@ -479,6 +483,7 @@ public final class Lumberjack {
 
 	static void note(Tree tree, String what, int left) {
 		if (fellLog.size() < 60) fellLog.add(tree.kind() + " " + tree.bases().size() + "x at " + tree.first().toShortString() + ": " + what + " (" + left + " logs left)");
+		if (left > 0) com.seolwoni.assistcore.log.UsageLog.event("lumber", "나무 남음: " + tree.kind() + (tree.bases().size() == 4 ? " (2x2)" : "") + " " + tree.first().toShortString() + " — " + what + ", 원목 " + left + "개");
 	}
 
 	/**
@@ -948,7 +953,7 @@ public final class Lumberjack {
 
 	/** Jumps and puts a block under its own feet: one step up the trunk. */
 	static final class PillarUpAction implements Action {
-		private int stage, slot, wait, startY, tries;
+		private int stage, slot, wait, startY, tries, centering;
 
 		@Override
 		public int failMode() {
@@ -972,6 +977,18 @@ public final class Lumberjack {
 					return RUN;
 				}
 				case 1 -> {
+					// Stand in the middle of the block first: inside a trunk, being off-centre lets the head
+					// catch on the leaves around it and the jump does not get high enough.
+					double cx = Math.floor(p.getX()) + 0.5 - p.getX(), cz = Math.floor(p.getZ()) + 0.5 - p.getZ();
+					double off = Math.sqrt(cx * cx + cz * cz);
+					if (off > 0.12 && centering++ < 30) {
+						float yaw = (float) (Math.toDegrees(Math.atan2(cz, cx)) - 90.0);
+						Body.turnTo(p, yaw, 88f, 2f);
+						float err = Math.abs(net.minecraft.util.Mth.wrapDegrees(yaw - p.getYRot()));
+						mc.options.keyUp.setDown(err < 25f && (off > 0.3 || centering % 2 == 0));
+						return RUN;
+					}
+					mc.options.keyUp.setDown(false);
 					// Look straight down, as a player does when pillaring.
 					if (!Body.turnTo(p, p.getYRot(), 88f, 3f)) return RUN;
 					if (!p.onGround()) return RUN;
