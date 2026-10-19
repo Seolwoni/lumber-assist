@@ -50,7 +50,7 @@ public class LumberRealTest implements FabricClientGameTest {
 			BlockPos b = RealWorld.findBiome(sp, biome, BlockPos.ZERO);
 			if (b == null) {
 				failures.add("biome not found: " + biome);
-				return;
+				throw new AssertionError("biome not found: " + biome);
 			}
 			log.add("biome " + biome + " at " + b.getX() + ", " + b.getZ());
 			RealWorld.goTo(context, sp, b.getX(), b.getZ(), 48);
@@ -94,12 +94,13 @@ public class LumberRealTest implements FabricClientGameTest {
 			// Chest on a flat, free spot just west of the area (two level ground cells: chest and where the player stands).
 			int[] spot = sp.getServer().computeOnServer(server -> {
 				ServerLevel level = server.overworld();
+				int mid = ground(level, (x1 + x2) / 2, (z1 + z2) / 2);
 				for (int d = 0; d < 16; d++) {
 					for (int sign : new int[] {1, -1}) {
 						int z = (z1 + z2) / 2 + sign * d;
 						for (int x = x1 - 2; x >= x1 - 6; x--) {
 							int a = ground(level, x, z), b2 = ground(level, x + 1, z);
-							if (a != b2) continue;
+							if (a != b2 || Math.abs(a - mid) > 3) continue;
 							boolean free = true;
 							for (int dy = 0; dy < 3; dy++) {
 								if (!level.getBlockState(new BlockPos(x, a + dy, z)).getCollisionShape(level, new BlockPos(x, a + dy, z)).isEmpty()) free = false;
@@ -196,6 +197,7 @@ public class LumberRealTest implements FabricClientGameTest {
 				return n;
 			});
 			log.add("logs in chest = " + stored);
+			for (String n : context.computeOnClient(mc -> new ArrayList<>(Lumberjack.fellLog))) log.add("  tree: " + n);
 			if (after[1] > 0) {
 				log.add("trunks left: " + sp.getServer().computeOnServer(server -> {
 					ServerLevel level = server.overworld();

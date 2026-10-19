@@ -474,6 +474,13 @@ public final class Lumberjack {
 	// ------------------------------------------------------------------ actions
 
 	/** Fells one tree: logs in reach from the ground, then climb on a pillar for the rest, dig down, replant. */
+	/** What happened to each tree this session (for the tests and bug reports). */
+	public static final List<String> fellLog = new ArrayList<>();
+
+	static void note(Tree tree, String what, int left) {
+		if (fellLog.size() < 60) fellLog.add(tree.kind() + " " + tree.bases().size() + "x at " + tree.first().toShortString() + ": " + what + " (" + left + " logs left)");
+	}
+
 	static final class FellAction implements Action {
 		private final Tree tree;
 		private final int groundY;
@@ -523,7 +530,10 @@ public final class Lumberjack {
 					logs = Trees.logs(tree, 6, cfg.maxHeight + 8);
 					if (logs.isEmpty()) return DONE;
 					stand = standNear(tree.bases(), p.blockPosition());
-					if (stand == null) return DONE;
+					if (stand == null) {
+						note(tree, "no place to stand next to it", logs.size());
+						return DONE;
+					}
 					pushFront(new WalkAction(stand));
 					stage = 1;
 					return RUN;
@@ -533,6 +543,7 @@ public final class Lumberjack {
 					if (mineReachable(p)) return RUN;
 					List<BlockPos> left = remaining();
 					if (left.isEmpty()) {
+						note(tree, "all cut from the ground", 0);
 						stage = 4;
 						return RUN;
 					}
@@ -545,6 +556,7 @@ public final class Lumberjack {
 						}
 					}
 					if (into == null) {
+						note(tree, "no way into the trunk to climb", left.size());
 						stage = 4;
 						return RUN;
 					}
@@ -561,11 +573,13 @@ public final class Lumberjack {
 					boolean above = left.stream().anyMatch(b -> b.getY() + 0.5 > eyeY - 1);
 					int height = p.blockPosition().getY() - groundY;
 					if (left.isEmpty() || !above || height >= cfg.maxHeight || !inTrunk(p)) {
+						note(tree, left.isEmpty() ? "all cut" : !above ? "rest is out of reach below" : height >= cfg.maxHeight ? "max climb height " + cfg.maxHeight : "not in the trunk", left.size());
 						stage = 3;
 						return RUN;
 					}
 					if (p.blockPosition().getY() == lastFeetY) {
 						if (++stuck >= 3) {
+							note(tree, "stuck climbing", left.size());
 							stage = 3;
 							return RUN;
 						}
@@ -579,6 +593,7 @@ public final class Lumberjack {
 							pushFront(new MineBlockAction(head, Trees.isLog(head) ? tree.kind() : null));
 							return RUN;
 						}
+						note(tree, "head blocked by " + Blocks2.id(head), left.size());
 						stage = 3;
 						return RUN;
 					}
