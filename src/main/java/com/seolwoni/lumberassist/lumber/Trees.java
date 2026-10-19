@@ -104,14 +104,18 @@ public final class Trees {
 				|| s.is(Blocks.MOSS_BLOCK) || s.is(Blocks.MUD) || s.is(Blocks.MUDDY_MANGROVE_ROOTS) || s.is(Blocks.PALE_MOSS_BLOCK);
 	}
 
-	/** Trunk bottoms on the area's ground layer, grouped into trees. */
+	/** How far above and below the marked ground heights tree bottoms are still looked for (hills, slopes). */
+	public static final int MARGIN = 4;
+
+	/** Trunk bottoms on the area's ground (within {@link #MARGIN} of the marked heights), grouped into trees. */
 	public static List<Tree> find(AreaEntry a) {
 		LumberConfig cfg = LumberConfig.get();
 		Set<BlockPos> used = new HashSet<>();
 		List<Tree> out = new ArrayList<>();
 		for (int x = a.minX(); x <= a.maxX(); x++) {
 			for (int z = a.minZ(); z <= a.maxZ(); z++) {
-				BlockPos p = new BlockPos(x, a.y, z);
+				for (int y = a.minY() - MARGIN; y <= a.maxY() + MARGIN; y++) {
+				BlockPos p = new BlockPos(x, y, z);
 				if (used.contains(p) || !isBase(p)) continue;
 				String kind = kind(p);
 				if (!cfg.trees.contains(kind)) continue;
@@ -126,13 +130,15 @@ public final class Trees {
 				}
 				used.addAll(bases);
 				out.add(new Tree(bases, kind));
+				}
 			}
 		}
 		return out;
 	}
 
 	private static boolean isBase(BlockPos p) {
-		return isLog(p) && !isLog(p.below()) && (soil(p.below()) || Blocks2.isSolid(p.below()));
+		// Not a branch resting on leaves (the ground may now be a few blocks higher or lower than marked).
+		return isLog(p) && !isLog(p.below()) && !isLeaves(p.below()) && (soil(p.below()) || Blocks2.isSolid(p.below()));
 	}
 
 	/**

@@ -8,3 +8,5 @@ net.minecraft.world.level.block.CactusBlock
 net.minecraft.world.level.block.HorizontalDirectionalBlock
 net.minecraft.world.InteractionResult
 net.minecraft.client.player.LocalPlayer
+net.minecraft.server.level.ServerLevel
+net.minecraft.client.gui.screens.worldselection.WorldCreationUiState

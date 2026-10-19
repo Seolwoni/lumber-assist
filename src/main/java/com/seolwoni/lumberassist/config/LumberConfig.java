@@ -70,9 +70,19 @@ public class LumberConfig {
 	public int hudBgAlpha = 110;
 
 	public static class AreaEntry {
-		/** Ground-layer corners: the block a sapling sits in. */
+		/** Ground-layer corners: the block a sapling sits in. {@code y} is the lower corner's height. */
 		public int x1, z1, x2, z2, y;
+		/** The higher corner's height (uneven ground); null for areas marked before 1.3. */
+		public Integer y2;
 		public String name = "";
+
+		public int minY() {
+			return y2 == null ? y : Math.min(y, y2);
+		}
+
+		public int maxY() {
+			return y2 == null ? y : Math.max(y, y2);
+		}
 
 		public int minX() {
 			return Math.min(x1, x2);

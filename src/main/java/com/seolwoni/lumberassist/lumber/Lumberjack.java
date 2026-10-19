@@ -326,7 +326,7 @@ public final class Lumberjack {
 	private static boolean planCollect(Minecraft mc, LocalPlayer p, LumberConfig cfg) {
 		List<BlockPos> stops = new ArrayList<>();
 		for (AreaEntry a : cfg.areas) {
-			AABB box = new AABB(a.minX() - 2, a.y - 2, a.minZ() - 2, a.maxX() + 3, a.y + 4, a.maxZ() + 3);
+			AABB box = new AABB(a.minX() - 2, a.minY() - Trees.MARGIN - 2, a.minZ() - 2, a.maxX() + 3, a.maxY() + Trees.MARGIN + 4, a.maxZ() + 3);
 			for (Entity e : mc.level.getEntities(p, box)) {
 				if (!(e instanceof ItemEntity) || !e.isAlive()) continue;
 				BlockPos at = e.blockPosition();

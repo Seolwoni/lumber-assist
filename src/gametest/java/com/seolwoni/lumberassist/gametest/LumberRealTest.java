@@ -1,0 +1,221 @@
+package com.seolwoni.lumberassist.gametest;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import com.seolwoni.assistcore.storage.ChestEntry;
+import com.seolwoni.lumberassist.config.LumberConfig;
+import com.seolwoni.lumberassist.hud.LumberStats;
+import com.seolwoni.lumberassist.lumber.Lumberjack;
+
+import net.fabricmc.fabric.api.client.gametest.v1.FabricClientGameTest;
+import net.fabricmc.fabric.api.client.gametest.v1.context.ClientGameTestContext;
+import net.fabricmc.fabric.api.client.gametest.v1.context.TestSingleplayerContext;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.Container;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+
+/**
+ * Real-map tests for Lumber Assist (generated world, fixed seed, peaceful): one forest each.
+ * real-taiga: old growth spruce taiga (big 2x2 spruces). real-darkforest: dark oaks. real-jungle: big jungle trees.
+ * The test picks a 16x16 patch with the most trees near the biome, marks it corner to corner like a player
+ * (each corner at its own ground height) and puts a chest at the edge.
+ */
+public class LumberRealTest implements FabricClientGameTest {
+	private static final int SIZE = 16;
+	private final List<String> log = new ArrayList<>();
+	private final List<String> failures = new ArrayList<>();
+	private final RealWorld.Timing timing = new RealWorld.Timing();
+
+	@Override
+	public void runTest(ClientGameTestContext context) {
+		String suite = RealWorld.suite();
+		ResourceKey<Biome> biome = switch (suite) {
+			case "real-taiga" -> Biomes.OLD_GROWTH_SPRUCE_TAIGA;
+			case "real-darkforest" -> Biomes.DARK_FOREST;
+			case "real-jungle" -> Biomes.JUNGLE;
+			default -> null;
+		};
+		if (biome == null) return;
+		try (TestSingleplayerContext sp = RealWorld.create(context)) {
+			sp.getConnection().waitForChunksRender();
+			RealWorld.setup(sp);
+			BlockPos b = RealWorld.findBiome(sp, biome, BlockPos.ZERO);
+			if (b == null) {
+				failures.add("biome not found: " + biome);
+				return;
+			}
+			log.add("biome " + biome + " at " + b.getX() + ", " + b.getZ());
+			RealWorld.goTo(context, sp, b.getX(), b.getZ(), 48);
+			context.waitTicks(40);
+
+			// Pick the 16x16 patch with the most trunks (2x2 trunks count double) around the biome spot.
+			int[] best = sp.getServer().computeOnServer(server -> {
+				ServerLevel level = server.overworld();
+				int bx = 0, bz = 0, bestScore = -1;
+				for (int ox = -24; ox <= 8; ox += 8) {
+					for (int oz = -24; oz <= 8; oz += 8) {
+						int score = 0;
+						for (int x = b.getX() + ox; x < b.getX() + ox + SIZE; x++) {
+							for (int z = b.getZ() + oz; z < b.getZ() + oz + SIZE; z++) {
+								int g = ground(level, x, z);
+								if (level.getBlockState(new BlockPos(x, g, z)).is(BlockTags.LOGS)) score++;
+							}
+						}
+						if (score > bestScore) {
+							bestScore = score;
+							bx = b.getX() + ox;
+							bz = b.getZ() + oz;
+						}
+					}
+				}
+				return new int[] {bx, bz, bestScore};
+			});
+			int x1 = best[0], z1 = best[1], x2 = x1 + SIZE - 1, z2 = z1 + SIZE - 1;
+			int y1 = sp.getServer().computeOnServer(server -> ground(server.overworld(), x1, z1));
+			int y2 = sp.getServer().computeOnServer(server -> ground(server.overworld(), x2, z2));
+			log.add("area x " + x1 + ".." + x2 + ", z " + z1 + ".." + z2 + ", corner ground heights " + y1 + " and " + y2 + " (trunk columns " + best[2] + ")");
+			int[] before = count(sp, x1, z1, x2, z2);
+			log.add("before: logs=" + before[0] + " (" + before[1] + " trunk columns), ground from y " + before[2] + " to " + before[3]);
+
+			// Chest on the ground two blocks west of the area, player next to it.
+			int cx = x1 - 2, cz = (z1 + z2) / 2;
+			int cy = sp.getServer().computeOnServer(server -> ground(server.overworld(), cx, cz));
+			RealWorld.cmd(sp, "fill " + (cx - 1) + " " + cy + " " + (cz - 1) + " " + (cx + 1) + " " + (cy + 3) + " " + (cz + 1) + " minecraft:air");
+			RealWorld.cmd(sp, "setblock " + cx + " " + cy + " " + cz + " minecraft:chest[facing=east]");
+			RealWorld.cmd(sp, "tp @a " + (cx + 1.5) + " " + cy + " " + (cz + 0.5) + " -90 10");
+			RealWorld.cmd(sp, "give @a minecraft:iron_axe");
+			RealWorld.cmd(sp, "give @a minecraft:iron_axe");
+			RealWorld.cmd(sp, "give @a minecraft:dirt 64");
+			RealWorld.cmd(sp, "give @a minecraft:bread 16");
+			RealWorld.cmd(sp, "effect give @a minecraft:saturation infinite 0 true");
+			context.waitTicks(40);
+			sp.getConnection().waitForChunksRender();
+			BlockPos chest = new BlockPos(cx, cy, cz);
+
+			context.runOnClient(mc -> {
+				LumberConfig c = LumberConfig.get();
+				c.modEnabled = true;
+				c.waitMinutes = 5;
+				c.stopOnMob = false;
+				c.replant = true;
+				c.collectDrops = true;
+				c.trees = new ArrayList<>(LumberConfig.TREES);
+				c.areas.clear();
+				c.spots.clear();
+				LumberConfig.AreaEntry a = new LumberConfig.AreaEntry();
+				a.name = "구역 1";
+				a.x1 = x1;
+				a.z1 = z1;
+				a.x2 = x2;
+				a.z2 = z2;
+				a.y = Math.min(y1, y2);
+				a.y2 = Math.max(y1, y2);
+				c.areas.add(a);
+				c.storeEnabled = true;
+				c.chests.clear();
+				ChestEntry ch = new ChestEntry();
+				ch.x = chest.getX();
+				ch.y = chest.getY();
+				ch.z = chest.getZ();
+				c.chests.add(ch);
+				c.pace = 1;
+				log.add("trees found at the start: " + com.seolwoni.lumberassist.lumber.Trees.find(a).size());
+				if (!Lumberjack.start(mc)) failures.add("Lumberjack.start returned false");
+			});
+			context.takeScreenshot(suite + "-00-start");
+
+			int ticks = 0, shots = 1;
+			final int limit = 20 * 60 * 25;
+			boolean running = true, waiting = false;
+			while (running && !waiting && ticks < limit) {
+				long t0 = System.nanoTime();
+				context.waitTicks(40);
+				timing.add(System.nanoTime() - t0);
+				ticks += 40;
+				final int t = ticks;
+				log.add(context.computeOnClient(mc -> "t=" + t + " pos=" + mc.player.blockPosition().toShortString()
+						+ " status=" + Lumberjack.status() + " trees=" + Lumberjack.treesThisRound()));
+				running = context.computeOnClient(mc -> LumberConfig.get().running);
+				waiting = context.computeOnClient(mc -> Lumberjack.waitSecondsLeft() >= 0);
+				if (ticks % 1200 == 0) context.takeScreenshot(String.format("%s-%02d-min%d", suite, shots++, ticks / 1200));
+			}
+			context.takeScreenshot(suite + "-99-end");
+			String stop = context.computeOnClient(mc -> Lumberjack.lastStop);
+			log.add("ended after " + ticks + " ticks (" + ticks / 20 + " s), running=" + running + " waiting=" + waiting + " lastStop=" + stop);
+			log.add(timing.summary() + ", server tick " + String.format("%.1f", RealWorld.mspt(sp)) + " ms");
+			log.add(com.seolwoni.assistpath.AssistPath.Stats.summary());
+			if (!running) failures.add("stopped by itself: " + stop);
+			else if (!waiting) failures.add("round not finished within " + limit + " ticks");
+			final boolean stillRunning = running;
+			context.runOnClient(mc -> {
+				LumberStats st = LumberStats.session;
+				log.add("trees=" + st.trees + " planted=" + st.planted + " logs=" + st.totalLogs() + " trips=" + st.trips);
+				for (Map.Entry<String, LumberStats.Entry> e : st.logs.entrySet()) log.add("  logs " + e.getKey() + ": " + e.getValue().count);
+				log.add("player at " + mc.player.blockPosition().toShortString() + " health " + mc.player.getHealth());
+				if (mc.player.getHealth() < 15) failures.add("got hurt: health " + mc.player.getHealth());
+				if (stillRunning) Lumberjack.stop(null, null, false);
+			});
+			int[] after = count(sp, x1, z1, x2, z2);
+			log.add("after: logs=" + after[0] + " (" + after[1] + " trunk columns), saplings=" + after[4] + ", pillar dirt left=" + after[5]);
+			int stored = sp.getServer().computeOnServer(server -> {
+				int n = 0;
+				if (server.overworld().getBlockEntity(chest) instanceof Container ct) {
+					for (int i = 0; i < ct.getContainerSize(); i++) if (ct.getItem(i).is(net.minecraft.tags.ItemTags.LOGS)) n += ct.getItem(i).getCount();
+				}
+				return n;
+			});
+			log.add("logs in chest = " + stored);
+			if (after[1] > 0) failures.add(after[1] + " trunk columns still standing in the area");
+			if (after[0] > before[0] * 0.3) failures.add(after[0] + " of " + before[0] + " logs left in the area");
+			if (stored < (before[0] - after[0]) * 0.7) failures.add("only " + stored + " logs in the chest of " + (before[0] - after[0]) + " cut");
+			if (after[4] == 0) failures.add("no saplings planted");
+		} catch (Throwable t) {
+			failures.add("exception: " + t);
+			throw t;
+		} finally {
+			RealWorld.writeReport("lumberassist-" + suite, failures, log);
+		}
+		if (!failures.isEmpty()) throw new AssertionError("Lumber Assist " + suite + " failed: " + String.join("; ", failures));
+	}
+
+	/** Height of the block a sapling would sit in at x/z: just above the topmost soil block, ignoring trees. */
+	static int ground(ServerLevel level, int x, int z) {
+		for (int y = 200; y > level.getMinY(); y--) {
+			BlockState s = level.getBlockState(new BlockPos(x, y, z));
+			if (s.isAir() || s.is(BlockTags.LOGS) || s.is(BlockTags.LEAVES) || s.canBeReplaced() || s.is(Blocks.VINE) || s.is(Blocks.COCOA)) continue;
+			return y + 1;
+		}
+		return level.getMinY();
+	}
+
+	/** logs, trunk columns (log on the ground), lowest/highest ground, saplings, dirt pillars above ground. */
+	private static int[] count(TestSingleplayerContext sp, int x1, int z1, int x2, int z2) {
+		return sp.getServer().computeOnServer(server -> {
+			ServerLevel level = server.overworld();
+			int logs = 0, trunks = 0, lo = Integer.MAX_VALUE, hi = Integer.MIN_VALUE, saplings = 0, dirt = 0;
+			for (int x = x1; x <= x2; x++) {
+				for (int z = z1; z <= z2; z++) {
+					int g = ground(level, x, z);
+					lo = Math.min(lo, g);
+					hi = Math.max(hi, g);
+					if (level.getBlockState(new BlockPos(x, g, z)).is(BlockTags.LOGS)) trunks++;
+					if (level.getBlockState(new BlockPos(x, g, z)).is(BlockTags.SAPLINGS)) saplings++;
+					for (int y = g; y < g + 60; y++) {
+						BlockState s = level.getBlockState(new BlockPos(x, y, z));
+						if (s.is(BlockTags.LOGS)) logs++;
+						if (y > g && s.is(Blocks.DIRT)) dirt++;
+					}
+				}
+			}
+			return new int[] {logs, trunks, lo, hi, saplings, dirt};
+		});
+	}
+}

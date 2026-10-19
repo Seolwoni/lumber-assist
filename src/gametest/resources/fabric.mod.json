@@ -5,7 +5,7 @@
 	"name": "Lumber Assist Game Tests",
 	"environment": "client",
 	"entrypoints": {
-		"fabric-client-gametest": ["com.seolwoni.lumberassist.gametest.LumberGameTest"]
+		"fabric-client-gametest": ["com.seolwoni.lumberassist.gametest.LumberGameTest", "com.seolwoni.lumberassist.gametest.LumberRealTest"]
 	},
 	"depends": {
 		"lumberassist": "*"

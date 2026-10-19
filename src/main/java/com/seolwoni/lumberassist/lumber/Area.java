@@ -49,10 +49,12 @@ public final class Area {
 		e.x2 = layer.getX();
 		e.z2 = layer.getZ();
 		e.y = Math.min(a.getY(), layer.getY());
+		e.y2 = Math.max(a.getY(), layer.getY());
 		e.name = "구역 " + (cfg.areas.size() + 1);
 		cfg.areas.add(e);
 		LumberConfig.save();
-		Alerts.actionBar(e.name + " 지정 완료: " + sx + "x" + sz + " (Y " + e.y + ")", 0xFF55FF55);
+		String ys = e.minY() == e.maxY() ? "Y " + e.y : "Y " + e.minY() + "~" + e.maxY();
+		Alerts.actionBar(e.name + " 지정 완료: " + sx + "x" + sz + " (" + ys + ", 땅 높낮이 ±" + Trees.MARGIN + "칸까지 찾아요)", 0xFF55FF55);
 		Alerts.ding();
 	}
 
