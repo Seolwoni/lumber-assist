@@ -779,7 +779,8 @@ public final class Lumberjack {
 		private boolean started;
 		/** Assist Path walk for longer ways; falls back to walking straight at the target. */
 		private com.seolwoni.assistpath.walk.PathWalker walker;
-		private int pre, post = -1, limit, clears;
+		private int pre, post = -1, limit, clears, still;
+		private Vec3 lastPos;
 
 		WalkAction(BlockPos target) {
 			this(target, false);
@@ -832,6 +833,33 @@ public final class Lumberjack {
 				post = Human.delay(0, 3);
 				return RUN;
 			}
+			// Not getting anywhere: leaves or a bush in the way (a forest floor). Cut them like a player would.
+			if (lastPos != null && p.position().distanceToSqr(lastPos) < 0.0004) {
+				if (++still >= 20 && clears < 8) {
+					still = 0;
+					List<Action> clear = new ArrayList<>();
+					double dx = target.getX() + 0.5 - p.getX(), dz = target.getZ() + 0.5 - p.getZ();
+					double len = Math.max(0.01, Math.sqrt(dx * dx + dz * dz));
+					java.util.Set<BlockPos> seen = new java.util.HashSet<>();
+					for (double d = 0.6; d <= Math.min(2.2, len + 0.5); d += 0.4) {
+						for (int up = 0; up <= 1; up++) {
+							BlockPos c = BlockPos.containing(p.getX() + dx / len * d, p.getY() + 0.1 + up, p.getZ() + dz / len * d);
+							if (!seen.add(c)) continue;
+							if (!Blocks2.isOpen(c) && (Trees.isLeaves(c) || isSoft(c))) clear.add(new MineBlockAction(c, null));
+						}
+					}
+					if (!clear.isEmpty()) {
+						clears++;
+						Body.release(mc);
+						Body.resetWalk();
+						pushFront(clear);
+						return RUN;
+					}
+				}
+			} else {
+				still = 0;
+			}
+			lastPos = p.position();
 			if (Body.walkTicks() > limit) {
 				Body.release(mc);
 				if (!quiet) walkFailed();

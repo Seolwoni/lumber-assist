@@ -13,6 +13,7 @@ import com.seolwoni.assistcore.storage.ChestEntry;
 import com.seolwoni.assistcore.storage.Chests;
 import com.seolwoni.lumberassist.hud.LumberStats;
 import com.seolwoni.assistcore.util.Alerts;
+import com.seolwoni.assistcore.util.Blocks2;
 import com.seolwoni.assistcore.util.Body;
 import com.seolwoni.assistcore.util.Human;
 import com.seolwoni.lumberassist.util.Inv;
@@ -98,7 +99,8 @@ public final class Storage {
 	static final class TripAction implements Action {
 		private final List<Integer> order = new ArrayList<>();
 		private boolean[] full;
-		private int stage, idx, delay, waitTicks, moved, limit;
+		private int stage, idx, delay, waitTicks, moved, limit, still, clears;
+		private Vec3 lastPos;
 		/** Assist Path walk to the chest (or back), then the last bit directly. */
 		private com.seolwoni.assistpath.walk.PathWalker walker;
 		private BlockPos walkerFor;
@@ -189,6 +191,32 @@ public final class Storage {
 						return RUN;
 					}
 					Body.walkTo(p, c);
+					// Stuck in leaves or a bush on the way to the chest: cut through, like a player would.
+					if (lastPos != null && p.position().distanceToSqr(lastPos) < 0.0004) {
+						if (++still >= 20 && clears < 8) {
+							still = 0;
+							double dx = c.getX() + 0.5 - p.getX(), dz = c.getZ() + 0.5 - p.getZ();
+							double len = Math.max(0.01, Math.sqrt(dx * dx + dz * dz));
+							List<Lumberjack.MineBlockAction> cut = new ArrayList<>();
+							java.util.Set<BlockPos> seen = new HashSet<>();
+							for (double d = 0.6; d <= Math.min(2.2, len); d += 0.4) {
+								for (int up = 0; up <= 1; up++) {
+									BlockPos q = BlockPos.containing(p.getX() + dx / len * d, p.getY() + 0.1 + up, p.getZ() + dz / len * d);
+									if (seen.add(q) && !Blocks2.isOpen(q) && (Trees.isLeaves(q) || Lumberjack.isSoft(q))) cut.add(new Lumberjack.MineBlockAction(q, null));
+								}
+							}
+							if (!cut.isEmpty()) {
+								clears++;
+								Body.release(mc);
+								Body.resetWalk();
+								Lumberjack.pushFront(cut);
+								return RUN;
+							}
+						}
+					} else {
+						still = 0;
+					}
+					lastPos = p.position();
 					if (Body.walkTicks() > limit) {
 						Body.release(mc);
 						reason = "보관 상자까지 갈 수 없어요";
