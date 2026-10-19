@@ -47,43 +47,35 @@ public class LumberRealTest implements FabricClientGameTest {
 		try (TestSingleplayerContext sp = RealWorld.create(context)) {
 			sp.getConnection().waitForChunksRender();
 			RealWorld.setup(sp);
-			BlockPos b = RealWorld.findBiome(sp, biome, BlockPos.ZERO);
+			// Saplings must not grow back into trees during the test (that would look like trees left standing).
+			RealWorld.cmd(sp, "gamerule random_tick_speed 0");
+			RealWorld.cmd(sp, "gamerule randomTickSpeed 0");
+			// Like a player looking for a good patch of this forest: try a few places, keep one with a big tree.
+			BlockPos b = null;
+			int[] best = null;
+			BlockPos[] origins = {BlockPos.ZERO, new BlockPos(700, 64, 700), new BlockPos(-700, 64, 700), new BlockPos(700, 64, -700)};
+			for (BlockPos o : origins) {
+				BlockPos cand = RealWorld.findBiome(sp, biome, o);
+				if (cand == null) continue;
+				RealWorld.cmd(sp, "forceload remove all");
+				RealWorld.goTo(context, sp, cand.getX(), cand.getZ(), 48);
+				context.waitTicks(20);
+				int[] w = pickWindow(sp, cand, biome);
+				log.add("biome " + biome + " at " + cand.getX() + ", " + cand.getZ() + ": best patch score " + w[2]);
+				if (best == null || w[2] > best[2]) {
+					best = w;
+					b = cand;
+				}
+				if (w[2] >= 10) break; // has a big 2x2 tree
+			}
 			if (b == null) {
 				failures.add("biome not found: " + biome);
 				throw new AssertionError("biome not found: " + biome);
 			}
-			log.add("biome " + biome + " at " + b.getX() + ", " + b.getZ());
+			RealWorld.cmd(sp, "forceload remove all");
 			RealWorld.goTo(context, sp, b.getX(), b.getZ(), 48);
 			context.waitTicks(40);
 
-			// Pick the 16x16 patch with the most trunks (2x2 trunks count double) around the biome spot.
-			int[] best = sp.getServer().computeOnServer(server -> {
-				ServerLevel level = server.overworld();
-				int bx = 0, bz = 0, bestScore = -1;
-				for (int ox = -48; ox <= 32; ox += 8) {
-					for (int oz = -48; oz <= 32; oz += 8) {
-						int score = 0;
-						BlockPos mid = new BlockPos(b.getX() + ox + SIZE / 2, b.getY(), b.getZ() + oz + SIZE / 2);
-						if (!level.getBiome(mid.atY(ground(level, mid.getX(), mid.getZ()))).is(biome)) continue;
-						for (int x = b.getX() + ox; x < b.getX() + ox + SIZE - 1; x++) {
-							for (int z = b.getZ() + oz; z < b.getZ() + oz + SIZE - 1; z++) {
-								int g = ground(level, x, z);
-								if (!level.getBlockState(new BlockPos(x, g, z)).is(BlockTags.LOGS)) continue;
-								score++;
-								// A big 2x2 trunk is what this test is about: worth much more than a bush.
-								if (level.getBlockState(new BlockPos(x + 1, g, z)).is(BlockTags.LOGS) && level.getBlockState(new BlockPos(x, g, z + 1)).is(BlockTags.LOGS)
-										&& level.getBlockState(new BlockPos(x + 1, g, z + 1)).is(BlockTags.LOGS)) score += 10;
-							}
-						}
-						if (score > bestScore) {
-							bestScore = score;
-							bx = b.getX() + ox;
-							bz = b.getZ() + oz;
-						}
-					}
-				}
-				return new int[] {bx, bz, bestScore};
-			});
 			int x1 = best[0], z1 = best[1], x2 = x1 + SIZE - 1, z2 = z1 + SIZE - 1;
 			int y1 = sp.getServer().computeOnServer(server -> ground(server.overworld(), x1, z1));
 			int y2 = sp.getServer().computeOnServer(server -> ground(server.overworld(), x2, z2));
@@ -227,6 +219,36 @@ public class LumberRealTest implements FabricClientGameTest {
 			RealWorld.writeReport("lumberassist-" + suite, failures, log);
 		}
 		if (!failures.isEmpty()) throw new AssertionError("Lumber Assist " + suite + " failed: " + String.join("; ", failures));
+	}
+
+	/** The 16x16 patch with the most trunks (2x2 trunks count much more) around a spot of this biome: {x, z, score}. */
+	private static int[] pickWindow(TestSingleplayerContext sp, BlockPos b, ResourceKey<Biome> biome) {
+		return sp.getServer().computeOnServer(server -> {
+			ServerLevel level = server.overworld();
+			int bx = b.getX(), bz = b.getZ(), bestScore = -1;
+			for (int ox = -48; ox <= 32; ox += 8) {
+				for (int oz = -48; oz <= 32; oz += 8) {
+					int score = 0;
+					BlockPos mid = new BlockPos(b.getX() + ox + SIZE / 2, b.getY(), b.getZ() + oz + SIZE / 2);
+					if (!level.getBiome(mid.atY(ground(level, mid.getX(), mid.getZ()))).is(biome)) continue;
+					for (int x = b.getX() + ox; x < b.getX() + ox + SIZE - 1; x++) {
+						for (int z = b.getZ() + oz; z < b.getZ() + oz + SIZE - 1; z++) {
+							int g = ground(level, x, z);
+							if (!level.getBlockState(new BlockPos(x, g, z)).is(BlockTags.LOGS)) continue;
+							score++;
+							if (level.getBlockState(new BlockPos(x + 1, g, z)).is(BlockTags.LOGS) && level.getBlockState(new BlockPos(x, g, z + 1)).is(BlockTags.LOGS)
+									&& level.getBlockState(new BlockPos(x + 1, g, z + 1)).is(BlockTags.LOGS)) score += 10;
+						}
+					}
+					if (score > bestScore) {
+						bestScore = score;
+						bx = b.getX() + ox;
+						bz = b.getZ() + oz;
+					}
+				}
+			}
+			return new int[] {bx, bz, bestScore};
+		});
 	}
 
 	/** Height of the block a sapling would sit in at x/z: just above the topmost soil block, ignoring trees. */

@@ -486,7 +486,7 @@ public final class Lumberjack {
 		private final int groundY;
 		private List<BlockPos> logs;
 		private BlockPos stand;
-		private int stage, climbs, stuck, lastFeetY = Integer.MIN_VALUE;
+		private int stage, climbs, stuck, lastFeetY = Integer.MIN_VALUE, approaches, intoTries;
 		private boolean leavesTried, counted;
 
 		FellAction(Tree tree) {
@@ -555,6 +555,17 @@ public final class Lumberjack {
 							break;
 						}
 					}
+					if (into == null && approaches < 2) {
+						// Nothing in reach and the trunk is still whole: we never got next to it (a slope, bushes). Go again.
+						BlockPos near = standNear(tree.bases(), p.blockPosition());
+						double far = tree.bases().stream().mapToDouble(b -> Math.sqrt(b.distToCenterSqr(p.position()))).min().orElse(0);
+						if (near != null && far > 2.5) {
+							approaches++;
+							stand = near;
+							pushFront(new WalkAction(near));
+							return RUN;
+						}
+					}
 					if (into == null) {
 						note(tree, "no way into the trunk to climb", left.size());
 						stage = 4;
@@ -572,6 +583,11 @@ public final class Lumberjack {
 					double eyeY = p.getEyeY();
 					boolean above = left.stream().anyMatch(b -> b.getY() + 0.5 > eyeY - 1);
 					int height = p.blockPosition().getY() - groundY;
+					if (!left.isEmpty() && above && !inTrunk(p) && intoTries++ < 2) {
+						// Did not get into the trunk (bumped into a leaf or a step): try once more from the ground.
+						stage = 1;
+						return RUN;
+					}
 					if (left.isEmpty() || !above || height >= cfg.maxHeight || !inTrunk(p)) {
 						note(tree, left.isEmpty() ? "all cut" : !above ? "rest is out of reach below" : height >= cfg.maxHeight ? "max climb height " + cfg.maxHeight : "not in the trunk", left.size());
 						stage = 3;
