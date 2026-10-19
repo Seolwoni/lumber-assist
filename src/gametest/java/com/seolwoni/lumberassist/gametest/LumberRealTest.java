@@ -93,6 +93,8 @@ public class LumberRealTest implements FabricClientGameTest {
 						for (int x = x1 - 2; x >= x1 - 6; x--) {
 							int a = ground(level, x, z), b2 = ground(level, x + 1, z);
 							if (a != b2 || Math.abs(a - mid) > 3) continue;
+							// Out in the open (not shut in under a giant mushroom or a solid canopy).
+							if (!level.canSeeSky(new BlockPos(x, a, z)) && !level.canSeeSky(new BlockPos(x + 1, a, z))) continue;
 							boolean free = true;
 							for (int dy = 0; dy < 3; dy++) {
 								if (!level.getBlockState(new BlockPos(x, a + dy, z)).getCollisionShape(level, new BlockPos(x, a + dy, z)).isEmpty()) free = false;

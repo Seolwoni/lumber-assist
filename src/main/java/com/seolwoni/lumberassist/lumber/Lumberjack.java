@@ -481,6 +481,40 @@ public final class Lumberjack {
 		if (fellLog.size() < 60) fellLog.add(tree.kind() + " " + tree.bases().size() + "x at " + tree.first().toShortString() + ": " + what + " (" + left + " logs left)");
 	}
 
+	/**
+	 * Gets next to a tree: lets Assist Path pick any reachable spot within two blocks of the trunk (on a slope
+	 * the planned standing cell may be out of reach while the one beside it is fine), then the planned cell as before.
+	 */
+	static final class ApproachAction implements Action {
+		private final Tree tree;
+		private final BlockPos stand;
+		private com.seolwoni.assistpath.walk.PathWalker walker;
+
+		ApproachAction(Tree tree, BlockPos stand) {
+			this.tree = tree;
+			this.stand = stand;
+		}
+
+		@Override
+		public int failMode() {
+			return SKIP;
+		}
+
+		@Override
+		public int tick(Minecraft mc, LocalPlayer p) {
+			if (walker == null) {
+				BlockPos t = tree.first();
+				double near = Math.sqrt(t.distToCenterSqr(p.position()));
+				if (near <= 2.2) return DONE;
+				walker = new com.seolwoni.assistpath.walk.PathWalker(new com.seolwoni.assistpath.goals.GoalNear(t, 2));
+			}
+			int r = walker.tick(mc, p);
+			if (r == RUN) return RUN;
+			if (r == FAIL) pushFront(new WalkAction(stand, true));
+			return DONE;
+		}
+	}
+
 	static final class FellAction implements Action {
 		private final Tree tree;
 		private final int groundY;
@@ -544,7 +578,7 @@ public final class Lumberjack {
 						return DONE;
 					}
 					// A tree we cannot get to must not stop the whole job: the walk is quiet, the tree is skipped.
-					pushFront(new WalkAction(stand, true));
+					pushFront(new ApproachAction(tree, stand));
 					stage = 1;
 					return RUN;
 				}
@@ -572,7 +606,7 @@ public final class Lumberjack {
 						if (near != null && far > 2.5) {
 							approaches++;
 							stand = near;
-							pushFront(new WalkAction(near, true));
+							pushFront(new ApproachAction(tree, near));
 							return RUN;
 						}
 					}
