@@ -153,9 +153,13 @@ public class LumberRealTest implements FabricClientGameTest {
 			int ticks = 0, shots = 1;
 			final int limit = 20 * 60 * 25;
 			boolean running = true, waiting = false;
+			LogTracker logs = new LogTracker(x1, z1, x2, z2);
 			while (running && !waiting && ticks < limit) {
 				long t0 = System.nanoTime();
-				context.waitTicks(40);
+				for (int k = 0; k < 8; k++) {
+					context.waitTicks(5);
+					logs.scan(context, sp, ticks + 5 * (k + 1));
+				}
 				timing.add(System.nanoTime() - t0);
 				ticks += 40;
 				final int t = ticks;
@@ -191,6 +195,7 @@ public class LumberRealTest implements FabricClientGameTest {
 				return n;
 			});
 			log.add("logs in chest = " + stored);
+			logs.report(sp, log);
 			// Loss count (measured only, not a failure): log items still lying around, and logs kept in the inventory.
 			final int fx1 = x1, fz1 = z1, fx2 = x2, fz2 = z2;
 			String loss = sp.getServer().computeOnServer(server -> {
