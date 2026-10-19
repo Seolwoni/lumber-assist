@@ -174,6 +174,7 @@ public class LumberRealTest implements FabricClientGameTest {
 			log.add("ended after " + ticks + " ticks (" + ticks / 20 + " s), running=" + running + " waiting=" + waiting + " lastStop=" + stop);
 			log.add(timing.summary() + ", server tick " + String.format("%.1f", RealWorld.mspt(sp)) + " ms");
 			log.add(com.seolwoni.assistpath.AssistPath.Stats.summary());
+			log.add(context.computeOnClient(mc -> com.seolwoni.assistpath.defense.Defense.Stats.summary() + " giveUp=" + com.seolwoni.assistpath.defense.Defense.giveUp() + " night=" + RealWorld.night()));
 			if (!running) failures.add("stopped by itself: " + stop);
 			if (!running) {
 				// Diagnosis: what was around the player when it gave up (x across, z rows, levels from high to low).
