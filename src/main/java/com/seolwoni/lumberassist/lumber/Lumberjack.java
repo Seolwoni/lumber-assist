@@ -416,6 +416,110 @@ public final class Lumberjack {
 		return out;
 	}
 
+	/**
+	 * After a tree (or in the middle of a tall one): picks up what fell around it before it can despawn (drops vanish
+	 * after five minutes). Drops on the ground: walk over. Drops caught on leaves or vines: from the ground, cut the
+	 * leaves holding them so they fall, then pick them up. Like a player tidying up under a tree.
+	 */
+	static final class TreeCollectAction implements Action {
+		private final Tree tree;
+		private final int groundY, pass;
+
+		TreeCollectAction(Tree tree, int groundY, int pass) {
+			this.tree = tree;
+			this.groundY = groundY;
+			this.pass = pass;
+		}
+
+		@Override
+		public int failMode() {
+			return SKIP;
+		}
+
+		static AABB box(Tree tree, int groundY) {
+			BlockPos f = tree.first();
+			return new AABB(f.getX() - 7, groundY - 4, f.getZ() - 7, f.getX() + 9, groundY + LumberConfig.get().maxHeight + 10, f.getZ() + 9);
+		}
+
+		/** Something under the item that holds it up in the air: leaves or vines. */
+		private static BlockPos holder(BlockPos at) {
+			for (int d = 0; d <= 1; d++) {
+				BlockPos b = at.below(d);
+				if (Trees.isLeaves(b) || isSoft(b) && !Blocks2.isOpen(b)) return b;
+			}
+			return null;
+		}
+
+		@Override
+		public int tick(Minecraft mc, LocalPlayer p) {
+			List<Action> todo = new ArrayList<>();
+			List<BlockPos> visited = new ArrayList<>();
+			BlockPos from = p.blockPosition();
+			List<ItemEntity> items = new ArrayList<>();
+			for (Entity e : mc.level.getEntities(p, box(tree, groundY))) if (e instanceof ItemEntity ie && ie.isAlive()) items.add(ie);
+			final BlockPos f0 = from;
+			items.sort(Comparator.comparingDouble(e -> e.blockPosition().distSqr(f0)));
+			int stops = 0;
+			for (ItemEntity ie : items) {
+				if (stops >= 10) break;
+				BlockPos at = ie.blockPosition();
+				boolean done = false;
+				for (BlockPos v : visited) if (v.distManhattan(at) <= 1) done = true;
+				if (done) continue;
+				BlockPos hold = holder(at);
+				if (hold != null && at.getY() > groundY + 1) {
+					// Caught up in the leaves: find a ground cell from where the holding leaves are in reach.
+					BlockPos best = null;
+					double bestD = Double.MAX_VALUE;
+					for (int dx = -3; dx <= 3; dx++) {
+						for (int dz = -3; dz <= 3; dz++) {
+							for (int dy = -2; dy <= 2; dy++) {
+								BlockPos c = new BlockPos(at.getX() + dx, groundY + dy, at.getZ() + dz);
+								if (!standable(c)) continue;
+								Vec3 eye = new Vec3(c.getX() + 0.5, c.getY() + 1.62, c.getZ() + 0.5);
+								if (eye.distanceTo(Vec3.atCenterOf(hold)) > REACH - 0.2) continue;
+								double d = c.distSqr(from);
+								if (d < bestD) {
+									bestD = d;
+									best = c;
+								}
+							}
+						}
+					}
+					if (best == null) continue;
+					todo.add(new WalkAction(best, true));
+					todo.add(new MineBlockAction(hold, null));
+					todo.add(new WaitAction(Human.delay(14, 22))); // let it fall
+					todo.add(new LocalCollectAction(best));
+					visited.add(at);
+					from = best;
+					stops++;
+					continue;
+				}
+				if (Math.abs(at.getY() - groundY) > 3) continue;
+				BlockPos stand = standable(at) ? at : standNear(List.of(at), at);
+				if (stand == null) continue;
+				todo.add(new WalkAction(stand, true));
+				visited.add(at);
+				from = stand;
+				stops++;
+			}
+			if (todo.isEmpty()) return DONE;
+			status("나무 밑에 떨어진 것 줍는 중");
+			if (pass < 1) todo.add(new TreeCollectAction(tree, groundY, pass + 1)); // things that fell from the cut leaves
+			pushFront(todo);
+			return DONE;
+		}
+
+		/** A dropped log lying low down for longer than {@code ticks}: time to go down and fetch it. */
+		static boolean oldDrops(Minecraft mc, LocalPlayer p, Tree tree, int groundY, int ticks) {
+			for (Entity e : mc.level.getEntities(p, box(tree, groundY))) {
+				if (e instanceof ItemEntity ie && ie.isAlive() && ie.getAge() > ticks && Inv.isLogItem(ie.getItem())) return true;
+			}
+			return false;
+		}
+	}
+
 	/** Picks up drops within a few blocks, then steps back. */
 	static final class LocalCollectAction implements Action {
 		private final BlockPos home;
@@ -543,8 +647,8 @@ public final class Lumberjack {
 		private final int groundY;
 		private List<BlockPos> logs;
 		private BlockPos stand;
-		private int stage, climbs, stuck, lastFeetY = Integer.MIN_VALUE, approaches, intoTries;
-		private boolean leavesTried, counted, cleaned;
+		private int stage, climbs, stuck, lastFeetY = Integer.MIN_VALUE, approaches, intoTries, fetches;
+		private boolean leavesTried, counted, cleaned, swept;
 
 		FellAction(Tree tree) {
 			this.tree = tree;
@@ -682,6 +786,21 @@ public final class Lumberjack {
 						stuck = 0;
 					}
 					lastFeetY = p.blockPosition().getY();
+					// A big tree takes a while: logs that fell early would vanish after five minutes on the ground.
+					// Go down, pick them up, then climb again (the pillar is dug out on the way down).
+					if (fetches < 3 && TreeCollectAction.oldDrops(mc, p, tree, groundY, 20 * 150)) {
+						fetches++;
+						status("떨어진 원목 먼저 주우러 내려가는 중");
+						List<Action> down = new ArrayList<>();
+						down.add(new DescendAction(groundY));
+						down.add(new TreeCollectAction(tree, groundY, 0));
+						pushFront(down);
+						stuck = 0;
+						lastFeetY = Integer.MIN_VALUE;
+						intoTries = 0;
+						stage = 1;
+						return RUN;
+					}
 					BlockPos head = p.blockPosition().above(2);
 					if (!Blocks2.isOpen(head)) {
 						if (Trees.isLog(head) || Trees.isLeaves(head) || isSoft(head)) {
@@ -722,6 +841,12 @@ public final class Lumberjack {
 								return RUN;
 							}
 						}
+					}
+					if (!swept) {
+						// Pick up what fell around this tree now, before it can despawn while we work on the next ones.
+						swept = true;
+						pushFront(new TreeCollectAction(tree, groundY, 0));
+						return RUN;
 					}
 					if (!counted) {
 						counted = true;
