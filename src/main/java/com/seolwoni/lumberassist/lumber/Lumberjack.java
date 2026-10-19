@@ -516,7 +516,41 @@ public final class Lumberjack {
 							}
 						}
 					}
-					if (best == null) continue;
+					if (best == null) {
+						// Too high to reach from the ground (four to six blocks up): build up one to three blocks
+						// beside it, cut the leaf, and take the blocks back down, like a player would.
+						int bestH = -1;
+						for (int dx = -2; dx <= 2 && bestH < 0; dx++) {
+							for (int dz = -2; dz <= 2 && bestH < 0; dz++) {
+								for (int dy = -1; dy <= 1 && bestH < 0; dy++) {
+									BlockPos c = new BlockPos(at.getX() + dx, groundY + dy, at.getZ() + dz);
+									if (c.getX() == hold.getX() && c.getZ() == hold.getZ()) continue;
+									if (!standable(c) || Trees.isLeaves(c.below())) continue;
+									for (int h = 1; h <= 3; h++) {
+										if (!Blocks2.isOpen(c.above(h + 1))) break;
+										Vec3 eye = new Vec3(c.getX() + 0.5, c.getY() + h + 1.62, c.getZ() + 0.5);
+										if (eye.distanceTo(Vec3.atCenterOf(hold)) <= REACH - 0.2) {
+											best = c;
+											bestH = h;
+											break;
+										}
+									}
+								}
+							}
+						}
+						if (best == null) continue;
+						todo.add(new WalkAction(best, true));
+						for (int h = 0; h < bestH; h++) todo.add(new PillarUpAction());
+						todo.add(new MineBlockAction(hold, null));
+						todo.add(new WaitAction(Human.delay(10, 16)));
+						todo.add(new DescendAction(best.getY()));
+						todo.add(new WaitAction(Human.delay(6, 12)));
+						todo.add(new LocalCollectAction(best));
+						visited.add(at);
+						from = best;
+						stops++;
+						continue;
+					}
 					todo.add(new WalkAction(best, true));
 					todo.add(new MineBlockAction(hold, null));
 					todo.add(new WaitAction(Human.delay(14, 22))); // let it fall
