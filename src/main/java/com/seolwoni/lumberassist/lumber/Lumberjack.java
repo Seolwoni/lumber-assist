@@ -667,7 +667,9 @@ public final class Lumberjack {
 					}
 					if (p.blockPosition().getY() == lastFeetY) {
 						if (++stuck >= 3) {
-							note(tree, "stuck climbing", left.size());
+							BlockPos f = p.blockPosition();
+							note(tree, "stuck climbing at " + f.toShortString() + " (above: " + Blocks2.id(f.above(2)) + ", " + Blocks2.id(f.above(3))
+									+ "; below: " + Blocks2.id(f.below()) + "; inTrunk=" + inTrunk(p) + ", onGround=" + p.onGround() + ")", left.size());
 							stage = 3;
 							return RUN;
 						}
