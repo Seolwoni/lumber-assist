@@ -561,11 +561,14 @@ public final class Lumberjack {
 			return tree.bases().stream().anyMatch(b -> b.getX() == p.blockPosition().getX() && b.getZ() == p.blockPosition().getZ());
 		}
 
-		/** Standing right next to the trunk (sideways or diagonally), on the ground or up on a pillar. */
+		/**
+		 * Close enough to the trunk to climb up beside it and still reach the logs: right next to it, or one
+		 * block further out when the ground right beside it cannot be reached (a ledge, a steep slope).
+		 */
 		private boolean beside(LocalPlayer p) {
 			for (BlockPos b : tree.bases()) {
 				double dx = p.getX() - (b.getX() + 0.5), dz = p.getZ() - (b.getZ() + 0.5);
-				if (Math.abs(dx) <= 1.6 && Math.abs(dz) <= 1.6) return true;
+				if (Math.abs(dx) <= 2.6 && Math.abs(dz) <= 2.6) return true;
 			}
 			return false;
 		}
