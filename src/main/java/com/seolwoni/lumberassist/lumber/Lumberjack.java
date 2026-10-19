@@ -880,7 +880,7 @@ public final class Lumberjack {
 						fetches++;
 						status("떨어진 원목 먼저 주우러 내려가는 중");
 						List<Action> down = new ArrayList<>();
-						down.add(new DescendAction(groundY));
+						down.add(new DescendAction(groundY, tree));
 						down.add(new TreeCollectAction(tree, groundY, 0));
 						pushFront(down);
 						stuck = 0;
@@ -906,7 +906,7 @@ public final class Lumberjack {
 				case 3 -> {
 					if (p.blockPosition().getY() > groundY) {
 						status("나무에서 내려오는 중");
-						pushFront(new DescendAction(groundY));
+						pushFront(new DescendAction(groundY, tree));
 					}
 					stage = 4;
 					return RUN;
@@ -1247,10 +1247,17 @@ public final class Lumberjack {
 	/** Digs the pillar out from under its own feet, one block at a time, back to the ground. */
 	static final class DescendAction implements Action {
 		private final int groundY;
-		private int wait, fails, lastY = Integer.MIN_VALUE;
+		private final Tree tree;
+		private int wait, fails, lastY = Integer.MIN_VALUE, shakes;
 
 		DescendAction(int groundY) {
+			this(groundY, null);
+		}
+
+		/** With the tree: on the way down, knock logs caught on its leaves loose (they fall to the ground). */
+		DescendAction(int groundY, Tree tree) {
 			this.groundY = groundY;
+			this.tree = tree;
 		}
 
 		@Override
@@ -1268,6 +1275,15 @@ public final class Lumberjack {
 			lastY = y;
 			BlockPos under = p.blockPosition().below();
 			if (Blocks2.isOpen(under)) return RUN;
+			if (tree != null && shakes < 8) {
+				List<Action> shake = TreeCollectAction.shakeLeaves(mc, p, tree, groundY);
+				if (!shake.isEmpty()) {
+					shakes += shake.size();
+					lastY = Integer.MIN_VALUE; // cutting leaves is not being stuck
+					pushFront(shake);
+					return RUN;
+				}
+			}
 			wait = Human.rand(2, 5);
 			pushFront(new MineBlockAction(under, Trees.isLog(under) ? Trees.kind(under) : null, false));
 			return RUN;
