@@ -867,6 +867,9 @@ public final class Lumberjack {
 						List<Action> shake = TreeCollectAction.shakeLeaves(mc, p, tree, groundY);
 						if (!shake.isEmpty()) {
 							shakes += shake.size();
+							// Cutting leaves is not being stuck: the height check starts over after it.
+							lastFeetY = Integer.MIN_VALUE;
+							stuck = 0;
 							pushFront(shake);
 							return RUN;
 						}
