@@ -23,6 +23,7 @@ final class Chores {
 		if (Inv.freeSlots(p) <= 1) {
 			if (cfg.storeEnabled && !cfg.chests.isEmpty()) {
 				Lumberjack.status("인벤토리가 차서 보관하러 가는 중");
+				Lumberjack.addComeDown(p);
 				Lumberjack.add(new Storage.TripAction());
 			} else {
 				Lumberjack.stop("인벤토리 가득 참!", "보관 상자를 지정하면 자동으로 보관해요", true);

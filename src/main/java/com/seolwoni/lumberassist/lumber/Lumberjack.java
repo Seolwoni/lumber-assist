@@ -258,6 +258,7 @@ public final class Lumberjack {
 			}
 			if (cfg.storeEnabled && !cfg.chests.isEmpty()) {
 				status("상자에 보관하러 가는 중");
+				addComeDown(p);
 				add(new Storage.TripAction());
 				return;
 			}
@@ -355,6 +356,35 @@ public final class Lumberjack {
 			from = n;
 		}
 		return true;
+	}
+
+	/** A free cell on real ground (not on leaves or logs) near the player, a few blocks down at most. */
+	static BlockPos groundCellNear(LocalPlayer p) {
+		BlockPos me = p.blockPosition();
+		BlockPos best = null;
+		double bestD = Double.MAX_VALUE;
+		for (int dx = -4; dx <= 4; dx++) {
+			for (int dz = -4; dz <= 4; dz++) {
+				for (int dy = -6; dy <= 1; dy++) {
+					BlockPos c = me.offset(dx, dy, dz);
+					if (!standable(c) || Trees.isLeaves(c.below()) || Trees.isLog(c.below())) continue;
+					double d = dx * dx + dz * dz + Math.abs(dy) * 0.5;
+					if (d < bestD) {
+						bestD = d;
+						best = c;
+					}
+				}
+			}
+		}
+		return best;
+	}
+
+	/** Standing up on leaves or logs (after picking something up there): step down to the ground first. */
+	static void addComeDown(LocalPlayer p) {
+		BlockPos under = p.blockPosition().below();
+		if (!Trees.isLeaves(under) && !Trees.isLog(under)) return;
+		BlockPos g = groundCellNear(p);
+		if (g != null) add(new WalkAction(g, true));
 	}
 
 	static void walkFailed() {
@@ -467,7 +497,7 @@ public final class Lumberjack {
 				for (BlockPos v : visited) if (v.distManhattan(at) <= 1) done = true;
 				if (done) continue;
 				BlockPos hold = holder(at);
-				if (hold != null && at.getY() > groundY + 1) {
+				if (hold != null && (at.getY() > groundY + 1 || Trees.isLeaves(at.below()))) {
 					// Caught up in the leaves: find a ground cell from where the holding leaves are in reach.
 					BlockPos best = null;
 					double bestD = Double.MAX_VALUE;
@@ -496,19 +526,66 @@ public final class Lumberjack {
 					stops++;
 					continue;
 				}
+				if (Blocks2.isFluid(at) && mc.level.getFluidState(at).is(net.minecraft.tags.FluidTags.WATER)) {
+					// In water: wade in when it is shallow (one or two deep), like a player would; deeper, just say where.
+					BlockPos bottom = at;
+					while (Blocks2.isFluid(bottom.below()) && at.getY() - bottom.getY() < 6) bottom = bottom.below();
+					BlockPos top = at;
+					while (Blocks2.isFluid(top.above()) && top.getY() - at.getY() < 6) top = top.above();
+					int depth = top.getY() - bottom.getY() + 1;
+					if (depth <= 2 && Blocks2.isSolid(bottom.below()) && Math.abs(bottom.getY() - groundY) <= 3) {
+						todo.add(new WalkAction(bottom, true));
+						todo.add(new WaitAction(Human.delay(6, 12)));
+						visited.add(at);
+						from = bottom;
+						stops++;
+					} else if (waterNoted.add(bottom.immutable())) {
+						String where = bottom.getX() + ", " + bottom.getY() + ", " + bottom.getZ();
+						Alerts.actionBar("깊은 물에 빠진 원목은 두고 가요: " + where, 0xFFFFAA55);
+						com.seolwoni.assistcore.log.UsageLog.event("lumber", "깊은 물(" + depth + "칸)에 빠진 원목을 두고 감 (" + where + ")");
+					}
+					continue;
+				}
 				if (Math.abs(at.getY() - groundY) > 3) continue;
-				BlockPos stand = standable(at) ? at : standNear(List.of(at), at);
-				if (stand == null) continue;
+				BlockPos stand = standable(at) && !Trees.isLeaves(at.below()) ? at : standNear(List.of(at), at);
+				if (stand == null || Trees.isLeaves(stand.below())) continue;
 				todo.add(new WalkAction(stand, true));
 				visited.add(at);
 				from = stand;
 				stops++;
 			}
-			if (todo.isEmpty()) return DONE;
+			if (todo.isEmpty()) {
+				addComeDownFront(p);
+				return DONE;
+			}
 			status("나무 밑에 떨어진 것 줍는 중");
 			if (pass < 1) todo.add(new TreeCollectAction(tree, groundY, pass + 1)); // things that fell from the cut leaves
 			pushFront(todo);
 			return DONE;
+		}
+
+		private static final Set<BlockPos> waterNoted = new HashSet<>();
+
+		/** Ended up on leaves or logs (a log caught up there): step down to the ground before going on. */
+		private static void addComeDownFront(LocalPlayer p) {
+			BlockPos under = p.blockPosition().below();
+			if (!Trees.isLeaves(under) && !Trees.isLog(under)) return;
+			BlockPos g = groundCellNear(p);
+			if (g != null) pushFront(new WalkAction(g, true));
+		}
+
+		/** Logs caught on leaves within reach from up here (while climbing): cut the leaf so they fall to the ground. */
+		static List<Action> shakeLeaves(Minecraft mc, LocalPlayer p, Tree tree, int groundY) {
+			List<Action> out = new ArrayList<>();
+			for (Entity e : mc.level.getEntities(p, box(tree, groundY))) {
+				if (!(e instanceof ItemEntity ie) || !ie.isAlive() || !Inv.isLogItem(ie.getItem())) continue;
+				BlockPos hold = holder(ie.blockPosition());
+				if (hold == null || ie.blockPosition().getY() <= groundY + 1 || eyeDist(p, hold) > REACH) continue;
+				if (hold.equals(p.blockPosition().below())) continue;
+				out.add(new MineBlockAction(hold, null));
+				if (out.size() >= 3) break;
+			}
+			return out;
 		}
 
 		/** A dropped log lying low down for longer than {@code ticks}: time to go down and fetch it. */
@@ -539,8 +616,8 @@ public final class Lumberjack {
 			for (Entity e : mc.level.getEntities(p, new AABB(home).inflate(4, 3, 4))) {
 				if (!(e instanceof ItemEntity) || !e.isAlive()) continue;
 				BlockPos at = e.blockPosition();
-				BlockPos stand = standable(at) ? at : standNear(List.of(at), at);
-				if (stand != null) walks.add(new WalkAction(stand, true));
+				BlockPos stand = standable(at) && !Trees.isLeaves(at.below()) ? at : standNear(List.of(at), at);
+				if (stand != null && !Trees.isLeaves(stand.below())) walks.add(new WalkAction(stand, true));
 				if (walks.size() >= 6) break;
 			}
 			if (walks.isEmpty()) return DONE;
@@ -647,7 +724,7 @@ public final class Lumberjack {
 		private final int groundY;
 		private List<BlockPos> logs;
 		private BlockPos stand;
-		private int stage, climbs, stuck, lastFeetY = Integer.MIN_VALUE, approaches, intoTries, fetches;
+		private int stage, climbs, stuck, lastFeetY = Integer.MIN_VALUE, approaches, intoTries, fetches, shakes;
 		private boolean leavesTried, counted, cleaned, swept;
 
 		FellAction(Tree tree) {
@@ -786,6 +863,14 @@ public final class Lumberjack {
 						stuck = 0;
 					}
 					lastFeetY = p.blockPosition().getY();
+					if (shakes < 8) {
+						List<Action> shake = TreeCollectAction.shakeLeaves(mc, p, tree, groundY);
+						if (!shake.isEmpty()) {
+							shakes += shake.size();
+							pushFront(shake);
+							return RUN;
+						}
+					}
 					// A big tree takes a while: logs that fell early would vanish after five minutes on the ground.
 					// Go down, pick them up, then climb again (the pillar is dug out on the way down).
 					if (fetches < 3 && TreeCollectAction.oldDrops(mc, p, tree, groundY, 20 * 150)) {
