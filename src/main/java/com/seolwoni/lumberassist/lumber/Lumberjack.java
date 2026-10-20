@@ -185,6 +185,8 @@ public final class Lumberjack {
 		ticks++;
 		if (phase != Phase.WAIT) LumberStats.tick();
 		Human.humanLike = cfg.humanDelay;
+		Human.sprintJump = true;
+		Human.pace = Math.max(Human.pace, 1); // run on long stretches (Mine sets its own pace setting)
 		if (queue.tick(mc, p)) return;
 		plan(mc, p, cfg);
 	}
