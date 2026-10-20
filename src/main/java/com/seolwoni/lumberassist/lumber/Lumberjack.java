@@ -96,7 +96,11 @@ public final class Lumberjack {
 
 	// ------------------------------------------------------------------ start / stop
 
+	/** "돌아가기" pressed while a tree was being cut: go back as soon as that tree is done. */
+	private static boolean returnPending;
+
 	public static boolean start(Minecraft mc) {
+		returnPending = false;
 		{
 			var dc = com.seolwoni.lumberassist.config.LumberConfig.get();
 			com.seolwoni.assistpath.defense.Defense.config.enabled = dc.mobMode <= 1;
@@ -128,6 +132,14 @@ public final class Lumberjack {
 		LumberConfig cfg = LumberConfig.get();
 		LocalPlayer p = mc.player;
 		if (!cfg.running || p == null) return;
+		// In the middle of a tree: finish that tree first (stopping half way up leaves its top floating in the air,
+		// and it is not found as a tree again). Pressed again: go right away.
+		if (!queue.isEmpty() && !returnPending) {
+			returnPending = true;
+			Alerts.actionBar("이 나무만 마저 베고 돌아가요 (한 번 더 누르면 바로)", 0xFFFFAA00);
+			return;
+		}
+		returnPending = false;
 		queue.clear();
 		Body.release(mc);
 		mc.options.keyShift.setDown(false);
@@ -225,6 +237,11 @@ public final class Lumberjack {
 		Human.sprintJump = true;
 		Human.pace = Math.max(Human.pace, 1); // run on long stretches (Mine sets its own pace setting)
 		if (queue.tick(mc, p)) return;
+		if (returnPending) {
+			returnPending = false;
+			returnHome(mc);
+			return;
+		}
 		plan(mc, p, cfg);
 	}
 

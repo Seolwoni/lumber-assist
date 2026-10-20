@@ -98,7 +98,7 @@ public class LumberGameTest implements FabricClientGameTest {
 						return mc.player.blockPosition().toShortString() + " (" + Lumberjack.status() + ")";
 					});
 					int w = 0;
-					while (w < 20 * 90 && context.computeOnClient(mc -> LumberConfig.get().running)) {
+					while (w < 20 * 240 && context.computeOnClient(mc -> LumberConfig.get().running)) {
 						context.waitTicks(20);
 						w += 20;
 					}
