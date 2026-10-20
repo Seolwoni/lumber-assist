@@ -36,7 +36,7 @@ public class LumberRealTest implements FabricClientGameTest {
 
 	@Override
 	public void runTest(ClientGameTestContext context) {
-		String suite = RealWorld.suite();
+		String suite = RealWorld.suite().replaceAll("-2$", ""); // "-2": the same place again, to see how much runs vary
 		ResourceKey<Biome> biome = switch (suite) {
 			case "real-taiga" -> Biomes.OLD_GROWTH_SPRUCE_TAIGA;
 			case "real-darkforest" -> Biomes.DARK_FOREST;

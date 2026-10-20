@@ -103,6 +103,8 @@ public final class Storage {
 		private Vec3 lastPos;
 		/** Assist Path walk to the chest (or back), then the last bit directly. */
 		private com.seolwoni.assistpath.walk.PathWalker walker;
+		/** Tried a route that may dig and build (after a walking one was not found). */
+		private boolean fullTried;
 		private BlockPos walkerFor;
 		private Vec3 aim;
 		private Direction face;
@@ -181,13 +183,22 @@ public final class Storage {
 					}
 					if (!c.equals(walkerFor)) {
 						walkerFor = c;
+						fullTried = false;
 						walker = new com.seolwoni.assistpath.walk.PathWalker(new com.seolwoni.assistpath.goals.GoalNear(c, 2));
 					}
 					if (walker != null) {
-						if (walker.tick(mc, p) == RUN) return RUN;
+						int wr = walker.tick(mc, p);
+						if (wr == RUN) return RUN;
 						walker = null;
 						Body.resetWalk();
 						Body.newTurn();
+						if (wr == FAIL && !fullTried) {
+							// No walking way (a hollow among leaves on a slope, a drop too deep): like a player, dig a
+							// step or put a block down to get out, then walk on.
+							fullTried = true;
+							walker = new com.seolwoni.assistpath.walk.PathWalker(new com.seolwoni.assistpath.goals.GoalNear(c, 2),
+									com.seolwoni.assistpath.PathOptions.FULL, 4);
+						}
 						return RUN;
 					}
 					Body.walkTo(p, c);

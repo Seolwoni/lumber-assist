@@ -52,15 +52,21 @@ public final class Defense {
 	/** What happened this session (for the HUD, the tests and the usage log). */
 	public static final class Stats {
 		public static int flees, dodges, creeperEscapes, fights, kills, hitsTaken;
+		/** Ticks a mob was close but could not get to us (behind a wall), so it was left alone; fights given up. */
+		public static int unreachableTicks, fightsGivenUp;
+		/** The last few times Defense took over: when, what, which mob, how far, whether it could see us. */
+		public static final java.util.ArrayDeque<String> events = new java.util.ArrayDeque<>();
 		public static float lowestHealth = 20f;
 
 		public static String summary() {
 			return "defense: flees=" + flees + " dodges=" + dodges + " creeperEscapes=" + creeperEscapes + " fights=" + fights + " kills=" + kills
-					+ " hitsTaken=" + hitsTaken + " lowestHealth=" + lowestHealth;
+					+ " hitsTaken=" + hitsTaken + " lowestHealth=" + lowestHealth + " unreachableTicks=" + unreachableTicks + " fightsGivenUp=" + fightsGivenUp;
 		}
 
 		public static void reset() {
 			flees = dodges = creeperEscapes = fights = kills = hitsTaken = 0;
+			unreachableTicks = fightsGivenUp = 0;
+			events.clear();
 			lowestHealth = 20f;
 		}
 	}
@@ -74,6 +80,8 @@ public final class Defense {
 	private static PathWalker walker;
 	private static BlockPos fleeTo;
 	private static Entity target;
+	/** Swings at the current target and ticks spent on it: a fight with no swing for 3 s is given up. */
+	private static int swings, targetTicks;
 	private static String status = "";
 
 	/** What Defense is doing right now (empty when nothing). */
@@ -143,7 +151,10 @@ public final class Defense {
 			return false;
 		}
 		calm = 0;
-		if (want != mode) begin(mc, p, want, arrow);
+		if (want != mode) {
+			begin(mc, p, want, arrow);
+			note(p, want, creeper != null ? List.of(creeper) : near);
+		}
 		modeTicks++;
 		switch (mode) {
 			case CREEPER -> flee(mc, p, List.of(creeper), true);
@@ -206,6 +217,19 @@ public final class Defense {
 		mode = m;
 	}
 
+	/** For the tests and the usage log: what made us act. */
+	private static void note(LocalPlayer p, Mode m, List<Entity> why) {
+		StringBuilder sb = new StringBuilder(m.name().toLowerCase());
+		sb.append(" at ").append(p.blockPosition().toShortString());
+		for (Entity e : why) {
+			String id = net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(e.getType()).getPath();
+			sb.append(" | ").append(id).append(' ').append(String.format("%.1f", e.distanceTo(p))).append(p.hasLineOfSight(e) ? " seen" : " unseen");
+			if (sb.length() > 200) break;
+		}
+		Stats.events.addLast(sb.toString());
+		while (Stats.events.size() > 40) Stats.events.removeFirst();
+	}
+
 	private static void end(Minecraft mc) {
 		Body.release(mc);
 		Body.resetWalk();
@@ -251,11 +275,13 @@ public final class Defense {
 			fleeTo = null;
 			replan = 0;
 		}
-		// No way out found: back away from the nearest one, facing it (like a player would).
+		// No way out found: back away from the nearest one, facing it (like a player would), but not off an edge.
 		Entity n = from.get(0);
 		Body.lookAt(p, n.getEyePosition(), 6f);
+		double yaw = Math.toRadians(p.getYRot());
+		Vec3 back = new Vec3(Math.sin(yaw), 0, -Math.cos(yaw));
 		mc.options.keyUp.setDown(false);
-		mc.options.keyDown.setDown(true);
+		mc.options.keyDown.setDown(safeStep(p, back));
 	}
 
 	/** A standable cell 8 to 14 blocks away that keeps the most distance from every threat. */
@@ -294,6 +320,20 @@ public final class Defense {
 	}
 
 	private static final java.util.Set<String> RANGED = java.util.Set.of("skeleton", "stray", "bogged", "pillager", "witch", "blaze", "ghast");
+
+	/** Ground under the next step in this direction (at most one block down): no walking off ledges or into holes. */
+	static boolean safeStep(LocalPlayer p, Vec3 dir) {
+		Vec3 at = p.position().add(dir.normalize().scale(0.8));
+		BlockPos feet = BlockPos.containing(at.x, p.getY() + 0.1, at.z);
+		var level = p.level();
+		for (int down = 0; down <= 1; down++) {
+			BlockPos below = feet.below(down + 1);
+			var st = level.getBlockState(below);
+			if (!st.getFluidState().isEmpty() && st.getFluidState().is(net.minecraft.tags.FluidTags.LAVA)) return false;
+			if (st.isFaceSturdy(level, below, net.minecraft.core.Direction.UP)) return true;
+		}
+		return false;
+	}
 
 	static boolean ranged(Entity e) {
 		String id = net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(e.getType()).getPath();
@@ -360,18 +400,35 @@ public final class Defense {
 				}
 			}
 			if (target == null) return;
+			swings = 0;
+			targetTicks = 0;
+		}
+		if (++targetTicks > 60 && swings == 0) {
+			// Three seconds without being able to swing at it (out of reach behind something, or we cannot step
+			// closer without going over an edge): leave it be, unless it comes right up to us.
+			Stats.fightsGivenUp++;
+			Threats.ignore(p, target, 200);
+			log("닿지 않는 몹이라 싸우기를 그만뒀어요");
+			target = null;
+			mc.options.keyUp.setDown(false);
+			mc.options.keyDown.setDown(false);
+			return;
 		}
 		int slot = weaponSlot(p);
 		if (slot >= 0) InvBase.select(p, slot);
 		Vec3 aim = target.position().add(0, target.getBbHeight() * 0.6, 0);
 		boolean onTarget = Body.lookAt(p, aim, 8f);
 		double d = target.distanceTo(p);
-		// Keep at arm's length: step in when too far, back off when it gets too close.
-		mc.options.keyUp.setDown(d > 2.8);
-		mc.options.keyDown.setDown(d < 1.6);
+		// Keep at arm's length: step in when too far, back off when it gets too close, but never off an edge
+		// (a fight must not end with a fall into a cave or out of the tunnel).
+		double yaw = Math.toRadians(p.getYRot());
+		Vec3 fwd = new Vec3(-Math.sin(yaw), 0, Math.cos(yaw));
+		mc.options.keyUp.setDown(d > 2.8 && safeStep(p, fwd));
+		mc.options.keyDown.setDown(d < 1.6 && safeStep(p, fwd.scale(-1)));
 		if (onTarget && d <= 3.0 && p.getAttackStrengthScale(0.5f) >= 0.95f && mc.gameMode != null) {
 			mc.gameMode.attack(p, target);
 			p.swing(InteractionHand.MAIN_HAND);
+			swings++;
 		}
 	}
 }
