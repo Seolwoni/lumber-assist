@@ -64,7 +64,7 @@ public final class Storage {
 			if (s.isEmpty()) continue;
 			if (Inv.isSapling(s)) saps.computeIfAbsent(s.getItem(), k -> new ArrayList<>()).add(i);
 			else if (Inv.isFiller(s)) filler.add(i);
-			else if (Inv.isAxe(s) || Inv.isFood(s)) keep.add(i);
+			else if (Inv.isAxe(s) || Inv.isFood(s) || s.is(net.minecraft.world.item.Items.GOLDEN_CARROT) || s.is(net.minecraft.world.item.Items.GOLDEN_APPLE) || s.is(net.minecraft.world.item.Items.ENCHANTED_GOLDEN_APPLE)) keep.add(i); // golden food: never eaten automatically, but kept
 		}
 		keepUpTo(inv, keep, filler, 64);
 		for (List<Integer> list : saps.values()) keepUpTo(inv, keep, list, cfg.saplingKeep);
