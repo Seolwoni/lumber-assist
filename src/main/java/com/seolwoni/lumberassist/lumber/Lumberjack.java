@@ -174,6 +174,7 @@ public final class Lumberjack {
 		if (mc.isPaused()) return;
 		if (!safety(mc, p, cfg)) return;
 		// Defense (Assist Path): while a creeper, an arrow or a mob needs dealing with, it has the controls.
+		com.seolwoni.assistpath.defense.Defense.config.region = null; // anywhere (only the miner limits it)
 		if (cfg.mobMode <= 1 && com.seolwoni.assistpath.defense.Defense.guard(mc, p)) {
 			String why = com.seolwoni.assistpath.defense.Defense.giveUp();
 			if (why != null) {
