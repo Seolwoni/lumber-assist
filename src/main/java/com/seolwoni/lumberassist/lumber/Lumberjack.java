@@ -920,7 +920,7 @@ public final class Lumberjack {
 						stuck = 0;
 					}
 					lastFeetY = p.blockPosition().getY();
-					if (shakes < 8) {
+					if (shakes < 24) {
 						List<Action> shake = TreeCollectAction.shakeLeaves(mc, p, tree, groundY);
 						if (!shake.isEmpty()) {
 							shakes += shake.size();
@@ -1335,7 +1335,7 @@ public final class Lumberjack {
 			lastY = y;
 			BlockPos under = p.blockPosition().below();
 			if (Blocks2.isOpen(under)) return RUN;
-			if (tree != null && shakes < 8) {
+			if (tree != null && shakes < 24) {
 				List<Action> shake = TreeCollectAction.shakeLeaves(mc, p, tree, groundY);
 				if (!shake.isEmpty()) {
 					shakes += shake.size();
