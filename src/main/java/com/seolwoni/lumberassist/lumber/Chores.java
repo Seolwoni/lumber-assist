@@ -21,10 +21,18 @@ final class Chores {
 			return true;
 		}
 		if (Inv.freeSlots(p) <= 1) {
-			if (cfg.storeEnabled && !cfg.chests.isEmpty()) {
+			// A shulker box or an ender chest carried along: come down and store right here.
+			var box = cfg.storeEnabled ? com.seolwoni.assistcore.storage.PortableStorage.trip("lumber", p, cfg.storeMode, i -> !Storage.keepSet(p).contains(i), null, true) : null;
+			if (box != null) {
+				Lumberjack.status(box.label());
+				Lumberjack.addComeDown(p);
+				Lumberjack.add(box);
+			} else if (cfg.storeEnabled && !cfg.chests.isEmpty()) {
 				Lumberjack.status("인벤토리가 차서 보관하러 가는 중");
 				Lumberjack.addComeDown(p);
 				Lumberjack.add(new Storage.TripAction());
+			} else if (cfg.storeEnabled && cfg.storeMode != com.seolwoni.assistcore.storage.PortableStorage.CHEST) {
+				Lumberjack.stop("인벤토리 가득 참!", com.seolwoni.assistcore.storage.PortableStorage.whyNone(p, cfg.storeMode), true);
 			} else {
 				Lumberjack.stop("인벤토리 가득 참!", "보관 상자를 지정하면 자동으로 보관해요", true);
 			}
