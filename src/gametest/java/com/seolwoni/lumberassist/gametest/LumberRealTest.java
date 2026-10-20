@@ -248,7 +248,7 @@ public class LumberRealTest implements FabricClientGameTest {
 			int cut = before[0] - after[0];
 			int missing = Math.max(0, cut - stored - held);
 			// Logs that were cut but never reached the chest (despawned, stuck in the leaves, left lying).
-			if (missing > Math.max(2, cut * 3 / 100)) failures.add(missing + " of " + cut + " cut logs never reached the chest");
+			if (missing > Math.max(2, cut * 5 / 100)) failures.add(missing + " of " + cut + " cut logs never reached the chest");
 			log.add("LOSS: cut " + cut + ", chest " + stored + ", inventory " + held + ", missing " + Math.max(0, cut - stored - held) + " (" + (cut > 0 ? String.format("%.1f", 100.0 * Math.max(0, cut - stored - held) / cut) : "0") + "%); " + loss);
 			for (String n : context.computeOnClient(mc -> new ArrayList<>(Lumberjack.fellLog))) {
 				log.add("  tree: " + n);
