@@ -80,7 +80,7 @@ public class LumberGameTest implements FabricClientGameTest {
 
 			int ticks = 0, shots = 1;
 			final int limit = 20 * 60 * 12;
-			boolean running = true, waiting = false;
+			boolean running = true, waiting = false, returned = false;
 			while (running && !waiting && ticks < limit) {
 				context.waitTicks(40);
 				ticks += 40;
@@ -89,6 +89,31 @@ public class LumberGameTest implements FabricClientGameTest {
 						+ " status=" + Lumberjack.status() + " trees=" + Lumberjack.treesThisRound()));
 				running = context.computeOnClient(mc -> LumberConfig.get().running);
 				waiting = context.computeOnClient(mc -> Lumberjack.waitSecondsLeft() >= 0);
+				String st = context.computeOnClient(mc -> Lumberjack.status());
+				if (running && !returned && (st.contains("올라가") || ticks >= 2400)) {
+					// The "돌아가기" button, if possible while up a tree: come down, store, stop; then switched on again.
+					returned = true;
+					String at = context.computeOnClient(mc -> {
+						Lumberjack.returnHome(mc);
+						return mc.player.blockPosition().toShortString() + " (" + Lumberjack.status() + ")";
+					});
+					int w = 0;
+					while (w < 20 * 90 && context.computeOnClient(mc -> LumberConfig.get().running)) {
+						context.waitTicks(20);
+						w += 20;
+					}
+					String stopped = context.computeOnClient(mc -> Lumberjack.lastStop);
+					String where = context.computeOnClient(mc -> mc.player.blockPosition().toShortString() + " onGround=" + mc.player.onGround()
+							+ " under=" + mc.level.getBlockState(mc.player.blockPosition().below()).getBlock());
+					log.add("return button at " + at + ": " + stopped + " after " + w + " ticks, now at " + where);
+					if (!stopped.startsWith("돌아왔어요")) failures.add("return button: did not finish (" + stopped + ")");
+					if (where.contains("log") || where.contains("leaves")) failures.add("return button: still up the tree (" + where + ")");
+					context.waitTicks(20);
+					if (!context.computeOnClient(mc -> Lumberjack.start(mc))) failures.add("would not start again after going back");
+					ticks += w;
+					running = true;
+					waiting = false;
+				}
 				if (ticks % 600 == 0 && shots < 25) context.takeScreenshot(String.format("lumber-%02d-t%d", shots++, ticks));
 			}
 			context.takeScreenshot("lumber-99-end");

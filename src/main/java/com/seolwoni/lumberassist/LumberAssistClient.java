@@ -30,6 +30,8 @@ public class LumberAssistClient implements ClientModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("Lumber Assist");
 
 	public static KeyMapping markChestKey;
+	/** Come down, store and stop (no key by default: set one in Controls). */
+	public static KeyMapping returnKey;
 
 	public static Identifier id(String path) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, path);
@@ -43,10 +45,15 @@ public class LumberAssistClient implements ClientModInitializer {
 		KeyMapping.Category category = KeyMapping.Category.register(id("main"));
 		markChestKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
 				"key.lumberassist.mark_chest", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_K, category));
+		returnKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+				"key.lumberassist.return_home", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, category));
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (markChestKey.consumeClick()) {
 				if (LumberConfig.get().modEnabled) Storage.markLookedAt(client);
+			}
+			while (returnKey.consumeClick()) {
+				if (LumberConfig.get().running) Lumberjack.returnHome(client);
 			}
 			if (LumberConfig.get().modEnabled) Lumberjack.tick(client);
 		});

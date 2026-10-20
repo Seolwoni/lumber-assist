@@ -120,6 +120,42 @@ public final class Lumberjack {
 		return true;
 	}
 
+	/**
+	 * The "돌아가기" button (or its key): stop cutting, come down off the tree (clearing a pillar on the way),
+	 * pick up what lies close by, store at the chests and stop. Switch on again to carry on.
+	 */
+	public static void returnHome(Minecraft mc) {
+		LumberConfig cfg = LumberConfig.get();
+		LocalPlayer p = mc.player;
+		if (!cfg.running || p == null) return;
+		queue.clear();
+		Body.release(mc);
+		mc.options.keyShift.setDown(false);
+		if (mc.gameMode != null) mc.gameMode.stopDestroyBlock();
+		com.seolwoni.assistcore.log.UsageLog.event("lumber", "돌아가기 버튼: " + p.blockPosition().toShortString());
+		Alerts.actionBar("하던 것을 멈추고 상자로 돌아가요", 0xFFFFAA00);
+		status("돌아가는 중");
+		// Up a tree (or on a pillar): come down to the ground under us first.
+		BlockPos f = p.blockPosition();
+		for (int k = 1; k < 48; k++) {
+			BlockPos b = f.below(k);
+			if (Trees.soil(b)) {
+				if (b.getY() + 1 < f.getY()) add(new DescendAction(b.getY() + 1));
+				break;
+			}
+		}
+		addComeDown(p);
+		add((mc2, p2) -> {
+			pushFront(new LocalCollectAction(p2.blockPosition()));
+			return Action.DONE;
+		});
+		if (cfg.storeEnabled && !cfg.chests.isEmpty()) add(new Storage.TripAction());
+		add((mc2, p2) -> {
+			stop("돌아왔어요", cfg.storeEnabled && !cfg.chests.isEmpty() ? "상자에 보관하고 멈췄어요. 다시 켜면 이어서 해요" : "다시 켜면 이어서 해요", true);
+			return Action.DONE;
+		});
+	}
+
 	public static void stop(String title, String sub, boolean alert) {
 		lastStop = (title == null ? "" : title) + (sub == null ? "" : " / " + sub);
 		com.seolwoni.lumberassist.hud.LumberStats ls = com.seolwoni.lumberassist.hud.LumberStats.session;

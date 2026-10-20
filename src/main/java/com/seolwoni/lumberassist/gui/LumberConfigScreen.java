@@ -56,16 +56,23 @@ public class LumberConfigScreen extends Screen {
 			LumberConfig.save();
 			rebuildWidgets();
 		}).bounds(left, 22, 100, 20).build());
-		Button run = Button.builder(Component.literal(c().running ? "벌목 정지" : "벌목 시작").withColor(c().running ? 0xFFFF7777 : 0xFF77FF77), b -> {
-			if (c().running) {
+		if (c().running) {
+			// Running: stop right here, or come down, store at the chests first and stop there.
+			addRenderableWidget(Button.builder(Component.literal("정지").withColor(0xFFFF7777), b -> {
 				Lumberjack.stop("벌목을 멈췄어요", null, false);
 				rebuildWidgets();
-			} else if (Lumberjack.start(this.minecraft)) {
+			}).bounds(left + 105, 22, 48, 20).build());
+			addRenderableWidget(Button.builder(Component.literal("돌아가기").withColor(0xFFFFDD77), b -> {
+				Lumberjack.returnHome(this.minecraft);
 				this.minecraft.gui.setScreen(null);
-			}
-		}).bounds(left + 105, 22, 100, 20).build();
-		run.active = c().modEnabled && this.minecraft.player != null;
-		addRenderableWidget(run);
+			}).bounds(left + 157, 22, 48, 20).build());
+		} else {
+			Button run = Button.builder(Component.literal("벌목 시작").withColor(0xFF77FF77), b -> {
+				if (Lumberjack.start(this.minecraft)) this.minecraft.gui.setScreen(null);
+			}).bounds(left + 105, 22, 100, 20).build();
+			run.active = c().modEnabled && this.minecraft.player != null;
+			addRenderableWidget(run);
+		}
 
 		int tw = (310 - 2 * 2) / 3;
 		for (int i = 0; i < TABS.length; i++) {
