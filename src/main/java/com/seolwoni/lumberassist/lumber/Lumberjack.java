@@ -47,10 +47,10 @@ public final class Lumberjack {
 	private enum Phase { ROUND, STORE, WAIT }
 
 	private static final ActionQueue queue = new ActionQueue(a -> {
-		if (a.failMode() == Action.STOP) stop("벌목을 멈췄어요", a.failReason(), true);
+		if (a.failMode() == Action.STOP) stop(com.seolwoni.assistcore.i18n.Tr.t("벌목을 멈췄어요"), a.failReason(), true);
 	});
 	private static Phase phase = Phase.ROUND;
-	private static String status = "꺼짐";
+	private static String status = com.seolwoni.assistcore.i18n.Tr.t("꺼짐");
 	private static long ticks, waitUntil;
 	private static int nextPause, nextLook, walkFails;
 	private static boolean spotsDone, collected, stored;
@@ -110,7 +110,7 @@ public final class Lumberjack {
 		LumberConfig cfg = LumberConfig.get();
 		if (mc.player == null || mc.level == null) return false;
 		if (cfg.areas.isEmpty()) {
-			Alerts.title("구역이 없어요", "도끼를 들고 Shift + 우클릭으로 구역 모서리를 지정하세요", 0xFFFF5555);
+			Alerts.title(com.seolwoni.assistcore.i18n.Tr.t("구역이 없어요"), com.seolwoni.assistcore.i18n.Tr.t("도끼를 들고 Shift + 우클릭으로 구역 모서리를 지정하세요"), 0xFFFF5555);
 			Alerts.warning();
 			return false;
 		}
@@ -119,8 +119,8 @@ public final class Lumberjack {
 		nextPause = Human.rand(1500, 4000);
 		cfg.running = true;
 		LumberConfig.save();
-		Alerts.actionBar("벌목 시작: 구역 " + cfg.areas.size() + "개", 0xFF55FF55);
-		com.seolwoni.assistcore.log.UsageLog.start("lumber", "구역 " + cfg.areas.size() + "개, 상자 " + cfg.chests.size() + "개, 다시 심기 " + (cfg.replant ? "켬" : "끔"));
+		Alerts.actionBar(com.seolwoni.assistcore.i18n.Tr.t("벌목 시작: 구역 ") + cfg.areas.size() + com.seolwoni.assistcore.i18n.Tr.t("개"), 0xFF55FF55);
+		com.seolwoni.assistcore.log.UsageLog.start("lumber", com.seolwoni.assistcore.i18n.Tr.t("구역 ") + cfg.areas.size() + com.seolwoni.assistcore.i18n.Tr.t("개, 상자 ") + cfg.chests.size() + com.seolwoni.assistcore.i18n.Tr.t("개, 다시 심기 ") + (cfg.replant ? com.seolwoni.assistcore.i18n.Tr.t("켬") : com.seolwoni.assistcore.i18n.Tr.t("끔")));
 		return true;
 	}
 
@@ -136,7 +136,7 @@ public final class Lumberjack {
 		// and it is not found as a tree again). Pressed again: go right away.
 		if (!queue.isEmpty() && !returnPending) {
 			returnPending = true;
-			Alerts.actionBar("이 나무만 마저 베고 돌아가요 (한 번 더 누르면 바로)", 0xFFFFAA00);
+			Alerts.actionBar(com.seolwoni.assistcore.i18n.Tr.t("이 나무만 마저 베고 돌아가요 (한 번 더 누르면 바로)"), 0xFFFFAA00);
 			return;
 		}
 		returnPending = false;
@@ -144,9 +144,9 @@ public final class Lumberjack {
 		Body.release(mc);
 		mc.options.keyShift.setDown(false);
 		if (mc.gameMode != null) mc.gameMode.stopDestroyBlock();
-		com.seolwoni.assistcore.log.UsageLog.event("lumber", "돌아가기 버튼: " + p.blockPosition().toShortString());
-		Alerts.actionBar("하던 것을 멈추고 상자로 돌아가요", 0xFFFFAA00);
-		status("돌아가는 중");
+		com.seolwoni.assistcore.log.UsageLog.event("lumber", com.seolwoni.assistcore.i18n.Tr.t("돌아가기 버튼: ") + p.blockPosition().toShortString());
+		Alerts.actionBar(com.seolwoni.assistcore.i18n.Tr.t("하던 것을 멈추고 상자로 돌아가요"), 0xFFFFAA00);
+		status(com.seolwoni.assistcore.i18n.Tr.t("돌아가는 중"));
 		// Up a tree (or on a pillar): come down to the ground under us first.
 		BlockPos f = p.blockPosition();
 		for (int k = 1; k < 48; k++) {
@@ -163,7 +163,7 @@ public final class Lumberjack {
 		});
 		if (cfg.storeEnabled && !cfg.chests.isEmpty()) add(new Storage.TripAction());
 		add((mc2, p2) -> {
-			stop("돌아왔어요", cfg.storeEnabled && !cfg.chests.isEmpty() ? "상자에 보관하고 멈췄어요. 다시 켜면 이어서 해요" : "다시 켜면 이어서 해요", true);
+			stop(com.seolwoni.assistcore.i18n.Tr.t("돌아왔어요"), cfg.storeEnabled && !cfg.chests.isEmpty() ? com.seolwoni.assistcore.i18n.Tr.t("상자에 보관하고 멈췄어요. 다시 켜면 이어서 해요") : com.seolwoni.assistcore.i18n.Tr.t("다시 켜면 이어서 해요"), true);
 			return Action.DONE;
 		});
 	}
@@ -171,8 +171,8 @@ public final class Lumberjack {
 	public static void stop(String title, String sub, boolean alert) {
 		lastStop = (title == null ? "" : title) + (sub == null ? "" : " / " + sub);
 		com.seolwoni.lumberassist.hud.LumberStats ls = com.seolwoni.lumberassist.hud.LumberStats.session;
-		com.seolwoni.assistcore.log.UsageLog.end("lumber", lastStop.isEmpty() ? "직접 껐어요" : lastStop, "나무 " + ls.trees + ", 원목 " + ls.totalLogs() + ", 심은 묘목 " + ls.planted + ", 상자 왕복 " + ls.trips
-				+ "번 | " + com.seolwoni.assistpath.AssistPath.Stats.summary());
+		com.seolwoni.assistcore.log.UsageLog.end("lumber", lastStop.isEmpty() ? com.seolwoni.assistcore.i18n.Tr.t("직접 껐어요") : lastStop, com.seolwoni.assistcore.i18n.Tr.t("나무 ") + ls.trees + com.seolwoni.assistcore.i18n.Tr.t(", 원목 ") + ls.totalLogs() + com.seolwoni.assistcore.i18n.Tr.t(", 심은 묘목 ") + ls.planted + com.seolwoni.assistcore.i18n.Tr.t(", 상자 왕복 ") + ls.trips
+				+ com.seolwoni.assistcore.i18n.Tr.t("번 | ") + com.seolwoni.assistpath.AssistPath.Stats.summary());
 		Minecraft mc = Minecraft.getInstance();
 		LumberConfig cfg = LumberConfig.get();
 		cfg.running = false;
@@ -185,7 +185,7 @@ public final class Lumberjack {
 		if (mc.player != null && mc.gui.screen() instanceof AbstractContainerScreen<?> s && !(s instanceof InventoryScreen)) {
 			mc.player.closeContainer();
 		}
-		status("꺼짐");
+		status(com.seolwoni.assistcore.i18n.Tr.t("꺼짐"));
 		LumberStats.saveTotal();
 		if (title != null) {
 			if (alert) {
@@ -227,7 +227,7 @@ public final class Lumberjack {
 			String why = com.seolwoni.assistpath.defense.Defense.giveUp();
 			if (why != null) {
 				com.seolwoni.assistpath.defense.Defense.reset(mc);
-				stop(why, "싸우기를 켜거나 안전한 곳에서 다시 켜주세요", true);
+				stop(why, com.seolwoni.assistcore.i18n.Tr.t("싸우기를 켜거나 안전한 곳에서 다시 켜주세요"), true);
 			}
 			return;
 		}
@@ -248,23 +248,23 @@ public final class Lumberjack {
 	private static boolean safety(Minecraft mc, LocalPlayer p, LumberConfig cfg) {
 		if (p.isDeadOrDying()) {
 			BlockPos b = p.blockPosition();
-			Alerts.chat("Lumber Assist", "사망 위치: " + b.getX() + ", " + b.getY() + ", " + b.getZ());
-			stop("죽었어요", "사망 위치를 채팅에 남겼어요", true);
+			Alerts.chat("Lumber Assist", com.seolwoni.assistcore.i18n.Tr.t("사망 위치: ") + b.getX() + ", " + b.getY() + ", " + b.getZ());
+			stop(com.seolwoni.assistcore.i18n.Tr.t("죽었어요"), com.seolwoni.assistcore.i18n.Tr.t("사망 위치를 채팅에 남겼어요"), true);
 			return false;
 		}
 		if (p.isInLava() || p.isOnFire()) {
-			stop("위험! 불이나 용암", "벌목을 멈췄어요", true);
+			stop(com.seolwoni.assistcore.i18n.Tr.t("위험! 불이나 용암"), com.seolwoni.assistcore.i18n.Tr.t("벌목을 멈췄어요"), true);
 			return false;
 		}
 		if (p.getHealth() <= cfg.minHealth) {
-			stop("체력이 낮아요", "벌목을 멈췄어요", true);
+			stop(com.seolwoni.assistcore.i18n.Tr.t("체력이 낮아요"), com.seolwoni.assistcore.i18n.Tr.t("벌목을 멈췄어요"), true);
 			return false;
 		}
 		if (cfg.mobMode == 2 && ticks % 10 == 0) {
 			AABB box = p.getBoundingBox().inflate(cfg.mobRange);
 			for (Entity e : mc.level.getEntities(p, box)) {
 				if (e instanceof Enemy && e.isAlive()) {
-					stop("몹이 다가와요", e.getName().getString() + " 근처에 있어요", true);
+					stop(com.seolwoni.assistcore.i18n.Tr.t("몹이 다가와요"), e.getName().getString() + com.seolwoni.assistcore.i18n.Tr.t(" 근처에 있어요"), true);
 					return false;
 				}
 			}
@@ -281,7 +281,7 @@ public final class Lumberjack {
 					beginRound();
 					return;
 				}
-				status("다음 바퀴까지 " + (waitSecondsLeft() / 60) + "분 " + (waitSecondsLeft() % 60) + "초");
+				status(com.seolwoni.assistcore.i18n.Tr.t("다음 바퀴까지 ") + (waitSecondsLeft() / 60) + com.seolwoni.assistcore.i18n.Tr.t("분 ") + (waitSecondsLeft() % 60) + com.seolwoni.assistcore.i18n.Tr.t("초"));
 				if (--nextLook <= 0) {
 					nextLook = Human.rand(120, 400);
 					float yaw = p.getYRot() + (float) Human.jitter(25);
@@ -304,7 +304,7 @@ public final class Lumberjack {
 		if (--nextPause <= 0) {
 			nextPause = Human.rand(1500, 4000);
 			add(new WaitAction(Human.rand(30, 100)));
-			status("잠깐 쉬는 중");
+			status(com.seolwoni.assistcore.i18n.Tr.t("잠깐 쉬는 중"));
 			return;
 		}
 		if (Chores.plan(mc, p, cfg)) return;
@@ -313,7 +313,7 @@ public final class Lumberjack {
 		if (next != null) {
 			tried.add(next.first());
 			seenKinds.add(next.kind());
-			status("나무 베는 중 (" + Trees.label(next.kind()) + ")");
+			status(com.seolwoni.assistcore.i18n.Tr.t("나무 베는 중 (") + Trees.label(next.kind()) + ")");
 			add(new FellAction(next));
 			return;
 		}
@@ -328,7 +328,7 @@ public final class Lumberjack {
 				if (Blocks2.state(new BlockPos(s.x, s.y, s.z)).isAir()) seenKinds.add(s.tree);
 			}
 			if (cfg.storeEnabled && !cfg.chests.isEmpty()) {
-				status("상자에 보관하러 가는 중");
+				status(com.seolwoni.assistcore.i18n.Tr.t("상자에 보관하러 가는 중"));
 				addComeDown(p);
 				add(new Storage.TripAction());
 				return;
@@ -385,7 +385,7 @@ public final class Lumberjack {
 			kinds.add(s.tree);
 		}
 		if (groups.isEmpty()) return false;
-		status("빈 자리에 묘목 심는 중 (" + groups.size() + "곳)");
+		status(com.seolwoni.assistcore.i18n.Tr.t("빈 자리에 묘목 심는 중 (") + groups.size() + com.seolwoni.assistcore.i18n.Tr.t("곳)"));
 		BlockPos from = p.blockPosition();
 		for (int g = 0; g < groups.size(); g++) {
 			List<BlockPos> cells = groups.get(g);
@@ -416,7 +416,7 @@ public final class Lumberjack {
 			}
 		}
 		if (stops.isEmpty()) return false;
-		status("떨어진 묘목·사과 줍는 중");
+		status(com.seolwoni.assistcore.i18n.Tr.t("떨어진 묘목·사과 줍는 중"));
 		BlockPos from = p.blockPosition();
 		while (!stops.isEmpty()) {
 			final BlockPos f = from;
@@ -459,7 +459,7 @@ public final class Lumberjack {
 	}
 
 	static void walkFailed() {
-		if (++walkFails >= 6) stop("길이 막혔어요", "구역 안에 막힌 곳이 있는지 확인해주세요", true);
+		if (++walkFails >= 6) stop(com.seolwoni.assistcore.i18n.Tr.t("길이 막혔어요"), com.seolwoni.assistcore.i18n.Tr.t("구역 안에 막힌 곳이 있는지 확인해주세요"), true);
 	}
 
 	static void walkOk() {
@@ -654,8 +654,8 @@ public final class Lumberjack {
 						stops++;
 					} else if (waterNoted.add(bottom.immutable())) {
 						String where = bottom.getX() + ", " + bottom.getY() + ", " + bottom.getZ();
-						Alerts.actionBar("깊은 물에 빠진 원목은 두고 가요: " + where, 0xFFFFAA55);
-						com.seolwoni.assistcore.log.UsageLog.event("lumber", "깊은 물(" + depth + "칸)에 빠진 원목을 두고 감 (" + where + ")");
+						Alerts.actionBar(com.seolwoni.assistcore.i18n.Tr.t("깊은 물에 빠진 원목은 두고 가요: ") + where, 0xFFFFAA55);
+						com.seolwoni.assistcore.log.UsageLog.event("lumber", com.seolwoni.assistcore.i18n.Tr.t("깊은 물(") + depth + com.seolwoni.assistcore.i18n.Tr.t("칸)에 빠진 원목을 두고 감 (") + where + ")");
 					}
 					continue;
 				}
@@ -671,7 +671,7 @@ public final class Lumberjack {
 				addComeDownFront(p);
 				return DONE;
 			}
-			status("나무 밑에 떨어진 것 줍는 중");
+			status(com.seolwoni.assistcore.i18n.Tr.t("나무 밑에 떨어진 것 줍는 중"));
 			if (pass < 1) todo.add(new TreeCollectAction(tree, groundY, pass + 1, quick)); // things that fell from the cut leaves
 			pushFront(todo);
 			return DONE;
@@ -777,7 +777,7 @@ public final class Lumberjack {
 
 	static void note(Tree tree, String what, int left) {
 		if (fellLog.size() < 60) fellLog.add(tree.kind() + " " + tree.bases().size() + "x at " + tree.first().toShortString() + ": " + what + " (" + left + " logs left)");
-		if (left > 0) com.seolwoni.assistcore.log.UsageLog.event("lumber", "나무 남음: " + tree.kind() + (tree.bases().size() == 4 ? " (2x2)" : "") + " " + tree.first().toShortString() + " — " + what + ", 원목 " + left + "개");
+		if (left > 0) com.seolwoni.assistcore.log.UsageLog.event("lumber", com.seolwoni.assistcore.i18n.Tr.t("나무 남음: ") + tree.kind() + (tree.bases().size() == 4 ? " (2x2)" : "") + " " + tree.first().toShortString() + " — " + what + com.seolwoni.assistcore.i18n.Tr.t(", 원목 ") + left + com.seolwoni.assistcore.i18n.Tr.t("개"));
 	}
 
 	/**
@@ -932,7 +932,7 @@ public final class Lumberjack {
 					}
 					if (into == null && beside(p) && left.stream().anyMatch(b -> b.getY() + 0.5 > p.getEyeY() - 1)) {
 						// The trunk is still whole at the bottom (a slope, or a big 2x2 trunk): climb up right beside it.
-						status("높은 나무에 올라가는 중");
+						status(com.seolwoni.assistcore.i18n.Tr.t("높은 나무에 올라가는 중"));
 						stage = 2;
 						return RUN;
 					}
@@ -941,7 +941,7 @@ public final class Lumberjack {
 						stage = 4;
 						return RUN;
 					}
-					status("높은 나무에 올라가는 중");
+					status(com.seolwoni.assistcore.i18n.Tr.t("높은 나무에 올라가는 중"));
 					pushFront(new WalkAction(into, true));
 					stage = 2;
 					return RUN;
@@ -991,7 +991,7 @@ public final class Lumberjack {
 					// Go down, pick them up, then climb again (the pillar is dug out on the way down).
 					if (fetches < 3 && TreeCollectAction.oldDrops(mc, p, tree, groundY, 20 * 150)) {
 						fetches++;
-						status("떨어진 원목 먼저 주우러 내려가는 중");
+						status(com.seolwoni.assistcore.i18n.Tr.t("떨어진 원목 먼저 주우러 내려가는 중"));
 						List<Action> down = new ArrayList<>();
 						down.add(new DescendAction(groundY, tree));
 						down.add(new TreeCollectAction(tree, groundY, 0, true));
@@ -1021,7 +1021,7 @@ public final class Lumberjack {
 				}
 				case 3 -> {
 					if (p.blockPosition().getY() > groundY) {
-						status("나무에서 내려오는 중");
+						status(com.seolwoni.assistcore.i18n.Tr.t("나무에서 내려오는 중"));
 						pushFront(new DescendAction(groundY, tree));
 					}
 					stage = 4;
@@ -1073,7 +1073,7 @@ public final class Lumberjack {
 						leavesTried = true;
 						List<Action> leaves = leafDrops(p, stand);
 						if (!leaves.isEmpty()) {
-							status("묘목을 얻으려고 나뭇잎 치는 중");
+							status(com.seolwoni.assistcore.i18n.Tr.t("묘목을 얻으려고 나뭇잎 치는 중"));
 							leaves.add(0, new WalkAction(stand, true));
 							pushFront(leaves);
 							return RUN;
@@ -1238,7 +1238,7 @@ public final class Lumberjack {
 
 		@Override
 		public String failReason() {
-			return "도끼가 없어요";
+			return com.seolwoni.assistcore.i18n.Tr.t("도끼가 없어요");
 		}
 
 		@Override
@@ -1248,7 +1248,7 @@ public final class Lumberjack {
 					if (Blocks2.isOpen(pos) || Blocks2.unbreakable(pos)) return DONE;
 					if (eyeDist(p, pos) > REACH + 0.3) return FAIL;
 					if (kind != null && !Inv.selectAxe(mc, p)) {
-						stop("도끼가 없어요", "쓸 수 있는 도끼를 인벤토리에 넣어주세요", true);
+						stop(com.seolwoni.assistcore.i18n.Tr.t("도끼가 없어요"), com.seolwoni.assistcore.i18n.Tr.t("쓸 수 있는 도끼를 인벤토리에 넣어주세요"), true);
 						return RUN;
 					}
 					face = Aim.faceToward(p.getEyePosition(), pos);
@@ -1296,7 +1296,7 @@ public final class Lumberjack {
 					slot = Inv.bringToHotbar(mc, p, Inv::isFiller);
 					if (slot == -1) slot = Inv.bringToHotbar(mc, p, Inv::isLogItem);
 					if (slot == -1) {
-						Alerts.actionBar("올라갈 때 쓸 흙·돌이 없어서 높은 부분은 남겨둬요", 0xFFFFAA00);
+						Alerts.actionBar(com.seolwoni.assistcore.i18n.Tr.t("올라갈 때 쓸 흙·돌이 없어서 높은 부분은 남겨둬요"), 0xFFFFAA00);
 						return FAIL;
 					}
 					Inv.select(p, slot);

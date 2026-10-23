@@ -87,6 +87,7 @@ public final class Defense {
 	private static int modeTicks, calm, dodgeTicks, replan, lastHurt, chased, quiet;
 	private static String giveUp;
 	private static boolean dodgeLeft, dodgeHold;
+	private static int holdExtra;
 	private static Vec3 dodgeDir;
 	private static PathWalker walker;
 	private static BlockPos fleeTo;
@@ -126,7 +127,7 @@ public final class Defense {
 
 		if (mode == Mode.FIGHT && target != null && !target.isAlive()) {
 			Stats.kills++;
-			log("몹을 처치했어요");
+			log(com.seolwoni.assistcore.i18n.Tr.t("몹을 처치했어요"));
 			target = null;
 		}
 		Creeper creeper = Threats.nearCreeper(p, mode == Mode.CREEPER ? 9 : 6);
@@ -136,8 +137,8 @@ public final class Defense {
 		// Being chased: count every tick while running away (the calm pauses in between too).
 		if (mode == Mode.FLEE || mode == Mode.CREEPER) {
 			if (++chased > 20 * 40 && giveUp == null) {
-				giveUp = "몹이 계속 따라와요";
-				log("몹이 40초 넘게 따라와서 작업을 멈췄어요");
+				giveUp = com.seolwoni.assistcore.i18n.Tr.t("몹이 계속 따라와요");
+				log(com.seolwoni.assistcore.i18n.Tr.t("몹이 40초 넘게 따라와서 작업을 멈췄어요"));
 			}
 		} else if (mode != Mode.NONE) {
 			chased = 0;
@@ -182,6 +183,8 @@ public final class Defense {
 		if (!config.attack || p.getHealth() <= config.fleeHealth) return false;
 		if (near.size() > 2) return false;
 		for (Entity e : near) if (e instanceof Creeper) return false;
+		// Never walk up to these: a wither skeleton withers, a ghast floats out of reach. Get away from them.
+		for (Entity e : near) if (NO_FIGHT.contains(net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(e.getType()).getPath())) return false;
 		// A skeleton a few blocks off keeps shooting while we walk up to it (night mine test: 8 arrows taken in a
 		// cave): only fight one that is already close; otherwise get behind cover.
 		for (Entity e : near) if (ranged(e) && e.distanceTo(p) > 3.5) return false;
@@ -200,13 +203,14 @@ public final class Defense {
 		switch (m) {
 			case CREEPER -> {
 				Stats.creeperEscapes++;
-				status = "크리퍼를 피하는 중";
-				log("크리퍼가 가까워서 피했어요");
+				status = com.seolwoni.assistcore.i18n.Tr.t("크리퍼를 피하는 중");
+				log(com.seolwoni.assistcore.i18n.Tr.t("크리퍼가 가까워서 피했어요"));
 			}
 			case DODGE -> {
 				Stats.dodges++;
-				status = "화살을 피하는 중";
+				status = com.seolwoni.assistcore.i18n.Tr.t("화살을 피하는 중");
 				dodgeTicks = Human.rand(6, 9);
+				holdExtra = 0;
 				// Step across the arrow's line: sideways to its flight, on whichever side is free.
 				double yaw = Math.toRadians(p.getYRot());
 				Vec3 left = new Vec3(Math.cos(yaw), 0, Math.sin(yaw));
@@ -222,13 +226,13 @@ public final class Defense {
 			}
 			case FIGHT -> {
 				Stats.fights++;
-				status = "몹과 싸우는 중";
-				log("몹과 싸웠어요");
+				status = com.seolwoni.assistcore.i18n.Tr.t("몹과 싸우는 중");
+				log(com.seolwoni.assistcore.i18n.Tr.t("몹과 싸웠어요"));
 			}
 			case FLEE -> {
 				Stats.flees++;
-				status = "몹을 피해 물러나는 중";
-				log("몹을 피해 물러났어요");
+				status = com.seolwoni.assistcore.i18n.Tr.t("몹을 피해 물러나는 중");
+				log(com.seolwoni.assistcore.i18n.Tr.t("몹을 피해 물러났어요"));
 			}
 			default -> {
 			}
@@ -341,6 +345,7 @@ public final class Defense {
 		return best;
 	}
 
+	private static final java.util.Set<String> NO_FIGHT = java.util.Set.of("wither_skeleton", "ghast");
 	private static final java.util.Set<String> RANGED = java.util.Set.of("skeleton", "stray", "bogged", "pillager", "witch", "blaze", "ghast");
 
 	/** Ground under the next step in this direction (at most one block down): no walking off ledges or into holes. */
@@ -386,6 +391,13 @@ public final class Defense {
 	// ------------------------------------------------------------------ dodge
 
 	private static void dodge(Minecraft mc, LocalPlayer p) {
+		// Crouching on a narrow bridge: stay down while the shot is still on its way (a ghast fireball is slow, and
+		// its blast is what throws us off), at most two more seconds.
+		if (dodgeTicks <= 0 && dodgeHold && holdExtra < 40 && Threats.incoming(p, 40, 3.0) != null) {
+			holdExtra++;
+			mc.options.keyShift.setDown(true);
+			return;
+		}
 		if (dodgeTicks-- <= 0) {
 			Body.release(mc);
 			if (dodgeHold) mc.options.keyShift.setDown(false);
@@ -423,7 +435,7 @@ public final class Defense {
 		if (target == null || !target.isAlive() || target.distanceTo(p) > config.keepAway + 2) {
 			if (target != null && !target.isAlive()) {
 				Stats.kills++;
-				log("몹을 처치했어요");
+				log(com.seolwoni.assistcore.i18n.Tr.t("몹을 처치했어요"));
 			}
 			target = null;
 			double best = Double.MAX_VALUE;
@@ -442,7 +454,7 @@ public final class Defense {
 			// closer without going over an edge): leave it be, unless it comes right up to us.
 			Stats.fightsGivenUp++;
 			Threats.ignore(p, target, 200);
-			log("닿지 않는 몹이라 싸우기를 그만뒀어요");
+			log(com.seolwoni.assistcore.i18n.Tr.t("닿지 않는 몹이라 싸우기를 그만뒀어요"));
 			target = null;
 			mc.options.keyUp.setDown(false);
 			mc.options.keyDown.setDown(false);

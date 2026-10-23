@@ -125,13 +125,13 @@ public final class LumberHud {
 		LumberConfig cfg = LumberConfig.get();
 		List<List<Seg>> out = new ArrayList<>();
 		out.add(List.of(new Seg("Lumber Assist", GOLD)));
-		out.add(List.of(new Seg("상태: ", GOLD), new Seg(Lumberjack.status(), cfg.running ? GREEN : RED)));
-		out.add(List.of(new Seg("구역: ", GOLD), new Seg(cfg.areas.size() + "개", WHITE),
-				new Seg("  상자: ", GOLD), new Seg(cfg.chests.size() + "개", WHITE)));
+		out.add(List.of(new Seg(com.seolwoni.assistcore.i18n.Tr.t("상태: "), GOLD), new Seg(Lumberjack.status(), cfg.running ? GREEN : RED)));
+		out.add(List.of(new Seg(com.seolwoni.assistcore.i18n.Tr.t("구역: "), GOLD), new Seg(cfg.areas.size() + com.seolwoni.assistcore.i18n.Tr.t("개"), WHITE),
+				new Seg(com.seolwoni.assistcore.i18n.Tr.t("  상자: "), GOLD), new Seg(cfg.chests.size() + com.seolwoni.assistcore.i18n.Tr.t("개"), WHITE)));
 		if (cfg.running && Lumberjack.waitSecondsLeft() < 0) {
-			out.add(List.of(new Seg("이번 바퀴: ", GOLD), new Seg(Lumberjack.treesThisRound() + "그루", WHITE)));
+			out.add(List.of(new Seg(com.seolwoni.assistcore.i18n.Tr.t("이번 바퀴: "), GOLD), new Seg(Lumberjack.treesThisRound() + com.seolwoni.assistcore.i18n.Tr.t("그루"), WHITE)));
 		}
-		if (Area.hasPending()) out.add(List.of(new Seg("반대쪽 모서리를 지정하세요", 0xFF55FFFF)));
+		if (Area.hasPending()) out.add(List.of(new Seg(com.seolwoni.assistcore.i18n.Tr.t("반대쪽 모서리를 지정하세요"), 0xFF55FFFF)));
 		return out;
 	}
 
@@ -139,12 +139,12 @@ public final class LumberHud {
 		LumberConfig cfg = LumberConfig.get();
 		LumberStats st = LumberStats.shown();
 		List<List<Seg>> out = new ArrayList<>();
-		out.add(List.of(new Seg("벌목 통계 ", GOLD), new Seg(cfg.statsTotals ? "(누적)" : "(이번 세션)", GRAY)));
+		out.add(List.of(new Seg(com.seolwoni.assistcore.i18n.Tr.t("벌목 통계 "), GOLD), new Seg(cfg.statsTotals ? com.seolwoni.assistcore.i18n.Tr.t("(누적)") : com.seolwoni.assistcore.i18n.Tr.t("(이번 세션)"), GRAY)));
 		long total = st.totalLogs();
 		long now = System.currentTimeMillis();
 		List<Map.Entry<String, LumberStats.Entry>> list = new ArrayList<>(st.logs.entrySet());
 		list.sort(Comparator.comparingLong((Map.Entry<String, LumberStats.Entry> e) -> e.getValue().count).reversed());
-		if (list.isEmpty()) out.add(List.of(new Seg("  아직 벤 나무가 없어요", GRAY)));
+		if (list.isEmpty()) out.add(List.of(new Seg(com.seolwoni.assistcore.i18n.Tr.t("  아직 벤 나무가 없어요"), GRAY)));
 		for (Map.Entry<String, LumberStats.Entry> e : list) {
 			LumberStats.Entry v = e.getValue();
 			out.add(List.of(new Seg(ago(now - v.lastMs) + " | ", GRAY),
@@ -154,10 +154,10 @@ public final class LumberHud {
 		}
 		double hours = st.ticks / 20.0 / 3600.0;
 		long perHour = hours > 0.01 ? Math.round(total / hours) : 0;
-		out.add(List.of(new Seg("총 원목: ", GOLD), new Seg(total + "", WHITE), new Seg(" [" + perHour + "/시간]", GRAY)));
-		out.add(List.of(new Seg("나무: ", GOLD), new Seg(st.trees + "그루", WHITE), new Seg("  심은 묘목: ", GOLD), new Seg(st.planted + "", WHITE)));
-		out.add(List.of(new Seg("바퀴: ", GOLD), new Seg(st.rounds + "", WHITE), new Seg("  보관: ", GOLD), new Seg(st.trips + "번", WHITE)));
-		out.add(List.of(new Seg("벌목 시간: ", GOLD), new Seg(time(st.ticks / 20), WHITE)));
+		out.add(List.of(new Seg(com.seolwoni.assistcore.i18n.Tr.t("총 원목: "), GOLD), new Seg(total + "", WHITE), new Seg(" [" + perHour + com.seolwoni.assistcore.i18n.Tr.t("/시간]"), GRAY)));
+		out.add(List.of(new Seg(com.seolwoni.assistcore.i18n.Tr.t("나무: "), GOLD), new Seg(st.trees + com.seolwoni.assistcore.i18n.Tr.t("그루"), WHITE), new Seg(com.seolwoni.assistcore.i18n.Tr.t("  심은 묘목: "), GOLD), new Seg(st.planted + "", WHITE)));
+		out.add(List.of(new Seg(com.seolwoni.assistcore.i18n.Tr.t("바퀴: "), GOLD), new Seg(st.rounds + "", WHITE), new Seg(com.seolwoni.assistcore.i18n.Tr.t("  보관: "), GOLD), new Seg(st.trips + com.seolwoni.assistcore.i18n.Tr.t("번"), WHITE)));
+		out.add(List.of(new Seg(com.seolwoni.assistcore.i18n.Tr.t("벌목 시간: "), GOLD), new Seg(time(st.ticks / 20), WHITE)));
 		return out;
 	}
 

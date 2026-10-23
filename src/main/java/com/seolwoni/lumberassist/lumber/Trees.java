@@ -35,15 +35,15 @@ public final class Trees {
 
 	public static String label(String kind) {
 		return switch (kind) {
-			case "oak" -> "참나무";
-			case "spruce" -> "가문비나무";
-			case "birch" -> "자작나무";
-			case "jungle" -> "정글나무";
-			case "acacia" -> "아카시아나무";
-			case "dark_oak" -> "짙은 참나무";
-			case "mangrove" -> "맹그로브나무";
-			case "cherry" -> "벚나무";
-			case "pale_oak" -> "창백한 참나무";
+			case "oak" -> com.seolwoni.assistcore.i18n.Tr.t("참나무");
+			case "spruce" -> com.seolwoni.assistcore.i18n.Tr.t("가문비나무");
+			case "birch" -> com.seolwoni.assistcore.i18n.Tr.t("자작나무");
+			case "jungle" -> com.seolwoni.assistcore.i18n.Tr.t("정글나무");
+			case "acacia" -> com.seolwoni.assistcore.i18n.Tr.t("아카시아나무");
+			case "dark_oak" -> com.seolwoni.assistcore.i18n.Tr.t("짙은 참나무");
+			case "mangrove" -> com.seolwoni.assistcore.i18n.Tr.t("맹그로브나무");
+			case "cherry" -> com.seolwoni.assistcore.i18n.Tr.t("벚나무");
+			case "pale_oak" -> com.seolwoni.assistcore.i18n.Tr.t("창백한 참나무");
 			default -> kind;
 		};
 	}

@@ -16,7 +16,7 @@ final class Chores {
 
 	static boolean plan(Minecraft mc, LocalPlayer p, LumberConfig cfg) {
 		if (cfg.autoEat && p.getFoodData().getFoodLevel() <= cfg.eatThreshold && Inv.count(p, Inv::isFood) > 0) {
-			Lumberjack.status("먹는 중");
+			Lumberjack.status(com.seolwoni.assistcore.i18n.Tr.t("먹는 중"));
 			Lumberjack.add(new EatAction());
 			return true;
 		}
@@ -28,13 +28,13 @@ final class Chores {
 				Lumberjack.addComeDown(p);
 				Lumberjack.add(box);
 			} else if (cfg.storeEnabled && !cfg.chests.isEmpty()) {
-				Lumberjack.status("인벤토리가 차서 보관하러 가는 중");
+				Lumberjack.status(com.seolwoni.assistcore.i18n.Tr.t("인벤토리가 차서 보관하러 가는 중"));
 				Lumberjack.addComeDown(p);
 				Lumberjack.add(new Storage.TripAction());
 			} else if (cfg.storeEnabled && cfg.storeMode != com.seolwoni.assistcore.storage.PortableStorage.CHEST) {
-				Lumberjack.stop("인벤토리 가득 참!", com.seolwoni.assistcore.storage.PortableStorage.whyNone(p, cfg.storeMode), true);
+				Lumberjack.stop(com.seolwoni.assistcore.i18n.Tr.t("인벤토리 가득 참!"), com.seolwoni.assistcore.storage.PortableStorage.whyNone(p, cfg.storeMode), true);
 			} else {
-				Lumberjack.stop("인벤토리 가득 참!", "보관 상자를 지정하면 자동으로 보관해요", true);
+				Lumberjack.stop(com.seolwoni.assistcore.i18n.Tr.t("인벤토리 가득 참!"), com.seolwoni.assistcore.i18n.Tr.t("보관 상자를 지정하면 자동으로 보관해요"), true);
 			}
 			return true;
 		}

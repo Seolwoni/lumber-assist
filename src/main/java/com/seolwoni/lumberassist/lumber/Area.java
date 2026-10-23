@@ -30,7 +30,7 @@ public final class Area {
 		}
 		if (pending == null) {
 			pending = layer;
-			Alerts.actionBar("첫 번째 모서리 지정: " + layer.getX() + ", " + layer.getZ() + " — 반대쪽 모서리를 Shift + 우클릭하세요", 0xFF55FFFF);
+			Alerts.actionBar(com.seolwoni.assistcore.i18n.Tr.t("첫 번째 모서리 지정: ") + layer.getX() + ", " + layer.getZ() + com.seolwoni.assistcore.i18n.Tr.t(" — 반대쪽 모서리를 Shift + 우클릭하세요"), 0xFF55FFFF);
 			Alerts.click();
 			return;
 		}
@@ -38,7 +38,7 @@ public final class Area {
 		pending = null;
 		int sx = Math.abs(a.getX() - layer.getX()) + 1, sz = Math.abs(a.getZ() - layer.getZ()) + 1;
 		if (sx > MAX_SIZE || sz > MAX_SIZE) {
-			Alerts.actionBar("구역이 너무 커요 (최대 " + MAX_SIZE + "x" + MAX_SIZE + ")", 0xFFFF5555);
+			Alerts.actionBar(com.seolwoni.assistcore.i18n.Tr.t("구역이 너무 커요 (최대 ") + MAX_SIZE + "x" + MAX_SIZE + ")", 0xFFFF5555);
 			Alerts.warning();
 			return;
 		}
@@ -50,11 +50,11 @@ public final class Area {
 		e.z2 = layer.getZ();
 		e.y = Math.min(a.getY(), layer.getY());
 		e.y2 = Math.max(a.getY(), layer.getY());
-		e.name = "구역 " + (cfg.areas.size() + 1);
+		e.name = com.seolwoni.assistcore.i18n.Tr.t("구역 ") + (cfg.areas.size() + 1);
 		cfg.areas.add(e);
 		LumberConfig.save();
 		String ys = e.minY() == e.maxY() ? "Y " + e.y : "Y " + e.minY() + "~" + e.maxY();
-		Alerts.actionBar(e.name + " 지정 완료: " + sx + "x" + sz + " (" + ys + ", 땅 높낮이 ±" + Trees.MARGIN + "칸까지 찾아요)", 0xFF55FF55);
+		Alerts.actionBar(e.name + com.seolwoni.assistcore.i18n.Tr.t(" 지정 완료: ") + sx + "x" + sz + " (" + ys + com.seolwoni.assistcore.i18n.Tr.t(", 땅 높낮이 ±") + Trees.MARGIN + com.seolwoni.assistcore.i18n.Tr.t("칸까지 찾아요)"), 0xFF55FF55);
 		Alerts.ding();
 	}
 
