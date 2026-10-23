@@ -94,8 +94,11 @@ public class LumberConfigScreen extends Screen {
 			case 4 -> safety(left, right, y);
 			default -> hud(left, right, y);
 		}
+		// The worker's journal (Assist Core): this mod's jobs, newest first.
+		addRenderableWidget(Button.builder(Component.literal("일지"), b -> this.minecraft.gui.setScreen(new com.seolwoni.assistcore.gui.JournalScreen(this, "lumber")))
+				.bounds(left + 210, 22, 48, 20).build());
 		addRenderableWidget(Button.builder(Component.literal("완료"), b -> onClose())
-				.bounds(left + 210, 22, 100, 20).build()); // up top: at the bottom it covered the last rows on small screens
+				.bounds(left + 262, 22, 48, 20).build()); // up top: at the bottom it covered the last rows on small screens
 	}
 
 	private void basic(int left, int right, int y) {
