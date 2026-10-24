@@ -1,0 +1,275 @@
+RESULT: PASS
+
+biome ResourceKey[minecraft:worldgen/biome / minecraft:dark_forest] at 576, 704: best patch score 2
+biome ResourceKey[minecraft:worldgen/biome / minecraft:dark_forest] at 604, 764: best patch score 31
+area x 612..627, z 772..787, corner ground heights 74 and 72 (trunk columns 31)
+before: logs=99 (11 trunk columns), ground from y 56 to 80
+chest at 610, 72, 779
+trees found at the start: 5
+t=40 pos=611, 74, 775 status=나무 베는 중 (짙은 참나무) trees=0
+t=80 pos=612, 75, 773 status=나무 베는 중 (짙은 참나무) trees=0
+t=120 pos=615, 76, 778 status=나무 베는 중 (짙은 참나무) trees=0
+t=160 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=200 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=240 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=280 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=320 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=360 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=400 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=440 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=480 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=520 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=560 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=600 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=640 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=680 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=720 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=760 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=800 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=840 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=880 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=920 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=960 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=1000 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=1040 pos=616, 70, 783 status=높은 나무에 올라가는 중 trees=0
+t=1080 pos=616, 71, 783 status=높은 나무에 올라가는 중 trees=0
+t=1120 pos=616, 71, 783 status=높은 나무에 올라가는 중 trees=0
+t=1160 pos=616, 72, 783 status=높은 나무에 올라가는 중 trees=0
+t=1200 pos=616, 72, 783 status=높은 나무에 올라가는 중 trees=0
+t=1240 pos=616, 72, 783 status=높은 나무에 올라가는 중 trees=0
+t=1280 pos=616, 72, 783 status=높은 나무에 올라가는 중 trees=0
+t=1320 pos=616, 72, 783 status=높은 나무에 올라가는 중 trees=0
+t=1360 pos=616, 72, 783 status=높은 나무에 올라가는 중 trees=0
+t=1400 pos=616, 73, 783 status=높은 나무에 올라가는 중 trees=0
+t=1440 pos=616, 73, 783 status=높은 나무에 올라가는 중 trees=0
+t=1480 pos=616, 73, 783 status=높은 나무에 올라가는 중 trees=0
+t=1520 pos=616, 73, 783 status=높은 나무에 올라가는 중 trees=0
+t=1560 pos=616, 73, 783 status=높은 나무에 올라가는 중 trees=0
+t=1600 pos=616, 73, 783 status=나무에서 내려오는 중 trees=0
+t=1640 pos=616, 72, 783 status=나무에서 내려오는 중 trees=0
+t=1680 pos=616, 71, 783 status=나무에서 내려오는 중 trees=0
+t=1720 pos=618, 70, 783 status=나무 밑에 떨어진 것 줍는 중 trees=0
+t=1760 pos=618, 71, 782 status=나무 밑에 떨어진 것 줍는 중 trees=0
+t=1800 pos=614, 71, 781 status=나무 밑에 떨어진 것 줍는 중 trees=0
+t=1840 pos=616, 72, 782 status=나무 밑에 떨어진 것 줍는 중 trees=0
+t=1880 pos=618, 69, 786 status=나무 밑에 떨어진 것 줍는 중 trees=0
+t=1920 pos=616, 70, 783 status=나무 밑에 떨어진 것 줍는 중 trees=1
+t=1960 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=1
+t=2000 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2040 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2080 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2120 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2160 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2200 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2240 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2280 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2320 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2360 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2400 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2440 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2480 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2520 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2560 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2600 pos=620, 71, 784 status=나무 베는 중 (짙은 참나무) trees=1
+t=2640 pos=621, 71, 785 status=높은 나무에 올라가는 중 trees=1
+t=2680 pos=621, 71, 785 status=높은 나무에 올라가는 중 trees=1
+t=2720 pos=621, 71, 786 status=나무 밑에 떨어진 것 줍는 중 trees=1
+t=2760 pos=621, 71, 786 status=나무 밑에 떨어진 것 줍는 중 trees=1
+t=2800 pos=623, 71, 786 status=묘목을 얻으려고 나뭇잎 치는 중 trees=2
+t=2840 pos=620, 71, 784 status=묘목을 얻으려고 나뭇잎 치는 중 trees=2
+t=2880 pos=620, 71, 784 status=묘목을 얻으려고 나뭇잎 치는 중 trees=2
+t=2920 pos=620, 71, 784 status=묘목을 얻으려고 나뭇잎 치는 중 trees=2
+t=2960 pos=620, 71, 784 status=묘목을 얻으려고 나뭇잎 치는 중 trees=2
+t=3000 pos=620, 71, 784 status=묘목을 얻으려고 나뭇잎 치는 중 trees=2
+t=3040 pos=620, 71, 783 status=나무 베는 중 (참나무) trees=2
+t=3080 pos=621, 71, 782 status=나무 베는 중 (참나무) trees=2
+t=3120 pos=621, 71, 782 status=나무 베는 중 (참나무) trees=2
+t=3160 pos=621, 71, 782 status=나무 베는 중 (참나무) trees=2
+t=3200 pos=623, 71, 782 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=3240 pos=621, 71, 782 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=3280 pos=621, 71, 782 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=3320 pos=621, 71, 782 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=3360 pos=621, 71, 782 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=3400 pos=621, 71, 782 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=3440 pos=621, 71, 782 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=3480 pos=620, 71, 781 status=나무 베는 중 (참나무) trees=3
+t=3520 pos=617, 75, 778 status=나무 베는 중 (참나무) trees=3
+t=3560 pos=617, 77, 775 status=나무 베는 중 (참나무) trees=3
+t=3600 pos=617, 77, 775 status=나무 베는 중 (참나무) trees=3
+t=3640 pos=617, 77, 775 status=나무 베는 중 (참나무) trees=3
+t=3680 pos=619, 77, 775 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=3720 pos=619, 77, 775 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=3760 pos=619, 77, 775 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=3800 pos=619, 77, 775 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=3840 pos=619, 77, 775 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=3880 pos=619, 77, 775 status=나무 베는 중 (가문비나무) trees=4
+t=3920 pos=622, 78, 773 status=나무 베는 중 (가문비나무) trees=4
+t=3960 pos=622, 78, 773 status=나무 베는 중 (가문비나무) trees=4
+t=4000 pos=622, 78, 773 status=나무 베는 중 (가문비나무) trees=4
+t=4040 pos=622, 78, 773 status=높은 나무에 올라가는 중 trees=4
+t=4080 pos=623, 78, 773 status=높은 나무에 올라가는 중 trees=4
+t=4120 pos=623, 78, 773 status=높은 나무에 올라가는 중 trees=4
+t=4160 pos=623, 78, 773 status=높은 나무에 올라가는 중 trees=4
+t=4200 pos=623, 78, 773 status=높은 나무에 올라가는 중 trees=4
+t=4240 pos=623, 78, 773 status=높은 나무에 올라가는 중 trees=4
+t=4280 pos=623, 78, 773 status=높은 나무에 올라가는 중 trees=4
+t=4320 pos=623, 78, 773 status=높은 나무에 올라가는 중 trees=4
+t=4360 pos=623, 79, 773 status=높은 나무에 올라가는 중 trees=4
+t=4400 pos=623, 79, 773 status=높은 나무에 올라가는 중 trees=4
+t=4440 pos=623, 80, 773 status=높은 나무에 올라가는 중 trees=4
+t=4480 pos=623, 80, 773 status=나무에서 내려오는 중 trees=4
+t=4520 pos=623, 79, 773 status=나무에서 내려오는 중 trees=4
+t=4560 pos=623, 79, 773 status=묘목을 얻으려고 나뭇잎 치는 중 trees=5
+t=4600 pos=623, 79, 773 status=묘목을 얻으려고 나뭇잎 치는 중 trees=5
+t=4640 pos=622, 78, 773 status=묘목을 얻으려고 나뭇잎 치는 중 trees=5
+t=4680 pos=622, 78, 773 status=묘목을 얻으려고 나뭇잎 치는 중 trees=5
+t=4720 pos=622, 78, 773 status=묘목을 얻으려고 나뭇잎 치는 중 trees=5
+t=4760 pos=622, 78, 773 status=묘목을 얻으려고 나뭇잎 치는 중 trees=5
+t=4800 pos=622, 78, 773 status=떨어진 묘목·사과 줍는 중 trees=5
+t=4840 pos=622, 79, 772 status=떨어진 묘목·사과 줍는 중 trees=5
+t=4880 pos=622, 79, 772 status=떨어진 묘목·사과 줍는 중 trees=5
+t=4920 pos=622, 79, 772 status=떨어진 묘목·사과 줍는 중 trees=5
+t=4960 pos=622, 79, 772 status=떨어진 묘목·사과 줍는 중 trees=5
+t=5000 pos=620, 78, 771 status=상자에 보관하는 중 trees=5
+t=5040 pos=612, 75, 773 status=상자에 보관하는 중 trees=5
+t=5080 pos=611, 73, 776 status=상자에 보관하는 중 trees=5
+t=5120 pos=611, 73, 776 status=다음 바퀴까지 4분 58초 trees=5
+ended after 5120 ticks (256 s), running=true waiting=true lastStop=
+timing: 40 ticks took 2093 ms on average (game speed 96%), slowest 2889 ms, server tick 3.4 ms
+path: walks=15 arrived=12 gaveUp=2 {갈 수 있는 길이 없어요=2} plans=17 notFound=4 gaveUpGoals=[GoalBlock{x=623,y=79,z=772} from 622, 78, 773, GoalBlock{x=622,y=85,z=772} from 622, 78, 773] waitTicks=26 walkTicks=695 slowestPlan=377ms
+walk: 84 blocks in 29 s = 2.90 blocks/s, sprinting 13%, sprint-jumps 0
+defense: flees=0 dodges=0 creeperEscapes=0 fights=0 kills=0 hitsTaken=0 lowestHealth=20.0 unreachableTicks=0 fightsGivenUp=0 giveUp=null night=false
+trees=5 planted=2 logs=99 trips=1
+  logs dark_oak: 81
+  logs oak: 11
+  logs spruce: 7
+player at 611, 73, 776 health 20.0
+after: logs=0 (0 trunk columns), saplings=2, pillar dirt left=0
+logs in chest = 98
+LOGS: picked up 72, lost 1 (lying), despawned 0, other 27
+  missing 1: LOST (still lying there) / landed on air / appeared while: 나무에서 내려오는 중
+  missing 1: gone / landed on air / appeared while: 나무 베는 중 (가문비나무)
+  missing 11: gone / landed on air / appeared while: 나무 베는 중 (짙은 참나무)
+  missing 3: gone / landed on air / appeared while: 나무 베는 중 (참나무)
+  missing 12: gone / landed on air / appeared while: 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: dark_oak_log x1
+      t540 appeared at 616, 74, 782 on air | player 616, 71, 782 | 나무 베는 중 (짙은 참나무)
+      t545 moved 616, 74, 782 -> 615, 74, 782 on air | 나무 베는 중 (짙은 참나무)
+      t550 gone 3.6 blocks from the player | age 0 s | 나무 베는 중 (짙은 참나무)
+  gone 3.6 blocks from the player: dark_oak_log x1
+      t575 appeared at 616, 74, 783 on air | player 616, 71, 782 | 나무 베는 중 (짙은 참나무)
+      t585 gone 3.6 blocks from the player | age 0 s | 나무 베는 중 (짙은 참나무)
+  gone 3.6 blocks from the player: dark_oak_log x1
+      t615 appeared at 617, 74, 783 on air | player 616, 71, 782 | 나무 베는 중 (짙은 참나무)
+      t620 moved 617, 74, 783 -> 616, 74, 783 on air | 나무 베는 중 (짙은 참나무)
+      t625 gone 3.6 blocks from the player | age 0 s | 나무 베는 중 (짙은 참나무)
+  gone 3.6 blocks from the player: dark_oak_log x1
+      t730 appeared at 616, 75, 783 on air | player 616, 71, 782 | 나무 베는 중 (짙은 참나무)
+      t740 moved 616, 75, 783 -> 616, 74, 783 on air | 나무 베는 중 (짙은 참나무)
+      t745 gone 3.6 blocks from the player | age 0 s | 나무 베는 중 (짙은 참나무)
+  gone 3.5 blocks from the player: dark_oak_log x1
+      t900 appeared at 616, 76, 782 on air | player 616, 71, 782 | 나무 베는 중 (짙은 참나무)
+      t910 moved 616, 76, 782 -> 616, 74, 782 on air | 나무 베는 중 (짙은 참나무)
+      t915 gone 3.5 blocks from the player | age 0 s | 나무 베는 중 (짙은 참나무)
+  gone 4.8 blocks from the player: dark_oak_log x1
+      t955 appeared at 616, 76, 784 on air | player 616, 71, 782 | 나무 베는 중 (짙은 참나무)
+      t965 moved 616, 76, 784 -> 616, 75, 784 on air | 나무 베는 중 (짙은 참나무)
+      t970 gone 4.8 blocks from the player | age 0 s | 나무 베는 중 (짙은 참나무)
+  gone 3.6 blocks from the player: dark_oak_log x1
+      t1210 appeared at 615, 77, 783 on air | player 616, 72, 783 | 높은 나무에 올라가는 중
+      t1220 moved 615, 77, 783 -> 615, 75, 783 on air | 높은 나무에 올라가는 중
+      t1225 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.8 blocks from the player: dark_oak_log x1
+      t1235 appeared at 616, 77, 782 on air | player 616, 72, 783 | 높은 나무에 올라가는 중
+      t1240 moved 616, 77, 782 -> 616, 76, 782 on air | 높은 나무에 올라가는 중
+      t1245 moved 616, 76, 782 -> 617, 75, 782 on air | 높은 나무에 올라가는 중
+      t1250 gone 3.8 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: dark_oak_log x1
+      t1270 appeared at 616, 77, 783 on air | player 616, 72, 783 | 높은 나무에 올라가는 중
+      t1280 moved 616, 77, 783 -> 616, 75, 783 on air | 높은 나무에 올라가는 중
+      t1285 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: dark_oak_log x1
+      t1365 appeared at 616, 77, 785 on air | player 616, 72, 783 | 높은 나무에 올라가는 중
+      t1370 moved 616, 77, 785 -> 616, 76, 785 on air | 높은 나무에 올라가는 중
+      t1375 moved 616, 76, 785 -> 616, 75, 784 on air | 높은 나무에 올라가는 중
+      t1380 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.8 blocks from the player: dark_oak_log x1
+      t1465 appeared at 618, 77, 784 on air | player 616, 73, 783 | 높은 나무에 올라가는 중
+      t1470 moved 618, 77, 784 -> 617, 77, 784 on air | 높은 나무에 올라가는 중
+      t1475 moved 617, 77, 784 -> 617, 76, 784 on air | 높은 나무에 올라가는 중
+      t1480 gone 3.8 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: dark_oak_log x1
+      t1495 appeared at 616, 78, 783 on air | player 616, 73, 783 | 높은 나무에 올라가는 중
+      t1505 moved 616, 78, 783 -> 616, 76, 783 on air | 높은 나무에 올라가는 중
+      t1510 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.7 blocks from the player: dark_oak_log x1
+      t2290 appeared at 620, 74, 784 on air | player 620, 71, 784 | 나무 베는 중 (짙은 참나무)
+      t2295 moved 620, 74, 784 -> 619, 74, 784 on air | 나무 베는 중 (짙은 참나무)
+      t2300 gone 3.7 blocks from the player | age 0 s | 나무 베는 중 (짙은 참나무)
+  gone 3.7 blocks from the player: dark_oak_log x1
+      t2360 appeared at 621, 74, 786 on air | player 620, 71, 784 | 나무 베는 중 (짙은 참나무)
+      t2365 moved 621, 74, 786 -> 621, 74, 785 on air | 나무 베는 중 (짙은 참나무)
+      t2370 gone 3.7 blocks from the player | age 0 s | 나무 베는 중 (짙은 참나무)
+  gone 3.7 blocks from the player: dark_oak_log x1
+      t2420 appeared at 621, 74, 787 on air | player 620, 71, 784 | 나무 베는 중 (짙은 참나무)
+      t2425 moved 621, 74, 787 -> 621, 74, 786 on air | 나무 베는 중 (짙은 참나무)
+      t2430 moved 621, 74, 786 -> 622, 73, 786 on air | 나무 베는 중 (짙은 참나무)
+      t2435 gone 3.7 blocks from the player | age 0 s | 나무 베는 중 (짙은 참나무)
+  gone 3.5 blocks from the player: dark_oak_log x1
+      t2455 appeared at 620, 75, 784 on air | player 620, 71, 784 | 나무 베는 중 (짙은 참나무)
+      t2460 moved 620, 75, 784 -> 620, 74, 784 on air | 나무 베는 중 (짙은 참나무)
+      t2465 gone 3.5 blocks from the player | age 0 s | 나무 베는 중 (짙은 참나무)
+  gone 3.6 blocks from the player: dark_oak_log x1
+      t2480 appeared at 621, 75, 784 on air | player 620, 71, 784 | 나무 베는 중 (짙은 참나무)
+      t2490 moved 621, 75, 784 -> 621, 74, 784 on air | 나무 베는 중 (짙은 참나무)
+      t2495 gone 3.6 blocks from the player | age 0 s | 나무 베는 중 (짙은 참나무)
+  gone 3.5 blocks from the player: dark_oak_log x1
+      t2615 appeared at 621, 76, 785 on air | player 620, 71, 784 | 높은 나무에 올라가는 중
+      t2625 moved 621, 76, 785 -> 621, 74, 785 on air | 높은 나무에 올라가는 중
+      t2630 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: dark_oak_log x1
+      t2650 appeared at 622, 76, 785 on air | player 621, 71, 785 | 높은 나무에 올라가는 중
+      t2660 moved 622, 76, 785 -> 622, 75, 785 on air | 높은 나무에 올라가는 중
+      t2665 moved 622, 75, 785 -> 622, 74, 785 on air | 높은 나무에 올라가는 중
+      t2670 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: dark_oak_log x1
+      t2680 appeared at 621, 76, 786 on air | player 621, 71, 785 | 높은 나무에 올라가는 중
+      t2690 moved 621, 76, 786 -> 621, 75, 786 on air | 높은 나무에 올라가는 중
+      t2695 moved 621, 75, 786 -> 621, 74, 786 on air | 높은 나무에 올라가는 중
+      t2700 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: dark_oak_log x1
+      t2705 appeared at 622, 76, 786 on air | player 621, 71, 785 | 높은 나무에 올라가는 중
+      t2710 moved 622, 76, 786 -> 622, 75, 785 on air | 나무 밑에 떨어진 것 줍는 중
+      t2715 moved 622, 75, 785 -> 622, 74, 785 on air | 나무 밑에 떨어진 것 줍는 중
+      t2720 gone 3.6 blocks from the player | age 0 s | 나무 밑에 떨어진 것 줍는 중
+  gone 3.7 blocks from the player: oak_log x1
+      t3160 appeared at 622, 75, 781 on air | player 621, 71, 782 | 나무 베는 중 (참나무)
+      t3170 moved 622, 75, 781 -> 622, 74, 781 on air | 나무 베는 중 (참나무)
+      t3175 gone 3.7 blocks from the player | age 0 s | 나무 베는 중 (참나무)
+  gone 3.8 blocks from the player: oak_log x1
+      t3630 appeared at 618, 80, 774 on air | player 617, 77, 775 | 나무 베는 중 (참나무)
+      t3640 gone 3.8 blocks from the player | age 0 s | 나무 베는 중 (참나무)
+  gone 3.8 blocks from the player: oak_log x1
+      t3650 appeared at 618, 81, 774 on air | player 617, 77, 775 | 나무 베는 중 (참나무)
+      t3660 moved 618, 81, 774 -> 618, 80, 774 on air | 나무 밑에 떨어진 것 줍는 중
+      t3665 gone 3.8 blocks from the player | age 0 s | 나무 밑에 떨어진 것 줍는 중
+  gone 3.7 blocks from the player: spruce_log x1
+      t4010 appeared at 623, 82, 772 on air | player 622, 78, 773 | 나무 베는 중 (가문비나무)
+      t4015 moved 623, 82, 772 -> 623, 81, 772 on air | 나무 베는 중 (가문비나무)
+      t4020 gone 3.7 blocks from the player | age 0 s | 나무 베는 중 (가문비나무)
+  gone 3.6 blocks from the player: spruce_log x1
+      t4030 appeared at 623, 83, 772 on air | player 622, 78, 773 | 높은 나무에 올라가는 중
+      t4040 moved 623, 83, 772 -> 623, 81, 772 on air | 높은 나무에 올라가는 중
+      t4045 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: spruce_log x1
+      t4395 appeared at 623, 84, 772 on air | player 623, 79, 773 | 높은 나무에 올라가는 중
+      t4405 moved 623, 84, 772 -> 623, 82, 772 on air | 높은 나무에 올라가는 중
+      t4410 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  LOST (still lying there): spruce_log x1
+      t4480 appeared at 623, 85, 772 on air | player 623, 80, 773 | 나무에서 내려오는 중
+LOSS: cut 99, chest 98, inventory 0, missing 1 (1.0%); 1 logs in 1 stacks on the ground [1@623, 85, 772], saplings on the ground 0
+  tree: dark_oak 4x at 616, 70, 783: all cut (0 logs left)
+  tree: dark_oak 4x at 621, 71, 785: all cut (0 logs left)
+  tree: oak 1x at 622, 71, 781: all cut from the ground (0 logs left)
+  tree: oak 1x at 618, 77, 774: all cut from the ground (0 logs left)
+  tree: spruce 1x at 623, 79, 772: all cut (0 logs left)

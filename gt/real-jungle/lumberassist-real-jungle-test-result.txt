@@ -1,0 +1,626 @@
+RESULT: PASS
+
+biome ResourceKey[minecraft:worldgen/biome / minecraft:jungle] at -480, 480: best patch score 23
+area x -472..-457, z 488..503, corner ground heights 62 and 69 (trunk columns 23)
+before: logs=150 (18 trunk columns), ground from y 60 to 69
+chest at -474, 63, 493
+trees found at the start: 15
+t=40 pos=-471, 65, 496 status=나무 베는 중 (정글나무) trees=0
+t=80 pos=-471, 65, 496 status=나무 밑에 떨어진 것 줍는 중 trees=0
+t=120 pos=-471, 64, 497 status=묘목을 얻으려고 나뭇잎 치는 중 trees=1
+t=160 pos=-471, 64, 497 status=묘목을 얻으려고 나뭇잎 치는 중 trees=1
+t=200 pos=-471, 64, 497 status=묘목을 얻으려고 나뭇잎 치는 중 trees=1
+t=240 pos=-471, 64, 497 status=묘목을 얻으려고 나뭇잎 치는 중 trees=1
+t=280 pos=-471, 64, 497 status=묘목을 얻으려고 나뭇잎 치는 중 trees=1
+t=320 pos=-471, 64, 497 status=나무 베는 중 (정글나무) trees=1
+t=360 pos=-469, 65, 496 status=나무 베는 중 (정글나무) trees=1
+t=400 pos=-469, 65, 496 status=나무 밑에 떨어진 것 줍는 중 trees=1
+t=440 pos=-469, 64, 495 status=묘목을 얻으려고 나뭇잎 치는 중 trees=2
+t=480 pos=-469, 64, 495 status=묘목을 얻으려고 나뭇잎 치는 중 trees=2
+t=520 pos=-469, 64, 495 status=묘목을 얻으려고 나뭇잎 치는 중 trees=2
+t=560 pos=-469, 64, 495 status=묘목을 얻으려고 나뭇잎 치는 중 trees=2
+t=600 pos=-469, 64, 495 status=묘목을 얻으려고 나뭇잎 치는 중 trees=2
+t=640 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=680 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=720 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=760 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=800 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=840 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=880 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=920 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=960 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=1000 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=1040 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=1080 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=1120 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=1160 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=1200 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=1240 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=1280 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=1320 pos=-469, 64, 495 status=나무 베는 중 (참나무) trees=2
+t=1360 pos=-465, 65, 493 status=나무 베는 중 (참나무) trees=2
+t=1400 pos=-464, 63, 494 status=나무 베는 중 (참나무) trees=2
+t=1440 pos=-464, 63, 494 status=나무 베는 중 (참나무) trees=2
+t=1480 pos=-464, 63, 494 status=나무 베는 중 (참나무) trees=2
+t=1520 pos=-464, 63, 495 status=나무 베는 중 (참나무) trees=2
+t=1560 pos=-464, 63, 495 status=나무 베는 중 (참나무) trees=2
+t=1600 pos=-463, 63, 495 status=나무 밑에 떨어진 것 줍는 중 trees=2
+t=1640 pos=-464, 63, 495 status=나무 밑에 떨어진 것 줍는 중 trees=3
+t=1680 pos=-463, 62, 493 status=나무 베는 중 (정글나무) trees=3
+t=1720 pos=-461, 63, 494 status=나무 베는 중 (정글나무) trees=3
+t=1760 pos=-461, 63, 494 status=나무 베는 중 (정글나무) trees=3
+t=1800 pos=-461, 63, 494 status=나무 베는 중 (정글나무) trees=3
+t=1840 pos=-461, 63, 494 status=나무 베는 중 (정글나무) trees=3
+t=1880 pos=-460, 64, 495 status=높은 나무에 올라가는 중 trees=3
+t=1920 pos=-460, 64, 495 status=높은 나무에 올라가는 중 trees=3
+t=1960 pos=-460, 65, 495 status=높은 나무에 올라가는 중 trees=3
+t=2000 pos=-460, 65, 495 status=나무에서 내려오는 중 trees=3
+t=2040 pos=-460, 64, 495 status=나무에서 내려오는 중 trees=3
+t=2080 pos=-460, 63, 495 status=나무 밑에 떨어진 것 줍는 중 trees=3
+t=2120 pos=-461, 63, 495 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=2160 pos=-461, 63, 495 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=2200 pos=-461, 63, 495 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=2240 pos=-461, 63, 495 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=2280 pos=-461, 63, 495 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=2320 pos=-461, 63, 495 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=2360 pos=-457, 65, 495 status=나무 베는 중 (정글나무) trees=4
+t=2400 pos=-456, 65, 492 status=나무 베는 중 (정글나무) trees=4
+t=2440 pos=-456, 65, 492 status=나무 밑에 떨어진 것 줍는 중 trees=4
+t=2480 pos=-457, 64, 492 status=나무 밑에 떨어진 것 줍는 중 trees=4
+t=2520 pos=-457, 64, 492 status=묘목을 얻으려고 나뭇잎 치는 중 trees=5
+t=2560 pos=-457, 64, 492 status=묘목을 얻으려고 나뭇잎 치는 중 trees=5
+t=2600 pos=-457, 64, 492 status=묘목을 얻으려고 나뭇잎 치는 중 trees=5
+t=2640 pos=-457, 64, 492 status=묘목을 얻으려고 나뭇잎 치는 중 trees=5
+t=2680 pos=-457, 64, 492 status=묘목을 얻으려고 나뭇잎 치는 중 trees=5
+t=2720 pos=-457, 64, 492 status=묘목을 얻으려고 나뭇잎 치는 중 trees=5
+t=2760 pos=-457, 64, 491 status=나무 밑에 떨어진 것 줍는 중 trees=5
+t=2800 pos=-458, 63, 491 status=묘목을 얻으려고 나뭇잎 치는 중 trees=6
+t=2840 pos=-458, 63, 491 status=묘목을 얻으려고 나뭇잎 치는 중 trees=6
+t=2880 pos=-458, 63, 491 status=묘목을 얻으려고 나뭇잎 치는 중 trees=6
+t=2920 pos=-458, 63, 491 status=묘목을 얻으려고 나뭇잎 치는 중 trees=6
+t=2960 pos=-458, 63, 491 status=묘목을 얻으려고 나뭇잎 치는 중 trees=6
+t=3000 pos=-458, 63, 491 status=묘목을 얻으려고 나뭇잎 치는 중 trees=6
+t=3040 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3080 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3120 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3160 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3200 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3240 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3280 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3320 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3360 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3400 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3440 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3480 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3520 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3560 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3600 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3640 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3680 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3720 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3760 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3800 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3840 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3880 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3920 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=3960 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=4000 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=4040 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=4080 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=4120 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=4160 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=4200 pos=-458, 63, 491 status=나무 베는 중 (정글나무) trees=6
+t=4240 pos=-459, 64, 492 status=나무 베는 중 (정글나무) trees=6
+t=4280 pos=-461, 64, 496 status=나무 베는 중 (정글나무) trees=6
+t=4320 pos=-462, 63, 496 status=나무 베는 중 (정글나무) trees=6
+t=4360 pos=-462, 63, 496 status=나무 베는 중 (정글나무) trees=6
+t=4400 pos=-462, 64, 496 status=나무 베는 중 (정글나무) trees=6
+t=4440 pos=-462, 63, 496 status=나무 밑에 떨어진 것 줍는 중 trees=6
+t=4480 pos=-462, 64, 496 status=나무 밑에 떨어진 것 줍는 중 trees=6
+t=4520 pos=-462, 63, 496 status=나무 밑에 떨어진 것 줍는 중 trees=6
+t=4560 pos=-462, 63, 496 status=나무 밑에 떨어진 것 줍는 중 trees=6
+t=4600 pos=-462, 64, 496 status=나무 밑에 떨어진 것 줍는 중 trees=6
+t=4640 pos=-462, 63, 496 status=나무 밑에 떨어진 것 줍는 중 trees=6
+t=4680 pos=-460, 66, 498 status=나무 밑에 떨어진 것 줍는 중 trees=6
+t=4720 pos=-462, 69, 499 status=나무 밑에 떨어진 것 줍는 중 trees=6
+t=4760 pos=-464, 68, 499 status=묘목을 얻으려고 나뭇잎 치는 중 trees=7
+t=4800 pos=-462, 68, 498 status=묘목을 얻으려고 나뭇잎 치는 중 trees=7
+t=4840 pos=-462, 68, 498 status=묘목을 얻으려고 나뭇잎 치는 중 trees=7
+t=4880 pos=-462, 68, 498 status=묘목을 얻으려고 나뭇잎 치는 중 trees=7
+t=4920 pos=-462, 68, 498 status=묘목을 얻으려고 나뭇잎 치는 중 trees=7
+t=4960 pos=-462, 68, 498 status=묘목을 얻으려고 나뭇잎 치는 중 trees=7
+t=5000 pos=-462, 68, 499 status=나무 베는 중 (정글나무) trees=7
+t=5040 pos=-464, 69, 500 status=나무 베는 중 (정글나무) trees=7
+t=5080 pos=-464, 69, 500 status=나무 밑에 떨어진 것 줍는 중 trees=7
+t=5120 pos=-466, 68, 501 status=나무 밑에 떨어진 것 줍는 중 trees=7
+t=5160 pos=-466, 68, 501 status=묘목을 얻으려고 나뭇잎 치는 중 trees=8
+t=5200 pos=-466, 68, 501 status=묘목을 얻으려고 나뭇잎 치는 중 trees=8
+t=5240 pos=-466, 68, 501 status=묘목을 얻으려고 나뭇잎 치는 중 trees=8
+t=5280 pos=-466, 68, 501 status=묘목을 얻으려고 나뭇잎 치는 중 trees=8
+t=5320 pos=-466, 68, 501 status=묘목을 얻으려고 나뭇잎 치는 중 trees=8
+t=5360 pos=-468, 68, 501 status=나무 베는 중 (참나무) trees=8
+t=5400 pos=-468, 68, 501 status=나무 베는 중 (참나무) trees=8
+t=5440 pos=-468, 68, 501 status=나무 베는 중 (참나무) trees=8
+t=5480 pos=-468, 68, 501 status=나무 베는 중 (참나무) trees=8
+t=5520 pos=-468, 68, 501 status=나무 베는 중 (참나무) trees=8
+t=5560 pos=-468, 68, 501 status=나무 베는 중 (참나무) trees=8
+t=5600 pos=-468, 68, 501 status=나무 베는 중 (참나무) trees=8
+t=5640 pos=-469, 68, 501 status=높은 나무에 올라가는 중 trees=8
+t=5680 pos=-469, 69, 501 status=높은 나무에 올라가는 중 trees=8
+t=5720 pos=-469, 69, 501 status=높은 나무에 올라가는 중 trees=8
+t=5760 pos=-469, 69, 501 status=높은 나무에 올라가는 중 trees=8
+t=5800 pos=-469, 70, 501 status=높은 나무에 올라가는 중 trees=8
+t=5840 pos=-469, 70, 501 status=높은 나무에 올라가는 중 trees=8
+t=5880 pos=-469, 70, 501 status=높은 나무에 올라가는 중 trees=8
+t=5920 pos=-469, 71, 501 status=높은 나무에 올라가는 중 trees=8
+t=5960 pos=-469, 71, 501 status=높은 나무에 올라가는 중 trees=8
+t=6000 pos=-469, 71, 501 status=높은 나무에 올라가는 중 trees=8
+t=6040 pos=-469, 71, 501 status=높은 나무에 올라가는 중 trees=8
+t=6080 pos=-469, 71, 501 status=높은 나무에 올라가는 중 trees=8
+t=6120 pos=-469, 71, 501 status=높은 나무에 올라가는 중 trees=8
+t=6160 pos=-469, 71, 501 status=높은 나무에 올라가는 중 trees=8
+t=6200 pos=-469, 71, 501 status=높은 나무에 올라가는 중 trees=8
+t=6240 pos=-469, 72, 501 status=높은 나무에 올라가는 중 trees=8
+t=6280 pos=-469, 72, 501 status=높은 나무에 올라가는 중 trees=8
+t=6320 pos=-469, 72, 501 status=높은 나무에 올라가는 중 trees=8
+t=6360 pos=-469, 72, 501 status=높은 나무에 올라가는 중 trees=8
+t=6400 pos=-469, 72, 501 status=높은 나무에 올라가는 중 trees=8
+t=6440 pos=-469, 72, 501 status=높은 나무에 올라가는 중 trees=8
+t=6480 pos=-469, 73, 501 status=높은 나무에 올라가는 중 trees=8
+t=6520 pos=-469, 73, 501 status=나무에서 내려오는 중 trees=8
+t=6560 pos=-469, 73, 501 status=나무에서 내려오는 중 trees=8
+t=6600 pos=-469, 72, 501 status=나무에서 내려오는 중 trees=8
+t=6640 pos=-469, 72, 501 status=나무에서 내려오는 중 trees=8
+t=6680 pos=-469, 71, 501 status=나무에서 내려오는 중 trees=8
+t=6720 pos=-469, 70, 501 status=나무에서 내려오는 중 trees=8
+t=6760 pos=-469, 69, 501 status=나무에서 내려오는 중 trees=8
+t=6800 pos=-469, 68, 501 status=나무에서 내려오는 중 trees=8
+t=6840 pos=-469, 67, 501 status=나무에서 내려오는 중 trees=8
+t=6880 pos=-468, 68, 502 status=나무 밑에 떨어진 것 줍는 중 trees=8
+t=6920 pos=-470, 68, 502 status=나무 밑에 떨어진 것 줍는 중 trees=8
+t=6960 pos=-471, 66, 501 status=나무 밑에 떨어진 것 줍는 중 trees=8
+t=7000 pos=-467, 66, 499 status=나무 밑에 떨어진 것 줍는 중 trees=8
+t=7040 pos=-470, 65, 499 status=나무 밑에 떨어진 것 줍는 중 trees=8
+t=7080 pos=-470, 68, 502 status=나무 밑에 떨어진 것 줍는 중 trees=8
+t=7120 pos=-469, 69, 504 status=나무 밑에 떨어진 것 줍는 중 trees=8
+t=7160 pos=-469, 68, 502 status=나무 밑에 떨어진 것 줍는 중 trees=9
+t=7200 pos=-468, 67, 500 status=나무 밑에 떨어진 것 줍는 중 trees=9
+t=7240 pos=-465, 68, 501 status=나무 베는 중 (정글나무) trees=9
+t=7280 pos=-462, 69, 503 status=나무 베는 중 (정글나무) trees=9
+t=7320 pos=-462, 69, 503 status=묘목을 얻으려고 나뭇잎 치는 중 trees=10
+t=7360 pos=-462, 69, 503 status=묘목을 얻으려고 나뭇잎 치는 중 trees=10
+t=7400 pos=-462, 69, 503 status=묘목을 얻으려고 나뭇잎 치는 중 trees=10
+t=7440 pos=-460, 69, 503 status=나무 베는 중 (정글나무) trees=10
+t=7480 pos=-460, 69, 503 status=나무 베는 중 (정글나무) trees=10
+t=7520 pos=-460, 69, 503 status=높은 나무에 올라가는 중 trees=10
+t=7560 pos=-459, 69, 503 status=높은 나무에 올라가는 중 trees=10
+t=7600 pos=-460, 69, 503 status=나무 밑에 떨어진 것 줍는 중 trees=10
+t=7640 pos=-458, 69, 503 status=나무 밑에 떨어진 것 줍는 중 trees=10
+t=7680 pos=-456, 69, 503 status=나무 밑에 떨어진 것 줍는 중 trees=10
+t=7720 pos=-460, 69, 503 status=나무 밑에 떨어진 것 줍는 중 trees=10
+t=7760 pos=-460, 69, 502 status=나무 밑에 떨어진 것 줍는 중 trees=10
+t=7800 pos=-459, 68, 500 status=나무 밑에 떨어진 것 줍는 중 trees=10
+t=7840 pos=-459, 69, 503 status=나무 밑에 떨어진 것 줍는 중 trees=10
+t=7880 pos=-456, 69, 503 status=나무 밑에 떨어진 것 줍는 중 trees=10
+t=7920 pos=-459, 69, 503 status=묘목을 얻으려고 나뭇잎 치는 중 trees=11
+t=7960 pos=-460, 69, 503 status=묘목을 얻으려고 나뭇잎 치는 중 trees=11
+t=8000 pos=-460, 69, 503 status=묘목을 얻으려고 나뭇잎 치는 중 trees=11
+t=8040 pos=-459, 69, 503 status=나무 베는 중 (정글나무) trees=11
+t=8080 pos=-458, 68, 502 status=나무 밑에 떨어진 것 줍는 중 trees=11
+t=8120 pos=-458, 68, 502 status=나무 밑에 떨어진 것 줍는 중 trees=11
+t=8160 pos=-458, 68, 502 status=묘목을 얻으려고 나뭇잎 치는 중 trees=12
+t=8200 pos=-459, 68, 502 status=묘목을 얻으려고 나뭇잎 치는 중 trees=12
+t=8240 pos=-459, 68, 502 status=묘목을 얻으려고 나뭇잎 치는 중 trees=12
+t=8280 pos=-459, 68, 502 status=묘목을 얻으려고 나뭇잎 치는 중 trees=12
+t=8320 pos=-457, 68, 500 status=묘목을 얻으려고 나뭇잎 치는 중 trees=12
+t=8360 pos=-459, 68, 502 status=나무 베는 중 (정글나무) trees=12
+t=8400 pos=-465, 68, 495 status=나무 베는 중 (정글나무) trees=12
+t=8440 pos=-467, 65, 493 status=나무 베는 중 (정글나무) trees=12
+t=8480 pos=-469, 63, 490 status=나무 베는 중 (정글나무) trees=12
+t=8520 pos=-469, 63, 490 status=나무 베는 중 (정글나무) trees=12
+t=8560 pos=-469, 63, 490 status=나무 베는 중 (정글나무) trees=12
+t=8600 pos=-469, 63, 490 status=나무 베는 중 (정글나무) trees=12
+t=8640 pos=-469, 63, 490 status=나무 베는 중 (정글나무) trees=12
+t=8680 pos=-469, 63, 490 status=나무 베는 중 (정글나무) trees=12
+t=8720 pos=-469, 63, 490 status=나무 베는 중 (정글나무) trees=12
+t=8760 pos=-469, 63, 490 status=나무 베는 중 (정글나무) trees=12
+t=8800 pos=-469, 63, 490 status=나무 베는 중 (정글나무) trees=12
+t=8840 pos=-469, 63, 490 status=나무 베는 중 (정글나무) trees=12
+t=8880 pos=-469, 63, 490 status=나무 베는 중 (정글나무) trees=12
+t=8920 pos=-469, 63, 490 status=높은 나무에 올라가는 중 trees=12
+t=8960 pos=-471, 63, 488 status=높은 나무에 올라가는 중 trees=12
+t=9000 pos=-471, 63, 488 status=높은 나무에 올라가는 중 trees=12
+t=9040 pos=-471, 63, 488 status=높은 나무에 올라가는 중 trees=12
+t=9080 pos=-471, 64, 488 status=높은 나무에 올라가는 중 trees=12
+t=9120 pos=-471, 64, 488 status=높은 나무에 올라가는 중 trees=12
+t=9160 pos=-471, 64, 488 status=높은 나무에 올라가는 중 trees=12
+t=9200 pos=-471, 65, 488 status=높은 나무에 올라가는 중 trees=12
+t=9240 pos=-471, 65, 488 status=높은 나무에 올라가는 중 trees=12
+t=9280 pos=-471, 65, 488 status=높은 나무에 올라가는 중 trees=12
+t=9320 pos=-471, 66, 488 status=높은 나무에 올라가는 중 trees=12
+t=9360 pos=-471, 66, 488 status=높은 나무에 올라가는 중 trees=12
+t=9400 pos=-471, 66, 488 status=높은 나무에 올라가는 중 trees=12
+t=9440 pos=-471, 67, 488 status=높은 나무에 올라가는 중 trees=12
+t=9480 pos=-471, 67, 488 status=높은 나무에 올라가는 중 trees=12
+t=9520 pos=-471, 67, 488 status=높은 나무에 올라가는 중 trees=12
+t=9560 pos=-471, 67, 488 status=높은 나무에 올라가는 중 trees=12
+t=9600 pos=-471, 68, 488 status=높은 나무에 올라가는 중 trees=12
+t=9640 pos=-471, 68, 488 status=높은 나무에 올라가는 중 trees=12
+t=9680 pos=-471, 68, 488 status=높은 나무에 올라가는 중 trees=12
+t=9720 pos=-471, 69, 488 status=높은 나무에 올라가는 중 trees=12
+t=9760 pos=-471, 69, 488 status=높은 나무에 올라가는 중 trees=12
+t=9800 pos=-471, 69, 488 status=높은 나무에 올라가는 중 trees=12
+t=9840 pos=-471, 69, 488 status=높은 나무에 올라가는 중 trees=12
+t=9880 pos=-471, 70, 488 status=높은 나무에 올라가는 중 trees=12
+t=9920 pos=-471, 70, 488 status=높은 나무에 올라가는 중 trees=12
+t=9960 pos=-471, 70, 488 status=높은 나무에 올라가는 중 trees=12
+t=10000 pos=-471, 71, 488 status=높은 나무에 올라가는 중 trees=12
+t=10040 pos=-471, 71, 488 status=높은 나무에 올라가는 중 trees=12
+t=10080 pos=-471, 71, 488 status=높은 나무에 올라가는 중 trees=12
+t=10120 pos=-471, 71, 488 status=높은 나무에 올라가는 중 trees=12
+t=10160 pos=-471, 72, 488 status=높은 나무에 올라가는 중 trees=12
+t=10200 pos=-471, 72, 488 status=높은 나무에 올라가는 중 trees=12
+t=10240 pos=-471, 72, 488 status=높은 나무에 올라가는 중 trees=12
+t=10280 pos=-471, 72, 488 status=높은 나무에 올라가는 중 trees=12
+t=10320 pos=-471, 72, 488 status=높은 나무에 올라가는 중 trees=12
+t=10360 pos=-471, 73, 488 status=높은 나무에 올라가는 중 trees=12
+t=10400 pos=-471, 73, 488 status=높은 나무에 올라가는 중 trees=12
+t=10440 pos=-471, 73, 488 status=높은 나무에 올라가는 중 trees=12
+t=10480 pos=-471, 73, 488 status=높은 나무에 올라가는 중 trees=12
+t=10520 pos=-471, 74, 488 status=높은 나무에 올라가는 중 trees=12
+t=10560 pos=-471, 74, 488 status=높은 나무에 올라가는 중 trees=12
+t=10600 pos=-471, 74, 488 status=높은 나무에 올라가는 중 trees=12
+t=10640 pos=-471, 74, 488 status=높은 나무에 올라가는 중 trees=12
+t=10680 pos=-471, 75, 488 status=높은 나무에 올라가는 중 trees=12
+t=10720 pos=-471, 75, 488 status=높은 나무에 올라가는 중 trees=12
+t=10760 pos=-471, 75, 488 status=높은 나무에 올라가는 중 trees=12
+t=10800 pos=-471, 75, 488 status=높은 나무에 올라가는 중 trees=12
+t=10840 pos=-471, 75, 488 status=높은 나무에 올라가는 중 trees=12
+t=10880 pos=-471, 76, 488 status=높은 나무에 올라가는 중 trees=12
+t=10920 pos=-471, 76, 488 status=높은 나무에 올라가는 중 trees=12
+t=10960 pos=-471, 76, 488 status=높은 나무에 올라가는 중 trees=12
+t=11000 pos=-471, 76, 488 status=높은 나무에 올라가는 중 trees=12
+t=11040 pos=-471, 77, 488 status=높은 나무에 올라가는 중 trees=12
+t=11080 pos=-471, 77, 488 status=높은 나무에 올라가는 중 trees=12
+t=11120 pos=-471, 77, 488 status=높은 나무에 올라가는 중 trees=12
+t=11160 pos=-471, 77, 488 status=높은 나무에 올라가는 중 trees=12
+t=11200 pos=-471, 78, 488 status=높은 나무에 올라가는 중 trees=12
+t=11240 pos=-471, 78, 488 status=높은 나무에 올라가는 중 trees=12
+t=11280 pos=-471, 78, 488 status=높은 나무에 올라가는 중 trees=12
+t=11320 pos=-471, 79, 488 status=높은 나무에 올라가는 중 trees=12
+t=11360 pos=-471, 79, 488 status=높은 나무에 올라가는 중 trees=12
+t=11400 pos=-471, 79, 488 status=높은 나무에 올라가는 중 trees=12
+t=11440 pos=-471, 79, 488 status=높은 나무에 올라가는 중 trees=12
+t=11480 pos=-471, 80, 488 status=높은 나무에 올라가는 중 trees=12
+t=11520 pos=-471, 80, 488 status=높은 나무에 올라가는 중 trees=12
+t=11560 pos=-471, 80, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=11600 pos=-471, 79, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=11640 pos=-471, 78, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=11680 pos=-471, 77, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=11720 pos=-471, 76, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=11760 pos=-471, 75, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=11800 pos=-471, 74, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=11840 pos=-471, 73, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=11880 pos=-471, 72, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=11920 pos=-471, 71, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=11960 pos=-471, 70, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=12000 pos=-471, 69, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=12040 pos=-471, 67, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=12080 pos=-471, 66, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=12120 pos=-471, 65, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=12160 pos=-471, 64, 488 status=떨어진 원목 먼저 주우러 내려가는 중 trees=12
+t=12200 pos=-471, 63, 488 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12240 pos=-471, 62, 486 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12280 pos=-471, 63, 488 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12320 pos=-470, 63, 489 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12360 pos=-473, 61, 487 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12400 pos=-473, 62, 488 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12440 pos=-472, 63, 491 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12480 pos=-471, 62, 487 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12520 pos=-472, 61, 485 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12560 pos=-471, 62, 487 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12600 pos=-469, 63, 491 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12640 pos=-468, 61, 487 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12680 pos=-468, 62, 485 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12720 pos=-467, 62, 487 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12760 pos=-466, 62, 488 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12800 pos=-467, 63, 488 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12840 pos=-467, 63, 489 status=나무 밑에 떨어진 것 줍는 중 trees=12
+t=12880 pos=-471, 63, 488 status=높은 나무에 올라가는 중 trees=12
+t=12920 pos=-471, 63, 489 status=높은 나무에 올라가는 중 trees=12
+t=12960 pos=-472, 63, 489 status=높은 나무에 올라가는 중 trees=12
+t=13000 pos=-471, 64, 488 status=높은 나무에 올라가는 중 trees=12
+t=13040 pos=-471, 68, 488 status=높은 나무에 올라가는 중 trees=12
+t=13080 pos=-471, 71, 488 status=높은 나무에 올라가는 중 trees=12
+t=13120 pos=-471, 74, 488 status=높은 나무에 올라가는 중 trees=12
+t=13160 pos=-471, 78, 488 status=높은 나무에 올라가는 중 trees=12
+t=13200 pos=-471, 81, 488 status=높은 나무에 올라가는 중 trees=12
+t=13240 pos=-471, 81, 488 status=나무에서 내려오는 중 trees=12
+t=13280 pos=-471, 80, 488 status=나무에서 내려오는 중 trees=12
+t=13320 pos=-471, 79, 488 status=나무에서 내려오는 중 trees=12
+t=13360 pos=-471, 78, 488 status=나무에서 내려오는 중 trees=12
+t=13400 pos=-471, 77, 488 status=나무에서 내려오는 중 trees=12
+t=13440 pos=-471, 76, 488 status=나무에서 내려오는 중 trees=12
+t=13480 pos=-471, 75, 488 status=나무에서 내려오는 중 trees=12
+t=13520 pos=-471, 74, 488 status=나무에서 내려오는 중 trees=12
+t=13560 pos=-471, 73, 488 status=나무에서 내려오는 중 trees=12
+t=13600 pos=-471, 72, 488 status=나무에서 내려오는 중 trees=12
+t=13640 pos=-471, 71, 488 status=나무에서 내려오는 중 trees=12
+t=13680 pos=-471, 69, 488 status=나무에서 내려오는 중 trees=12
+t=13720 pos=-471, 68, 488 status=나무에서 내려오는 중 trees=12
+t=13760 pos=-471, 67, 488 status=나무에서 내려오는 중 trees=12
+t=13800 pos=-471, 66, 488 status=나무에서 내려오는 중 trees=12
+t=13840 pos=-471, 65, 488 status=나무에서 내려오는 중 trees=12
+t=13880 pos=-471, 64, 488 status=나무에서 내려오는 중 trees=12
+t=13920 pos=-472, 63, 490 status=묘목을 얻으려고 나뭇잎 치는 중 trees=13
+t=13960 pos=-469, 63, 490 status=묘목을 얻으려고 나뭇잎 치는 중 trees=13
+t=14000 pos=-469, 63, 490 status=묘목을 얻으려고 나뭇잎 치는 중 trees=13
+t=14040 pos=-469, 63, 490 status=묘목을 얻으려고 나뭇잎 치는 중 trees=13
+t=14080 pos=-469, 64, 493 status=떨어진 묘목·사과 줍는 중 trees=13
+t=14120 pos=-468, 64, 495 status=상자에 보관하는 중 trees=13
+t=14160 pos=-471, 63, 493 status=상자에 보관하는 중 trees=13
+ended after 14160 ticks (708 s), running=true waiting=true lastStop=
+timing: 40 ticks took 2605 ms on average (game speed 77%), slowest 4013 ms, server tick 2.5 ms
+path: walks=47 arrived=40 gaveUp=6 {갈 수 있는 길이 없어요=3, 길에서 자꾸 막혀요=3} plans=72 notFound=7 gaveUpGoals=[GoalComposite[GoalBlock{x=-464,y=63,z=494}, GoalBlock{x=-464,y=63,z=496}, GoalBlock{x=-462,y=63,z=494}, GoalBlock{x=-462,y=63,z=496}] from -469, 64, 495, GoalBlock{x=-464,y=63,z=495} from -464, 63, 494, GoalComposite[GoalBlock{x=-464,y=68,z=498}, GoalBlock{x=-462,y=68,z=498}, GoalBlock{x=-462,y=68,z=500}] from -458, 63, 491, GoalBlock{x=-462,y=68,z=498} from -458, 63, 491, GoalBlock{x=-464,y=67,z=499} from -462, 63, 496, GoalBlock{x=-473,y=61,z=487} from -470, 63, 490] waitTicks=95 walkTicks=3689 slowestPlan=410ms
+walk: 248 blocks in 163 s = 1.52 blocks/s, sprinting 7%, sprint-jumps 0
+defense: flees=0 dodges=0 creeperEscapes=0 fights=0 kills=0 hitsTaken=0 lowestHealth=20.0 unreachableTicks=0 fightsGivenUp=0 giveUp=null night=false
+trees=13 planted=2 logs=153 trips=1
+  logs jungle: 123
+  logs oak: 30
+player at -471, 63, 493 health 20.0
+after: logs=1 (0 trunk columns), saplings=2, pillar dirt left=0
+logs in chest = 151
+LOGS: picked up 107, lost 2 (lying), despawned 0, other 47
+  missing 2: LOST (still lying there) / landed on air / appeared while: 높은 나무에 올라가는 중
+  missing 2: gone / landed on air / appeared while: 나무 베는 중 (정글나무)
+  missing 1: gone / landed on air / appeared while: 나무 베는 중 (참나무)
+  missing 2: gone / landed on air / appeared while: 나무에서 내려오는 중
+  missing 40: gone / landed on air / appeared while: 높은 나무에 올라가는 중
+  missing 1: gone / landed on air / appeared while: 떨어진 원목 먼저 주우러 내려가는 중
+  missing 1: gone / landed on oak_leaves / appeared while: 높은 나무에 올라가는 중
+  gone 4.5 blocks from the player: jungle_log x1
+      t1850 appeared at -460, 68, 495 on air | player -461, 63, 494 | 높은 나무에 올라가는 중
+      t1860 moved -460, 68, 495 -> -460, 67, 495 on air | 높은 나무에 올라가는 중
+      t1865 gone 4.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: jungle_log x1
+      t1980 appeared at -460, 70, 495 on air | player -460, 65, 495 | 나무에서 내려오는 중
+      t1990 moved -460, 70, 495 -> -460, 68, 495 on air | 나무에서 내려오는 중
+      t1995 gone 3.5 blocks from the player | age 0 s | 나무에서 내려오는 중
+  gone 3.7 blocks from the player: oak_log x1
+      t5580 appeared at -470, 72, 503 on air | player -468, 68, 501 | 나무 베는 중 (참나무)
+      t5585 moved -470, 72, 503 -> -470, 72, 502 on air | 나무 베는 중 (참나무)
+      t5590 moved -470, 72, 502 -> -469, 71, 502 on air | 나무 베는 중 (참나무)
+      t5595 gone 3.7 blocks from the player | age 0 s | 나무 베는 중 (참나무)
+  gone 3.5 blocks from the player: oak_log x1
+      t5605 appeared at -469, 73, 501 on air | player -468, 68, 501 | 높은 나무에 올라가는 중
+      t5610 moved -469, 73, 501 -> -469, 72, 501 on air | 높은 나무에 올라가는 중
+      t5615 moved -469, 72, 501 -> -469, 70, 501 on air | 높은 나무에 올라가는 중
+      t5620 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: oak_log x1
+      t5750 appeared at -468, 74, 500 on air | player -469, 69, 501 | 높은 나무에 올라가는 중
+      t5760 moved -468, 74, 500 -> -468, 73, 501 on air | 높은 나무에 올라가는 중
+      t5765 moved -468, 73, 501 -> -468, 72, 501 on air | 높은 나무에 올라가는 중
+      t5770 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.8 blocks from the player: oak_log x1
+      t5830 appeared at -468, 74, 502 on air | player -469, 70, 501 | 높은 나무에 올라가는 중
+      t5835 moved -468, 74, 502 -> -468, 73, 502 on air | 높은 나무에 올라가는 중
+      t5840 gone 3.8 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.7 blocks from the player: oak_log x1
+      t6010 appeared at -469, 76, 502 on oak_leaves | player -469, 71, 501 | 높은 나무에 올라가는 중
+      t6070 moved -469, 76, 502 -> -469, 75, 502 on oak_leaves | 높은 나무에 올라가는 중
+      t6130 moved -469, 75, 502 -> -469, 74, 502 on oak_leaves | 높은 나무에 올라가는 중
+      t6190 gone 3.7 blocks from the player | age 8 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: oak_log x1
+      t6305 appeared at -469, 77, 501 on air | player -469, 72, 501 | 높은 나무에 올라가는 중
+      t6315 moved -469, 77, 501 -> -469, 76, 501 on air | 높은 나무에 올라가는 중
+      t6320 moved -469, 76, 501 -> -469, 75, 501 on air | 높은 나무에 올라가는 중
+      t6325 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: jungle_log x1
+      t8805 appeared at -470, 66, 489 on air | player -469, 63, 490 | 나무 베는 중 (정글나무)
+      t8810 moved -470, 66, 489 -> -470, 66, 490 on vine | 나무 베는 중 (정글나무)
+      t8815 gone 3.6 blocks from the player | age 0 s | 나무 베는 중 (정글나무)
+  gone 3.7 blocks from the player: jungle_log x1
+      t8890 appeared at -470, 67, 489 on air | player -469, 63, 490 | 나무 베는 중 (정글나무)
+      t8900 moved -470, 67, 489 -> -470, 66, 489 on air | 나무 베는 중 (정글나무)
+      t8905 gone 3.7 blocks from the player | age 0 s | 나무 베는 중 (정글나무)
+  gone 3.6 blocks from the player: jungle_log x1
+      t8910 appeared at -470, 68, 489 on air | player -469, 63, 490 | 높은 나무에 올라가는 중
+      t8920 moved -470, 68, 489 -> -470, 66, 490 on air | 높은 나무에 올라가는 중
+      t8925 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.7 blocks from the player: jungle_log x1
+      t9005 appeared at -471, 68, 489 on air | player -471, 63, 488 | 높은 나무에 올라가는 중
+      t9010 moved -471, 68, 489 -> -471, 67, 489 on air | 높은 나무에 올라가는 중
+      t9015 moved -471, 67, 489 -> -471, 66, 489 on air | 높은 나무에 올라가는 중
+      t9020 gone 3.7 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.5 blocks from the player: jungle_log x1
+      t9085 appeared at -471, 69, 488 on air | player -471, 64, 488 | 높은 나무에 올라가는 중
+      t9095 moved -471, 69, 488 -> -471, 68, 488 on air | 높은 나무에 올라가는 중
+      t9100 gone 4.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  LOST (still lying there): jungle_log x2
+      t9135 appeared at -470, 69, 487 on air | player -471, 64, 488 | 높은 나무에 올라가는 중
+      t9140 moved -470, 69, 487 -> -469, 68, 487 on air | 높은 나무에 올라가는 중
+      t9145 moved -469, 68, 487 -> -469, 66, 487 on air | 높은 나무에 올라가는 중
+      t9150 moved -469, 66, 487 -> -469, 63, 486 on water | 높은 나무에 올라가는 중
+      t9155 moved -469, 63, 486 -> -469, 60, 486 on water | 높은 나무에 올라가는 중
+      t9160 moved -469, 60, 486 -> -468, 57, 486 on water | 높은 나무에 올라가는 중
+      t9165 moved -468, 57, 486 -> -468, 55, 486 on water | 높은 나무에 올라가는 중
+      t9170 moved -468, 55, 486 -> -468, 55, 485 on stone | 높은 나무에 올라가는 중
+      t9245 moved -468, 55, 485 -> -468, 56, 485 on water | 높은 나무에 올라가는 중
+      t9295 moved -468, 56, 485 -> -468, 57, 485 on water | 높은 나무에 올라가는 중
+      t9335 moved -468, 57, 485 -> -468, 58, 485 on water | 높은 나무에 올라가는 중
+      t9375 moved -468, 58, 485 -> -468, 59, 485 on water | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: jungle_log x1
+      t9215 appeared at -471, 70, 488 on air | player -471, 65, 488 | 높은 나무에 올라가는 중
+      t9225 moved -471, 70, 488 -> -471, 68, 488 on air | 높은 나무에 올라가는 중
+      t9230 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: jungle_log x1
+      t9260 appeared at -470, 70, 488 on air | player -471, 65, 488 | 높은 나무에 올라가는 중
+      t9265 moved -470, 70, 488 -> -471, 70, 488 on air | 높은 나무에 올라가는 중
+      t9270 moved -471, 70, 488 -> -471, 68, 488 on air | 높은 나무에 올라가는 중
+      t9275 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.9 blocks from the player: jungle_log x1
+      t9280 appeared at -470, 70, 489 on air | player -471, 65, 488 | 높은 나무에 올라가는 중
+      t9290 moved -470, 70, 489 -> -471, 69, 489 on air | 높은 나무에 올라가는 중
+      t9295 gone 3.9 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: jungle_log x1
+      t9475 appeared at -471, 72, 488 on air | player -471, 67, 488 | 높은 나무에 올라가는 중
+      t9485 moved -471, 72, 488 -> -471, 70, 488 on air | 높은 나무에 올라가는 중
+      t9490 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: jungle_log x1
+      t9530 appeared at -470, 72, 488 on air | player -471, 67, 488 | 높은 나무에 올라가는 중
+      t9540 moved -470, 72, 488 -> -471, 70, 488 on air | 높은 나무에 올라가는 중
+      t9545 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: jungle_log x1
+      t9625 appeared at -471, 73, 488 on air | player -471, 68, 488 | 높은 나무에 올라가는 중
+      t9635 moved -471, 73, 488 -> -472, 71, 488 on air | 높은 나무에 올라가는 중
+      t9640 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.6 blocks from the player: jungle_log x1
+      t9755 appeared at -471, 74, 488 on air | player -471, 69, 488 | 높은 나무에 올라가는 중
+      t9765 moved -471, 74, 488 -> -472, 73, 488 on air | 높은 나무에 올라가는 중
+      t9770 gone 4.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.7 blocks from the player: jungle_log x1
+      t9830 appeared at -470, 74, 488 on air | player -471, 69, 488 | 높은 나무에 올라가는 중
+      t9835 moved -470, 74, 488 -> -470, 73, 488 on air | 높은 나무에 올라가는 중
+      t9840 moved -470, 73, 488 -> -470, 72, 488 on air | 높은 나무에 올라가는 중
+      t9845 gone 3.7 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.7 blocks from the player: jungle_log x1
+      t9910 appeared at -471, 75, 488 on air | player -471, 70, 488 | 높은 나무에 올라가는 중
+      t9920 moved -471, 75, 488 -> -470, 73, 488 on air | 높은 나무에 올라가는 중
+      t9925 gone 3.7 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.6 blocks from the player: jungle_log x1
+      t9935 appeared at -471, 75, 489 on air | player -471, 70, 488 | 높은 나무에 올라가는 중
+      t9945 moved -471, 75, 489 -> -471, 74, 489 on air | 높은 나무에 올라가는 중
+      t9950 gone 4.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: jungle_log x1
+      t9960 appeared at -470, 75, 488 on air | player -471, 70, 488 | 높은 나무에 올라가는 중
+      t9965 moved -470, 75, 488 -> -471, 74, 488 on air | 높은 나무에 올라가는 중
+      t9970 moved -471, 74, 488 -> -471, 73, 487 on vine | 높은 나무에 올라가는 중
+      t9975 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 5.5 blocks from the player: jungle_log x1
+      t10040 appeared at -468, 75, 488 on air | player -471, 71, 488 | 높은 나무에 올라가는 중
+      t10045 moved -468, 75, 488 -> -468, 74, 487 on air | 높은 나무에 올라가는 중
+      t10050 moved -468, 74, 487 -> -468, 72, 487 on air | 높은 나무에 올라가는 중
+      t10055 moved -468, 72, 487 -> -468, 70, 487 on air | 높은 나무에 올라가는 중
+      t10060 moved -468, 70, 487 -> -468, 66, 487 on air | 높은 나무에 올라가는 중
+      t10065 gone 5.5 blocks from the player | age 1 s | 높은 나무에 올라가는 중
+  gone 3.7 blocks from the player: jungle_log x1
+      t10065 appeared at -471, 76, 488 on air | player -471, 71, 488 | 높은 나무에 올라가는 중
+      t10075 moved -471, 76, 488 -> -472, 74, 487 on air | 높은 나무에 올라가는 중
+      t10080 gone 3.7 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.7 blocks from the player: jungle_log x1
+      t10090 appeared at -471, 76, 489 on air | player -471, 71, 488 | 높은 나무에 올라가는 중
+      t10100 moved -471, 76, 489 -> -471, 74, 489 on air | 높은 나무에 올라가는 중
+      t10105 gone 3.7 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.6 blocks from the player: jungle_log x1
+      t10115 appeared at -470, 76, 488 on air | player -471, 71, 488 | 높은 나무에 올라가는 중
+      t10125 moved -470, 76, 488 -> -470, 75, 488 on air | 높은 나무에 올라가는 중
+      t10130 gone 4.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: jungle_log x1
+      t10225 appeared at -471, 77, 488 on air | player -471, 72, 488 | 높은 나무에 올라가는 중
+      t10230 moved -471, 77, 488 -> -471, 77, 487 on air | 높은 나무에 올라가는 중
+      t10235 moved -471, 77, 487 -> -471, 75, 487 on air | 높은 나무에 올라가는 중
+      t10240 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: jungle_log x1
+      t10410 appeared at -471, 78, 488 on air | player -471, 73, 488 | 높은 나무에 올라가는 중
+      t10415 moved -471, 78, 488 -> -471, 77, 488 on air | 높은 나무에 올라가는 중
+      t10420 moved -471, 77, 488 -> -471, 76, 488 on air | 높은 나무에 올라가는 중
+      t10425 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.7 blocks from the player: jungle_log x1
+      t10435 appeared at -471, 78, 489 on air | player -471, 73, 488 | 높은 나무에 올라가는 중
+      t10445 moved -471, 78, 489 -> -471, 76, 489 on air | 높은 나무에 올라가는 중
+      t10450 gone 3.7 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: jungle_log x1
+      t10465 appeared at -471, 78, 488 on air | player -471, 73, 488 | 높은 나무에 올라가는 중
+      t10470 moved -471, 78, 488 -> -471, 77, 488 on air | 높은 나무에 올라가는 중
+      t10475 moved -471, 77, 488 -> -471, 76, 488 on air | 높은 나무에 올라가는 중
+      t10480 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.7 blocks from the player: jungle_log x1
+      t10565 appeared at -471, 79, 488 on air | player -471, 74, 488 | 높은 나무에 올라가는 중
+      t10570 moved -471, 79, 488 -> -471, 78, 488 on air | 높은 나무에 올라가는 중
+      t10575 moved -471, 78, 488 -> -470, 77, 488 on air | 높은 나무에 올라가는 중
+      t10580 gone 3.7 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: jungle_log x1
+      t10615 appeared at -470, 79, 488 on air | player -471, 74, 488 | 높은 나무에 올라가는 중
+      t10625 moved -470, 79, 488 -> -471, 77, 487 on air | 높은 나무에 올라가는 중
+      t10630 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: jungle_log x1
+      t10905 appeared at -472, 81, 488 on air | player -471, 76, 488 | 높은 나무에 올라가는 중
+      t10910 moved -472, 81, 488 -> -472, 80, 488 on air | 높은 나무에 올라가는 중
+      t10915 moved -472, 80, 488 -> -472, 79, 488 on air | 높은 나무에 올라가는 중
+      t10920 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 9.7 blocks from the player: jungle_log x1
+      t10950 appeared at -471, 81, 489 on air | player -471, 76, 488 | 높은 나무에 올라가는 중
+      t10960 moved -471, 81, 489 -> -471, 79, 490 on air | 높은 나무에 올라가는 중
+      t10965 moved -471, 79, 490 -> -471, 77, 490 on air | 높은 나무에 올라가는 중
+      t10970 moved -471, 77, 490 -> -471, 74, 490 on air | 높은 나무에 올라가는 중
+      t10975 moved -471, 74, 490 -> -471, 71, 490 on air | 높은 나무에 올라가는 중
+      t10980 moved -471, 71, 490 -> -471, 66, 490 on air | 높은 나무에 올라가는 중
+      t10985 gone 9.7 blocks from the player | age 1 s | 높은 나무에 올라가는 중
+  gone 4.5 blocks from the player: jungle_log x1
+      t10975 appeared at -470, 81, 488 on air | player -471, 76, 488 | 높은 나무에 올라가는 중
+      t10985 moved -470, 81, 488 -> -471, 80, 488 on air | 높은 나무에 올라가는 중
+      t10990 gone 4.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: jungle_log x1
+      t11055 appeared at -471, 82, 488 on air | player -471, 77, 488 | 높은 나무에 올라가는 중
+      t11065 moved -471, 82, 488 -> -471, 81, 488 on air | 높은 나무에 올라가는 중
+      t11070 moved -471, 81, 488 -> -471, 80, 488 on air | 높은 나무에 올라가는 중
+      t11075 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 10.9 blocks from the player: jungle_log x1
+      t11105 appeared at -470, 82, 488 on air | player -471, 77, 488 | 높은 나무에 올라가는 중
+      t11110 moved -470, 82, 488 -> -470, 81, 487 on air | 높은 나무에 올라가는 중
+      t11115 moved -470, 81, 487 -> -469, 80, 487 on air | 높은 나무에 올라가는 중
+      t11120 moved -469, 80, 487 -> -469, 77, 487 on air | 높은 나무에 올라가는 중
+      t11125 moved -469, 77, 487 -> -469, 74, 486 on air | 높은 나무에 올라가는 중
+      t11130 moved -469, 74, 486 -> -469, 70, 486 on air | 높은 나무에 올라가는 중
+      t11135 moved -469, 70, 486 -> -469, 66, 486 on air | 높은 나무에 올라가는 중
+      t11140 gone 10.9 blocks from the player | age 1 s | 높은 나무에 올라가는 중
+  gone 4.5 blocks from the player: jungle_log x1
+      t11125 appeared at -470, 82, 489 on air | player -471, 77, 488 | 높은 나무에 올라가는 중
+      t11135 moved -470, 82, 489 -> -471, 81, 488 on air | 높은 나무에 올라가는 중
+      t11140 gone 4.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.8 blocks from the player: jungle_log x1
+      t11270 appeared at -470, 83, 489 on air | player -471, 78, 488 | 높은 나무에 올라가는 중
+      t11280 moved -470, 83, 489 -> -470, 82, 489 on air | 높은 나무에 올라가는 중
+      t11285 moved -470, 82, 489 -> -470, 81, 489 on air | 높은 나무에 올라가는 중
+      t11290 gone 3.8 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.6 blocks from the player: jungle_log x1
+      t11360 appeared at -471, 84, 488 on air | player -471, 79, 488 | 높은 나무에 올라가는 중
+      t11365 moved -471, 84, 488 -> -471, 84, 487 on air | 높은 나무에 올라가는 중
+      t11370 moved -471, 84, 487 -> -471, 83, 487 on air | 높은 나무에 올라가는 중
+      t11375 gone 4.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.6 blocks from the player: jungle_log x1
+      t11385 appeared at -471, 84, 489 on air | player -471, 79, 488 | 높은 나무에 올라가는 중
+      t11395 moved -471, 84, 489 -> -471, 83, 489 on air | 높은 나무에 올라가는 중
+      t11400 gone 4.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: jungle_log x1
+      t11410 appeared at -470, 84, 488 on air | player -471, 79, 488 | 높은 나무에 올라가는 중
+      t11420 moved -470, 84, 488 -> -471, 82, 488 on air | 높은 나무에 올라가는 중
+      t11425 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.5 blocks from the player: jungle_log x1
+      t11510 appeared at -471, 85, 489 on air | player -471, 80, 488 | 높은 나무에 올라가는 중
+      t11520 moved -471, 85, 489 -> -471, 84, 488 on air | 높은 나무에 올라가는 중
+      t11525 gone 4.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.6 blocks from the player: jungle_log x1
+      t11555 appeared at -470, 85, 489 on air | player -471, 80, 488 | 떨어진 원목 먼저 주우러 내려가는 중
+      t11565 moved -470, 85, 489 -> -471, 84, 489 on air | 떨어진 원목 먼저 주우러 내려가는 중
+      t11570 gone 4.6 blocks from the player | age 0 s | 떨어진 원목 먼저 주우러 내려가는 중
+  gone 3.5 blocks from the player: jungle_log x1
+      t13235 appeared at -471, 86, 488 on air | player -471, 81, 488 | 나무에서 내려오는 중
+      t13245 moved -471, 86, 488 -> -471, 84, 488 on air | 나무에서 내려오는 중
+      t13250 gone 3.5 blocks from the player | age 0 s | 나무에서 내려오는 중
+LOSS: cut 149, chest 151, inventory 0, missing 0 (0.0%); 2 logs in 1 stacks on the ground [2@-468, 59, 485], saplings on the ground 0
+  tree: jungle 1x at -470, 64, 497: all cut from the ground (0 logs left)
+  tree: jungle 1x at -468, 64, 495: all cut from the ground (0 logs left)
+  tree: oak 1x at -463, 63, 495: all cut from the ground (0 logs left)
+  tree: jungle 1x at -460, 63, 495: all cut (0 logs left)
+  tree: jungle 1x at -457, 64, 493: all cut from the ground (0 logs left)
+  tree: jungle 1x at -458, 63, 490: all cut from the ground (0 logs left)
+  tree: jungle 1x at -463, 67, 499: all cut from the ground (0 logs left)
+  tree: jungle 1x at -465, 68, 501: all cut from the ground (0 logs left)
+  tree: oak 1x at -469, 67, 501: all cut (0 logs left)
+  tree: jungle 1x at -461, 69, 503: all cut from the ground (0 logs left)
+  tree: jungle 1x at -459, 69, 503: rest is out of reach below (2 logs left)
+  tree: jungle 1x at -459, 69, 503: left after the last look from the ground (2 logs left)
+  tree: jungle 1x at -458, 68, 502: all cut from the ground (0 logs left)
+  tree: jungle 4x at -471, 63, 488: rest is out of reach below (1 logs left)
+  tree: jungle 4x at -471, 63, 488: left after the last look from the ground (1 logs left)

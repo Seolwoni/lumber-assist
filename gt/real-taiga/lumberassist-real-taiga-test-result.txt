@@ -1,0 +1,524 @@
+RESULT: PASS
+
+biome ResourceKey[minecraft:worldgen/biome / minecraft:old_growth_spruce_taiga] at 800, 544: best patch score 30
+area x 808..823, z 536..551, corner ground heights 92 and 95 (trunk columns 30)
+before: logs=164 (12 trunk columns), ground from y 91 to 102
+chest at 806, 94, 528
+trees found at the start: 6
+t=40 pos=811, 95, 532 status=나무 베는 중 (가문비나무) trees=0
+t=80 pos=813, 96, 540 status=나무 베는 중 (가문비나무) trees=0
+t=120 pos=814, 96, 541 status=나무 베는 중 (가문비나무) trees=0
+t=160 pos=814, 96, 541 status=나무 베는 중 (가문비나무) trees=0
+t=200 pos=814, 96, 541 status=나무 베는 중 (가문비나무) trees=0
+t=240 pos=814, 96, 541 status=나무 베는 중 (가문비나무) trees=0
+t=280 pos=814, 96, 541 status=나무 베는 중 (가문비나무) trees=0
+t=320 pos=814, 96, 541 status=나무 베는 중 (가문비나무) trees=0
+t=360 pos=814, 96, 541 status=나무 베는 중 (가문비나무) trees=0
+t=400 pos=814, 96, 541 status=나무 베는 중 (가문비나무) trees=0
+t=440 pos=814, 96, 541 status=나무 베는 중 (가문비나무) trees=0
+t=480 pos=814, 96, 541 status=나무 베는 중 (가문비나무) trees=0
+t=520 pos=814, 96, 541 status=나무 베는 중 (가문비나무) trees=0
+t=560 pos=814, 96, 541 status=나무 베는 중 (가문비나무) trees=0
+t=600 pos=814, 96, 541 status=높은 나무에 올라가는 중 trees=0
+t=640 pos=815, 96, 542 status=높은 나무에 올라가는 중 trees=0
+t=680 pos=815, 97, 542 status=높은 나무에 올라가는 중 trees=0
+t=720 pos=815, 97, 542 status=높은 나무에 올라가는 중 trees=0
+t=760 pos=815, 97, 542 status=높은 나무에 올라가는 중 trees=0
+t=800 pos=815, 97, 542 status=높은 나무에 올라가는 중 trees=0
+t=840 pos=815, 98, 542 status=높은 나무에 올라가는 중 trees=0
+t=880 pos=815, 98, 542 status=높은 나무에 올라가는 중 trees=0
+t=920 pos=815, 98, 542 status=높은 나무에 올라가는 중 trees=0
+t=960 pos=815, 98, 542 status=높은 나무에 올라가는 중 trees=0
+t=1000 pos=815, 99, 542 status=높은 나무에 올라가는 중 trees=0
+t=1040 pos=815, 99, 542 status=높은 나무에 올라가는 중 trees=0
+t=1080 pos=815, 99, 542 status=높은 나무에 올라가는 중 trees=0
+t=1120 pos=815, 100, 542 status=높은 나무에 올라가는 중 trees=0
+t=1160 pos=815, 100, 542 status=높은 나무에 올라가는 중 trees=0
+t=1200 pos=815, 100, 542 status=높은 나무에 올라가는 중 trees=0
+t=1240 pos=815, 100, 542 status=높은 나무에 올라가는 중 trees=0
+t=1280 pos=815, 101, 542 status=높은 나무에 올라가는 중 trees=0
+t=1320 pos=815, 101, 542 status=높은 나무에 올라가는 중 trees=0
+t=1360 pos=815, 101, 542 status=높은 나무에 올라가는 중 trees=0
+t=1400 pos=815, 101, 542 status=높은 나무에 올라가는 중 trees=0
+t=1440 pos=815, 102, 542 status=높은 나무에 올라가는 중 trees=0
+t=1480 pos=815, 102, 542 status=높은 나무에 올라가는 중 trees=0
+t=1520 pos=815, 102, 542 status=높은 나무에 올라가는 중 trees=0
+t=1560 pos=815, 102, 542 status=높은 나무에 올라가는 중 trees=0
+t=1600 pos=815, 103, 542 status=높은 나무에 올라가는 중 trees=0
+t=1640 pos=815, 103, 542 status=높은 나무에 올라가는 중 trees=0
+t=1680 pos=815, 103, 542 status=높은 나무에 올라가는 중 trees=0
+t=1720 pos=815, 104, 542 status=높은 나무에 올라가는 중 trees=0
+t=1760 pos=815, 104, 542 status=높은 나무에 올라가는 중 trees=0
+t=1800 pos=815, 104, 542 status=높은 나무에 올라가는 중 trees=0
+t=1840 pos=815, 104, 542 status=높은 나무에 올라가는 중 trees=0
+t=1880 pos=815, 105, 542 status=높은 나무에 올라가는 중 trees=0
+t=1920 pos=815, 105, 542 status=높은 나무에 올라가는 중 trees=0
+t=1960 pos=815, 105, 542 status=높은 나무에 올라가는 중 trees=0
+t=2000 pos=815, 106, 542 status=높은 나무에 올라가는 중 trees=0
+t=2040 pos=815, 106, 542 status=높은 나무에 올라가는 중 trees=0
+t=2080 pos=815, 106, 542 status=높은 나무에 올라가는 중 trees=0
+t=2120 pos=815, 106, 542 status=높은 나무에 올라가는 중 trees=0
+t=2160 pos=815, 107, 542 status=높은 나무에 올라가는 중 trees=0
+t=2200 pos=815, 107, 542 status=높은 나무에 올라가는 중 trees=0
+t=2240 pos=815, 107, 542 status=높은 나무에 올라가는 중 trees=0
+t=2280 pos=815, 108, 542 status=높은 나무에 올라가는 중 trees=0
+t=2320 pos=815, 108, 542 status=높은 나무에 올라가는 중 trees=0
+t=2360 pos=815, 108, 542 status=높은 나무에 올라가는 중 trees=0
+t=2400 pos=815, 108, 542 status=높은 나무에 올라가는 중 trees=0
+t=2440 pos=815, 109, 542 status=높은 나무에 올라가는 중 trees=0
+t=2480 pos=815, 109, 542 status=높은 나무에 올라가는 중 trees=0
+t=2520 pos=815, 109, 542 status=높은 나무에 올라가는 중 trees=0
+t=2560 pos=815, 109, 542 status=높은 나무에 올라가는 중 trees=0
+t=2600 pos=815, 110, 542 status=높은 나무에 올라가는 중 trees=0
+t=2640 pos=815, 110, 542 status=나무에서 내려오는 중 trees=0
+t=2680 pos=815, 110, 542 status=나무에서 내려오는 중 trees=0
+t=2720 pos=815, 110, 542 status=나무에서 내려오는 중 trees=0
+t=2760 pos=815, 109, 542 status=나무에서 내려오는 중 trees=0
+t=2800 pos=815, 109, 542 status=나무에서 내려오는 중 trees=0
+t=2840 pos=815, 108, 542 status=나무에서 내려오는 중 trees=0
+t=2880 pos=815, 108, 542 status=나무에서 내려오는 중 trees=0
+t=2920 pos=815, 107, 542 status=나무에서 내려오는 중 trees=0
+t=2960 pos=815, 107, 542 status=나무에서 내려오는 중 trees=0
+t=3000 pos=815, 106, 542 status=나무에서 내려오는 중 trees=0
+t=3040 pos=815, 105, 542 status=나무에서 내려오는 중 trees=0
+t=3080 pos=815, 105, 542 status=나무에서 내려오는 중 trees=0
+t=3120 pos=815, 104, 542 status=나무에서 내려오는 중 trees=0
+t=3160 pos=815, 104, 542 status=나무에서 내려오는 중 trees=0
+t=3200 pos=815, 103, 542 status=나무에서 내려오는 중 trees=0
+t=3240 pos=815, 102, 542 status=나무에서 내려오는 중 trees=0
+t=3280 pos=815, 101, 542 status=나무에서 내려오는 중 trees=0
+t=3320 pos=815, 100, 542 status=나무에서 내려오는 중 trees=0
+t=3360 pos=815, 99, 542 status=나무에서 내려오는 중 trees=0
+t=3400 pos=815, 97, 542 status=나무에서 내려오는 중 trees=0
+t=3440 pos=815, 96, 542 status=나무 밑에 떨어진 것 줍는 중 trees=0
+t=3480 pos=814, 96, 544 status=나무 밑에 떨어진 것 줍는 중 trees=0
+t=3520 pos=817, 97, 542 status=나무 밑에 떨어진 것 줍는 중 trees=0
+t=3560 pos=814, 96, 541 status=묘목을 얻으려고 나뭇잎 치는 중 trees=1
+t=3600 pos=814, 96, 541 status=묘목을 얻으려고 나뭇잎 치는 중 trees=1
+t=3640 pos=814, 96, 541 status=묘목을 얻으려고 나뭇잎 치는 중 trees=1
+t=3680 pos=814, 96, 541 status=묘목을 얻으려고 나뭇잎 치는 중 trees=1
+t=3720 pos=814, 96, 541 status=묘목을 얻으려고 나뭇잎 치는 중 trees=1
+t=3760 pos=814, 96, 545 status=묘목을 얻으려고 나뭇잎 치는 중 trees=1
+t=3800 pos=814, 96, 541 status=묘목을 얻으려고 나뭇잎 치는 중 trees=1
+t=3840 pos=813, 96, 542 status=나무 베는 중 (가문비나무) trees=1
+t=3880 pos=811, 95, 543 status=나무 베는 중 (가문비나무) trees=1
+t=3920 pos=811, 95, 543 status=나무 베는 중 (가문비나무) trees=1
+t=3960 pos=811, 95, 543 status=나무 베는 중 (가문비나무) trees=1
+t=4000 pos=810, 95, 543 status=높은 나무에 올라가는 중 trees=1
+t=4040 pos=810, 96, 544 status=높은 나무에 올라가는 중 trees=1
+t=4080 pos=810, 96, 544 status=높은 나무에 올라가는 중 trees=1
+t=4120 pos=810, 97, 544 status=높은 나무에 올라가는 중 trees=1
+t=4160 pos=810, 97, 544 status=나무에서 내려오는 중 trees=1
+t=4200 pos=810, 96, 544 status=나무에서 내려오는 중 trees=1
+t=4240 pos=809, 95, 544 status=나무 밑에 떨어진 것 줍는 중 trees=2
+t=4280 pos=809, 95, 544 status=나무 베는 중 (가문비나무) trees=2
+t=4320 pos=815, 96, 545 status=나무 베는 중 (가문비나무) trees=2
+t=4360 pos=815, 96, 545 status=나무 베는 중 (가문비나무) trees=2
+t=4400 pos=815, 96, 545 status=나무 베는 중 (가문비나무) trees=2
+t=4440 pos=815, 96, 545 status=나무 베는 중 (가문비나무) trees=2
+t=4480 pos=815, 96, 545 status=나무 베는 중 (가문비나무) trees=2
+t=4520 pos=815, 96, 545 status=나무 베는 중 (가문비나무) trees=2
+t=4560 pos=815, 96, 545 status=나무 베는 중 (가문비나무) trees=2
+t=4600 pos=815, 96, 545 status=나무 베는 중 (가문비나무) trees=2
+t=4640 pos=815, 96, 545 status=나무 베는 중 (가문비나무) trees=2
+t=4680 pos=815, 96, 545 status=높은 나무에 올라가는 중 trees=2
+t=4720 pos=815, 96, 545 status=높은 나무에 올라가는 중 trees=2
+t=4760 pos=815, 96, 545 status=높은 나무에 올라가는 중 trees=2
+t=4800 pos=815, 96, 545 status=높은 나무에 올라가는 중 trees=2
+t=4840 pos=815, 96, 545 status=높은 나무에 올라가는 중 trees=2
+t=4880 pos=815, 96, 545 status=높은 나무에 올라가는 중 trees=2
+t=4920 pos=815, 96, 545 status=높은 나무에 올라가는 중 trees=2
+t=4960 pos=815, 96, 545 status=높은 나무에 올라가는 중 trees=2
+t=5000 pos=815, 97, 545 status=높은 나무에 올라가는 중 trees=2
+t=5040 pos=815, 97, 545 status=높은 나무에 올라가는 중 trees=2
+t=5080 pos=815, 98, 545 status=높은 나무에 올라가는 중 trees=2
+t=5120 pos=815, 98, 545 status=나무에서 내려오는 중 trees=2
+t=5160 pos=815, 97, 545 status=나무에서 내려오는 중 trees=2
+t=5200 pos=815, 96, 545 status=나무 밑에 떨어진 것 줍는 중 trees=2
+t=5240 pos=815, 96, 545 status=나무 밑에 떨어진 것 줍는 중 trees=2
+t=5280 pos=815, 96, 545 status=나무 밑에 떨어진 것 줍는 중 trees=2
+t=5320 pos=815, 96, 545 status=나무 밑에 떨어진 것 줍는 중 trees=2
+t=5360 pos=815, 96, 545 status=나무 밑에 떨어진 것 줍는 중 trees=2
+t=5400 pos=815, 96, 545 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=5440 pos=815, 96, 545 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=5480 pos=815, 96, 545 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=5520 pos=815, 96, 545 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=5560 pos=815, 96, 545 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=5600 pos=815, 96, 545 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=5640 pos=815, 96, 545 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=5680 pos=817, 96, 547 status=묘목을 얻으려고 나뭇잎 치는 중 trees=3
+t=5720 pos=815, 96, 546 status=나무 베는 중 (가문비나무) trees=3
+t=5760 pos=813, 96, 550 status=나무 베는 중 (가문비나무) trees=3
+t=5800 pos=813, 96, 550 status=나무 베는 중 (가문비나무) trees=3
+t=5840 pos=813, 96, 550 status=나무 베는 중 (가문비나무) trees=3
+t=5880 pos=813, 96, 550 status=나무 베는 중 (가문비나무) trees=3
+t=5920 pos=814, 97, 551 status=높은 나무에 올라가는 중 trees=3
+t=5960 pos=814, 97, 551 status=높은 나무에 올라가는 중 trees=3
+t=6000 pos=814, 98, 551 status=높은 나무에 올라가는 중 trees=3
+t=6040 pos=814, 98, 551 status=나무에서 내려오는 중 trees=3
+t=6080 pos=814, 97, 551 status=나무에서 내려오는 중 trees=3
+t=6120 pos=814, 97, 551 status=나무에서 내려오는 중 trees=3
+t=6160 pos=814, 96, 550 status=나무 밑에 떨어진 것 줍는 중 trees=3
+t=6200 pos=814, 96, 550 status=나무 밑에 떨어진 것 줍는 중 trees=3
+t=6240 pos=814, 96, 550 status=나무 밑에 떨어진 것 줍는 중 trees=3
+t=6280 pos=814, 96, 550 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=6320 pos=814, 96, 550 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=6360 pos=814, 96, 550 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=6400 pos=814, 96, 550 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=6440 pos=814, 96, 550 status=묘목을 얻으려고 나뭇잎 치는 중 trees=4
+t=6480 pos=814, 96, 550 status=나무 베는 중 (가문비나무) trees=4
+t=6520 pos=819, 96, 551 status=나무 베는 중 (가문비나무) trees=4
+t=6560 pos=819, 96, 551 status=나무 베는 중 (가문비나무) trees=4
+t=6600 pos=821, 96, 551 status=나무 베는 중 (가문비나무) trees=4
+t=6640 pos=821, 96, 551 status=나무 베는 중 (가문비나무) trees=4
+t=6680 pos=821, 96, 551 status=나무 베는 중 (가문비나무) trees=4
+t=6720 pos=822, 95, 551 status=나무 베는 중 (가문비나무) trees=4
+t=6760 pos=822, 95, 551 status=나무 베는 중 (가문비나무) trees=4
+t=6800 pos=822, 95, 551 status=나무 베는 중 (가문비나무) trees=4
+t=6840 pos=823, 95, 551 status=높은 나무에 올라가는 중 trees=4
+t=6880 pos=823, 96, 551 status=높은 나무에 올라가는 중 trees=4
+t=6920 pos=823, 96, 551 status=나무에서 내려오는 중 trees=4
+t=6960 pos=822, 95, 551 status=나무 밑에 떨어진 것 줍는 중 trees=5
+t=7000 pos=822, 95, 551 status=나무 베는 중 (가문비나무) trees=5
+t=7040 pos=820, 98, 548 status=나무 베는 중 (가문비나무) trees=5
+t=7080 pos=819, 99, 540 status=나무 베는 중 (가문비나무) trees=5
+t=7120 pos=819, 99, 540 status=나무 베는 중 (가문비나무) trees=5
+t=7160 pos=819, 99, 540 status=나무 베는 중 (가문비나무) trees=5
+t=7200 pos=819, 99, 540 status=나무 베는 중 (가문비나무) trees=5
+t=7240 pos=819, 99, 540 status=나무 베는 중 (가문비나무) trees=5
+t=7280 pos=819, 99, 540 status=나무 베는 중 (가문비나무) trees=5
+t=7320 pos=819, 99, 540 status=나무 베는 중 (가문비나무) trees=5
+t=7360 pos=819, 99, 540 status=나무 베는 중 (가문비나무) trees=5
+t=7400 pos=819, 99, 540 status=나무 베는 중 (가문비나무) trees=5
+t=7440 pos=819, 99, 540 status=나무 베는 중 (가문비나무) trees=5
+t=7480 pos=819, 99, 540 status=나무 베는 중 (가문비나무) trees=5
+t=7520 pos=819, 99, 540 status=나무 베는 중 (가문비나무) trees=5
+t=7560 pos=819, 99, 540 status=나무 베는 중 (가문비나무) trees=5
+t=7600 pos=819, 99, 540 status=높은 나무에 올라가는 중 trees=5
+t=7640 pos=819, 99, 540 status=높은 나무에 올라가는 중 trees=5
+t=7680 pos=819, 99, 540 status=높은 나무에 올라가는 중 trees=5
+t=7720 pos=819, 99, 540 status=높은 나무에 올라가는 중 trees=5
+t=7760 pos=819, 99, 540 status=높은 나무에 올라가는 중 trees=5
+t=7800 pos=819, 99, 540 status=높은 나무에 올라가는 중 trees=5
+t=7840 pos=819, 99, 540 status=높은 나무에 올라가는 중 trees=5
+t=7880 pos=819, 99, 540 status=높은 나무에 올라가는 중 trees=5
+t=7920 pos=819, 99, 540 status=높은 나무에 올라가는 중 trees=5
+t=7960 pos=819, 99, 540 status=높은 나무에 올라가는 중 trees=5
+t=8000 pos=819, 99, 540 status=높은 나무에 올라가는 중 trees=5
+t=8040 pos=819, 100, 540 status=높은 나무에 올라가는 중 trees=5
+t=8080 pos=819, 100, 540 status=높은 나무에 올라가는 중 trees=5
+t=8120 pos=819, 101, 540 status=높은 나무에 올라가는 중 trees=5
+t=8160 pos=819, 101, 540 status=높은 나무에 올라가는 중 trees=5
+t=8200 pos=819, 101, 540 status=높은 나무에 올라가는 중 trees=5
+t=8240 pos=819, 101, 540 status=높은 나무에 올라가는 중 trees=5
+t=8280 pos=819, 102, 540 status=높은 나무에 올라가는 중 trees=5
+t=8320 pos=819, 102, 540 status=높은 나무에 올라가는 중 trees=5
+t=8360 pos=819, 102, 540 status=높은 나무에 올라가는 중 trees=5
+t=8400 pos=819, 103, 540 status=높은 나무에 올라가는 중 trees=5
+t=8440 pos=819, 103, 540 status=높은 나무에 올라가는 중 trees=5
+t=8480 pos=819, 103, 540 status=높은 나무에 올라가는 중 trees=5
+t=8520 pos=819, 104, 540 status=높은 나무에 올라가는 중 trees=5
+t=8560 pos=819, 104, 540 status=높은 나무에 올라가는 중 trees=5
+t=8600 pos=819, 104, 540 status=높은 나무에 올라가는 중 trees=5
+t=8640 pos=819, 104, 540 status=높은 나무에 올라가는 중 trees=5
+t=8680 pos=819, 105, 540 status=높은 나무에 올라가는 중 trees=5
+t=8720 pos=819, 105, 540 status=높은 나무에 올라가는 중 trees=5
+t=8760 pos=819, 105, 540 status=높은 나무에 올라가는 중 trees=5
+t=8800 pos=819, 106, 540 status=높은 나무에 올라가는 중 trees=5
+t=8840 pos=819, 106, 540 status=높은 나무에 올라가는 중 trees=5
+t=8880 pos=819, 107, 540 status=높은 나무에 올라가는 중 trees=5
+t=8920 pos=819, 107, 540 status=높은 나무에 올라가는 중 trees=5
+t=8960 pos=819, 107, 540 status=높은 나무에 올라가는 중 trees=5
+t=9000 pos=819, 108, 540 status=높은 나무에 올라가는 중 trees=5
+t=9040 pos=819, 108, 540 status=높은 나무에 올라가는 중 trees=5
+t=9080 pos=819, 108, 540 status=높은 나무에 올라가는 중 trees=5
+t=9120 pos=819, 108, 540 status=높은 나무에 올라가는 중 trees=5
+t=9160 pos=819, 109, 540 status=높은 나무에 올라가는 중 trees=5
+t=9200 pos=819, 109, 540 status=높은 나무에 올라가는 중 trees=5
+t=9240 pos=819, 109, 540 status=높은 나무에 올라가는 중 trees=5
+t=9280 pos=819, 110, 540 status=높은 나무에 올라가는 중 trees=5
+t=9320 pos=819, 110, 540 status=높은 나무에 올라가는 중 trees=5
+t=9360 pos=819, 110, 540 status=높은 나무에 올라가는 중 trees=5
+t=9400 pos=819, 110, 540 status=높은 나무에 올라가는 중 trees=5
+t=9440 pos=819, 110, 540 status=높은 나무에 올라가는 중 trees=5
+t=9480 pos=819, 111, 540 status=높은 나무에 올라가는 중 trees=5
+t=9520 pos=819, 111, 540 status=높은 나무에 올라가는 중 trees=5
+t=9560 pos=819, 111, 540 status=나무에서 내려오는 중 trees=5
+t=9600 pos=819, 110, 540 status=나무에서 내려오는 중 trees=5
+t=9640 pos=819, 110, 540 status=나무에서 내려오는 중 trees=5
+t=9680 pos=819, 110, 540 status=나무에서 내려오는 중 trees=5
+t=9720 pos=819, 109, 540 status=나무에서 내려오는 중 trees=5
+t=9760 pos=819, 109, 540 status=나무에서 내려오는 중 trees=5
+t=9800 pos=819, 108, 540 status=나무에서 내려오는 중 trees=5
+t=9840 pos=819, 108, 540 status=나무에서 내려오는 중 trees=5
+t=9880 pos=819, 107, 540 status=나무에서 내려오는 중 trees=5
+t=9920 pos=819, 107, 540 status=나무에서 내려오는 중 trees=5
+t=9960 pos=819, 106, 540 status=나무에서 내려오는 중 trees=5
+t=10000 pos=819, 106, 540 status=나무에서 내려오는 중 trees=5
+t=10040 pos=819, 106, 540 status=나무에서 내려오는 중 trees=5
+t=10080 pos=819, 105, 540 status=나무에서 내려오는 중 trees=5
+t=10120 pos=819, 105, 540 status=나무에서 내려오는 중 trees=5
+t=10160 pos=819, 104, 540 status=나무에서 내려오는 중 trees=5
+t=10200 pos=819, 104, 540 status=나무에서 내려오는 중 trees=5
+t=10240 pos=819, 103, 540 status=나무에서 내려오는 중 trees=5
+t=10280 pos=819, 102, 540 status=나무에서 내려오는 중 trees=5
+t=10320 pos=819, 101, 540 status=나무 밑에 떨어진 것 줍는 중 trees=5
+t=10360 pos=819, 101, 540 status=나무 밑에 떨어진 것 줍는 중 trees=5
+t=10400 pos=819, 101, 540 status=나무 밑에 떨어진 것 줍는 중 trees=5
+t=10440 pos=819, 101, 540 status=나무 밑에 떨어진 것 줍는 중 trees=5
+t=10480 pos=820, 101, 539 status=나무 밑에 떨어진 것 줍는 중 trees=5
+t=10520 pos=820, 101, 538 status=나무 밑에 떨어진 것 줍는 중 trees=5
+t=10560 pos=821, 101, 537 status=묘목을 얻으려고 나뭇잎 치는 중 trees=6
+t=10600 pos=821, 101, 536 status=묘목을 얻으려고 나뭇잎 치는 중 trees=6
+t=10640 pos=821, 101, 536 status=묘목을 얻으려고 나뭇잎 치는 중 trees=6
+t=10680 pos=821, 101, 536 status=묘목을 얻으려고 나뭇잎 치는 중 trees=6
+t=10720 pos=821, 101, 536 status=묘목을 얻으려고 나뭇잎 치는 중 trees=6
+t=10760 pos=821, 101, 536 status=묘목을 얻으려고 나뭇잎 치는 중 trees=6
+t=10800 pos=821, 101, 536 status=묘목을 얻으려고 나뭇잎 치는 중 trees=6
+t=10840 pos=821, 101, 536 status=떨어진 묘목·사과 줍는 중 trees=6
+t=10880 pos=820, 102, 539 status=떨어진 묘목·사과 줍는 중 trees=6
+t=10920 pos=819, 101, 540 status=떨어진 묘목·사과 줍는 중 trees=6
+t=10960 pos=819, 102, 540 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11000 pos=819, 102, 540 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11040 pos=819, 101, 540 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11080 pos=819, 102, 540 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11120 pos=819, 101, 540 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11160 pos=819, 101, 540 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11200 pos=819, 101, 540 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11240 pos=819, 101, 540 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11280 pos=821, 98, 546 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11320 pos=823, 98, 548 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11360 pos=823, 98, 548 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11400 pos=823, 97, 548 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11440 pos=823, 98, 548 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11480 pos=823, 97, 548 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11520 pos=820, 98, 549 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11560 pos=815, 96, 551 status=떨어진 묘목·사과 줍는 중 trees=6
+t=11600 pos=813, 97, 552 status=상자에 보관하러 가는 중 trees=6
+t=11640 pos=813, 96, 546 status=상자에 보관하는 중 trees=6
+t=11680 pos=812, 95, 536 status=상자에 보관하는 중 trees=6
+t=11720 pos=808, 94, 530 status=상자에 보관하는 중 trees=6
+t=11760 pos=809, 95, 531 status=빈 자리에 묘목 심는 중 (2곳) trees=6
+t=11800 pos=813, 95, 539 status=빈 자리에 묘목 심는 중 (2곳) trees=6
+t=11840 pos=816, 96, 546 status=빈 자리에 묘목 심는 중 (2곳) trees=6
+t=11880 pos=815, 96, 545 status=빈 자리에 묘목 심는 중 (2곳) trees=6
+t=11920 pos=815, 96, 550 status=빈 자리에 묘목 심는 중 (2곳) trees=6
+t=11960 pos=815, 96, 550 status=다음 바퀴까지 4분 58초 trees=6
+ended after 11960 ticks (598 s), running=true waiting=true lastStop=
+timing: 40 ticks took 2130 ms on average (game speed 94%), slowest 4001 ms, server tick 1.9 ms
+path: walks=24 arrived=9 gaveUp=14 {갈 수 있는 길이 없어요=14} plans=41 notFound=28 gaveUpGoals=[GoalBlock{x=816,y=96,z=546} from 815, 96, 545, GoalBlock{x=817,y=96,z=547} from 815, 96, 545, GoalBlock{x=817,y=96,z=547} from 815, 96, 545, GoalBlock{x=817,y=96,z=547} from 815, 96, 545, GoalBlock{x=817,y=96,z=547} from 815, 96, 545, GoalBlock{x=817,y=96,z=547} from 815, 96, 545, GoalBlock{x=822,y=95,z=551} from 819, 96, 551, GoalBlock{x=820,y=100,z=539} from 819, 99, 540, GoalBlock{x=820,y=101,z=537} from 819, 99, 540, GoalBlock{x=820,y=101,z=537} from 819, 99, 540, GoalBlock{x=820,y=101,z=537} from 819, 99, 540, GoalBlock{x=820,y=101,z=538} from 819, 101, 540] waitTicks=55 walkTicks=793 slowestPlan=155ms
+walk: 127 blocks in 33 s = 3.87 blocks/s, sprinting 31%, sprint-jumps 0
+defense: flees=0 dodges=0 creeperEscapes=0 fights=0 kills=0 hitsTaken=0 lowestHealth=20.0 unreachableTicks=0 fightsGivenUp=0 giveUp=null night=false
+trees=6 planted=9 logs=164 trips=1
+  logs spruce: 164
+player at 815, 96, 550 health 20.0
+after: logs=0 (0 trunk columns), saplings=9, pillar dirt left=0
+logs in chest = 162
+LOGS: picked up 121, lost 1 (lying), despawned 1, other 43
+  missing 1: DESPAWNED (5 min on the ground) / landed on air / appeared while: 나무에서 내려오는 중
+  missing 1: LOST (still lying there) / landed on air / appeared while: 나무에서 내려오는 중
+  missing 10: gone / landed on air / appeared while: 나무 베는 중 (가문비나무)
+  missing 1: gone / landed on air / appeared while: 나무에서 내려오는 중
+  missing 32: gone / landed on air / appeared while: 높은 나무에 올라가는 중
+  gone 3.0 blocks from the player: spruce_log x1
+      t260 appeared at 816, 97, 543 on air | player 814, 96, 541 | 나무 베는 중 (가문비나무)
+      t270 gone 3.0 blocks from the player | age 0 s | 나무 베는 중 (가문비나무)
+  gone 3.7 blocks from the player: spruce_log x1
+      t370 appeared at 815, 99, 542 on air | player 814, 96, 541 | 나무 베는 중 (가문비나무)
+      t380 gone 3.7 blocks from the player | age 0 s | 나무 베는 중 (가문비나무)
+  gone 3.2 blocks from the player: spruce_log x1
+      t390 appeared at 815, 99, 543 on air | player 814, 96, 541 | 나무 베는 중 (가문비나무)
+      t395 moved 815, 99, 543 -> 815, 98, 543 on air | 나무 베는 중 (가문비나무)
+      t400 gone 3.2 blocks from the player | age 0 s | 나무 베는 중 (가문비나무)
+  gone 3.7 blocks from the player: spruce_log x1
+      t465 appeared at 815, 100, 542 on air | player 814, 96, 541 | 나무 베는 중 (가문비나무)
+      t470 moved 815, 100, 542 -> 815, 99, 542 on air | 나무 베는 중 (가문비나무)
+      t475 gone 3.7 blocks from the player | age 0 s | 나무 베는 중 (가문비나무)
+  gone 3.7 blocks from the player: spruce_log x1
+      t555 appeared at 815, 101, 542 on air | player 814, 96, 541 | 나무 베는 중 (가문비나무)
+      t565 moved 815, 101, 542 -> 815, 99, 542 on air | 나무 베는 중 (가문비나무)
+      t570 gone 3.7 blocks from the player | age 0 s | 나무 베는 중 (가문비나무)
+  gone 4.6 blocks from the player: spruce_log x1
+      t575 appeared at 815, 101, 543 on air | player 814, 96, 541 | 나무 베는 중 (가문비나무)
+      t580 moved 815, 101, 543 -> 814, 101, 542 on air | 나무 베는 중 (가문비나무)
+      t585 moved 814, 101, 542 -> 814, 100, 542 on air | 나무 베는 중 (가문비나무)
+      t590 gone 4.6 blocks from the player | age 0 s | 나무 베는 중 (가문비나무)
+  gone 3.7 blocks from the player: spruce_log x1
+      t600 appeared at 816, 101, 542 on air | player 814, 96, 541 | 높은 나무에 올라가는 중
+      t605 moved 816, 101, 542 -> 816, 100, 542 on air | 높은 나무에 올라가는 중
+      t610 moved 816, 100, 542 -> 816, 99, 543 on air | 높은 나무에 올라가는 중
+      t615 gone 3.7 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: spruce_log x1
+      t635 appeared at 816, 101, 543 on air | player 815, 96, 542 | 높은 나무에 올라가는 중
+      t640 moved 816, 101, 543 -> 815, 100, 542 on air | 높은 나무에 올라가는 중
+      t645 moved 815, 100, 542 -> 815, 99, 542 on air | 높은 나무에 올라가는 중
+      t650 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.5 blocks from the player: spruce_log x1
+      t730 appeared at 815, 102, 542 on air | player 815, 97, 542 | 높은 나무에 올라가는 중
+      t740 moved 815, 102, 542 -> 815, 101, 542 on air | 높은 나무에 올라가는 중
+      t745 gone 4.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: spruce_log x1
+      t755 appeared at 815, 102, 543 on air | player 815, 97, 542 | 높은 나무에 올라가는 중
+      t760 moved 815, 102, 543 -> 815, 102, 542 on air | 높은 나무에 올라가는 중
+      t765 moved 815, 102, 542 -> 815, 100, 542 on air | 높은 나무에 올라가는 중
+      t770 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: spruce_log x1
+      t805 appeared at 816, 102, 543 on air | player 815, 97, 542 | 높은 나무에 올라가는 중
+      t815 moved 816, 102, 543 -> 816, 100, 542 on air | 높은 나무에 올라가는 중
+      t820 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: spruce_log x1
+      t870 appeared at 815, 103, 542 on air | player 815, 98, 542 | 높은 나무에 올라가는 중
+      t880 moved 815, 103, 542 -> 815, 101, 542 on air | 높은 나무에 올라가는 중
+      t885 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: spruce_log x1
+      t905 appeared at 815, 103, 543 on air | player 815, 98, 542 | 높은 나무에 올라가는 중
+      t910 moved 815, 103, 543 -> 815, 102, 543 on air | 높은 나무에 올라가는 중
+      t915 moved 815, 102, 543 -> 815, 101, 543 on air | 높은 나무에 올라가는 중
+      t920 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: spruce_log x1
+      t1020 appeared at 815, 104, 542 on air | player 815, 99, 542 | 높은 나무에 올라가는 중
+      t1030 moved 815, 104, 542 -> 815, 103, 542 on air | 높은 나무에 올라가는 중
+      t1035 moved 815, 103, 542 -> 815, 102, 542 on air | 높은 나무에 올라가는 중
+      t1040 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.6 blocks from the player: spruce_log x1
+      t1080 appeared at 816, 104, 542 on air | player 815, 99, 542 | 높은 나무에 올라가는 중
+      t1090 moved 816, 104, 542 -> 816, 103, 542 on air | 높은 나무에 올라가는 중
+      t1095 gone 4.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.0 blocks from the player: spruce_log x1
+      t1105 appeared at 816, 104, 543 on air | player 815, 99, 542 | 높은 나무에 올라가는 중
+      t1115 moved 816, 104, 543 -> 816, 103, 543 on air | 높은 나무에 올라가는 중
+      t1120 gone 4.0 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.6 blocks from the player: spruce_log x1
+      t1240 appeared at 816, 105, 542 on air | player 815, 100, 542 | 높은 나무에 올라가는 중
+      t1250 moved 816, 105, 542 -> 816, 104, 542 on air | 높은 나무에 올라가는 중
+      t1255 gone 4.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: spruce_log x1
+      t1375 appeared at 816, 106, 542 on air | player 815, 101, 542 | 높은 나무에 올라가는 중
+      t1380 moved 816, 106, 542 -> 816, 105, 542 on air | 높은 나무에 올라가는 중
+      t1385 moved 816, 105, 542 -> 816, 104, 542 on air | 높은 나무에 올라가는 중
+      t1390 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: spruce_log x1
+      t1400 appeared at 816, 106, 542 on air | player 815, 101, 542 | 높은 나무에 올라가는 중
+      t1405 moved 816, 106, 542 -> 816, 105, 542 on air | 높은 나무에 올라가는 중
+      t1410 moved 816, 105, 542 -> 816, 104, 542 on air | 높은 나무에 올라가는 중
+      t1415 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: spruce_log x1
+      t1500 appeared at 815, 107, 543 on air | player 815, 102, 542 | 높은 나무에 올라가는 중
+      t1505 moved 815, 107, 543 -> 815, 106, 543 on air | 높은 나무에 올라가는 중
+      t1510 moved 815, 106, 543 -> 815, 105, 543 on air | 높은 나무에 올라가는 중
+      t1515 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: spruce_log x1
+      t1640 appeared at 815, 108, 543 on air | player 815, 103, 542 | 높은 나무에 올라가는 중
+      t1645 moved 815, 108, 543 -> 815, 107, 543 on air | 높은 나무에 올라가는 중
+      t1650 moved 815, 107, 543 -> 815, 106, 543 on air | 높은 나무에 올라가는 중
+      t1655 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: spruce_log x1
+      t1750 appeared at 815, 109, 542 on air | player 815, 104, 542 | 높은 나무에 올라가는 중
+      t1760 moved 815, 109, 542 -> 815, 107, 542 on air | 높은 나무에 올라가는 중
+      t1765 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: spruce_log x1
+      t1780 appeared at 815, 109, 543 on air | player 815, 104, 542 | 높은 나무에 올라가는 중
+      t1785 moved 815, 109, 543 -> 815, 108, 543 on air | 높은 나무에 올라가는 중
+      t1790 moved 815, 108, 543 -> 815, 107, 543 on air | 높은 나무에 올라가는 중
+      t1795 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: spruce_log x1
+      t1895 appeared at 815, 110, 542 on air | player 815, 105, 542 | 높은 나무에 올라가는 중
+      t1900 moved 815, 110, 542 -> 815, 109, 542 on air | 높은 나무에 올라가는 중
+      t1905 moved 815, 109, 542 -> 815, 108, 542 on air | 높은 나무에 올라가는 중
+      t1910 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: spruce_log x1
+      t1915 appeared at 815, 110, 543 on air | player 815, 105, 542 | 높은 나무에 올라가는 중
+      t1925 moved 815, 110, 543 -> 815, 108, 543 on air | 높은 나무에 올라가는 중
+      t1930 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.5 blocks from the player: spruce_log x1
+      t2025 appeared at 815, 111, 542 on air | player 815, 106, 542 | 높은 나무에 올라가는 중
+      t2035 moved 815, 111, 542 -> 815, 110, 542 on air | 높은 나무에 올라가는 중
+      t2040 gone 4.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: spruce_log x1
+      t2055 appeared at 815, 111, 543 on air | player 815, 106, 542 | 높은 나무에 올라가는 중
+      t2065 moved 815, 111, 543 -> 815, 109, 543 on air | 높은 나무에 올라가는 중
+      t2070 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: spruce_log x1
+      t2080 appeared at 815, 111, 542 on air | player 815, 106, 542 | 높은 나무에 올라가는 중
+      t2090 moved 815, 111, 542 -> 815, 109, 542 on air | 높은 나무에 올라가는 중
+      t2095 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.8 blocks from the player: spruce_log x1
+      t2105 appeared at 816, 111, 543 on air | player 815, 106, 542 | 높은 나무에 올라가는 중
+      t2110 moved 816, 111, 543 -> 816, 110, 543 on air | 높은 나무에 올라가는 중
+      t2115 moved 816, 110, 543 -> 816, 109, 543 on air | 높은 나무에 올라가는 중
+      t2120 gone 3.8 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.6 blocks from the player: spruce_log x1
+      t2225 appeared at 816, 112, 542 on air | player 815, 107, 542 | 높은 나무에 올라가는 중
+      t2235 moved 816, 112, 542 -> 816, 111, 542 on air | 높은 나무에 올라가는 중
+      t2240 gone 4.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: spruce_log x1
+      t2315 appeared at 815, 113, 542 on air | player 815, 108, 542 | 높은 나무에 올라가는 중
+      t2325 moved 815, 113, 542 -> 815, 111, 542 on air | 높은 나무에 올라가는 중
+      t2330 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.6 blocks from the player: spruce_log x1
+      t2350 appeared at 815, 113, 543 on air | player 815, 108, 542 | 높은 나무에 올라가는 중
+      t2360 moved 815, 113, 543 -> 815, 112, 543 on air | 높은 나무에 올라가는 중
+      t2365 gone 4.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 4.6 blocks from the player: spruce_log x1
+      t2405 appeared at 816, 113, 543 on air | player 815, 108, 542 | 높은 나무에 올라가는 중
+      t2410 moved 816, 113, 543 -> 816, 112, 542 on air | 높은 나무에 올라가는 중
+      t2415 gone 4.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: spruce_log x1
+      t2480 appeared at 815, 114, 542 on air | player 815, 109, 542 | 높은 나무에 올라가는 중
+      t2490 moved 815, 114, 542 -> 815, 112, 542 on air | 높은 나무에 올라가는 중
+      t2495 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.6 blocks from the player: spruce_log x1
+      t2500 appeared at 815, 114, 543 on air | player 815, 109, 542 | 높은 나무에 올라가는 중
+      t2510 moved 815, 114, 543 -> 815, 112, 543 on air | 높은 나무에 올라가는 중
+      t2515 gone 3.6 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: spruce_log x1
+      t2530 appeared at 816, 114, 542 on air | player 815, 109, 542 | 높은 나무에 올라가는 중
+      t2535 moved 816, 114, 542 -> 815, 114, 542 on air | 높은 나무에 올라가는 중
+      t2540 moved 815, 114, 542 -> 815, 112, 542 on air | 높은 나무에 올라가는 중
+      t2545 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.7 blocks from the player: spruce_log x1
+      t3975 appeared at 810, 99, 544 on air | player 811, 95, 543 | 나무 베는 중 (가문비나무)
+      t3980 moved 810, 99, 544 -> 810, 98, 544 on air | 나무 베는 중 (가문비나무)
+      t3985 gone 3.7 blocks from the player | age 0 s | 나무 베는 중 (가문비나무)
+  gone 3.5 blocks from the player: spruce_log x1
+      t4070 appeared at 810, 101, 544 on air | player 810, 96, 544 | 높은 나무에 올라가는 중
+      t4080 moved 810, 101, 544 -> 810, 100, 544 on air | 높은 나무에 올라가는 중
+      t4085 moved 810, 100, 544 -> 810, 99, 544 on air | 높은 나무에 올라가는 중
+      t4090 gone 3.5 blocks from the player | age 0 s | 높은 나무에 올라가는 중
+  gone 3.5 blocks from the player: spruce_log x1
+      t4140 appeared at 810, 102, 544 on air | player 810, 97, 544 | 나무에서 내려오는 중
+      t4150 moved 810, 102, 544 -> 810, 100, 544 on air | 나무에서 내려오는 중
+      t4155 gone 3.5 blocks from the player | age 0 s | 나무에서 내려오는 중
+  DESPAWNED (5 min on the ground): spruce_log x1
+      t5095 appeared at 817, 102, 547 on air | player 815, 98, 545 | 나무에서 내려오는 중
+      t5100 moved 817, 102, 547 -> 818, 102, 547 on spruce_leaves | 나무에서 내려오는 중
+      t5105 moved 818, 102, 547 -> 818, 102, 548 on air | 나무에서 내려오는 중
+      t11075 DESPAWNED (5 min on the ground) | age 299 s | 떨어진 묘목·사과 줍는 중
+  gone 3.7 blocks from the player: spruce_log x1
+      t5855 appeared at 814, 99, 551 on air | player 813, 96, 550 | 나무 베는 중 (가문비나무)
+      t5865 gone 3.7 blocks from the player | age 0 s | 나무 베는 중 (가문비나무)
+  gone 3.7 blocks from the player: spruce_log x1
+      t5875 appeared at 814, 100, 551 on air | player 813, 96, 550 | 나무 베는 중 (가문비나무)
+      t5885 moved 814, 100, 551 -> 814, 99, 551 on air | 나무 베는 중 (가문비나무)
+      t5890 gone 3.7 blocks from the player | age 0 s | 나무 베는 중 (가문비나무)
+  gone 3.6 blocks from the player: spruce_log x1
+      t6805 appeared at 823, 99, 551 on air | player 822, 95, 551 | 나무 베는 중 (가문비나무)
+      t6810 moved 823, 99, 551 -> 823, 98, 551 on air | 나무 베는 중 (가문비나무)
+      t6815 gone 3.6 blocks from the player | age 0 s | 나무 베는 중 (가문비나무)
+  LOST (still lying there): spruce_log x1
+      t6890 appeared at 823, 101, 551 on air | player 823, 96, 551 | 나무에서 내려오는 중
+      t6895 moved 823, 101, 551 -> 824, 101, 552 on air | 나무에서 내려오는 중
+  gone 4.6 blocks from the player: spruce_log x1
+      t9050 appeared at 820, 112, 537 on air | player 819, 108, 540 | 높은 나무에 올라가는 중
+      t9060 moved 820, 112, 537 -> 820, 111, 537 on air | 높은 나무에 올라가는 중
+      t9065 moved 820, 111, 537 -> 820, 109, 537 on air | 높은 나무에 올라가는 중
+      t9070 moved 820, 109, 537 -> 820, 107, 537 on air | 높은 나무에 올라가는 중
+      t9075 moved 820, 107, 537 -> 820, 104, 537 on air | 높은 나무에 올라가는 중
+      t9080 gone 4.6 blocks from the player | age 1 s | 높은 나무에 올라가는 중
+LOSS: cut 164, chest 162, inventory 0, missing 2 (1.2%); 1 logs in 1 stacks on the ground [1@824, 101, 552], saplings on the ground 0
+  tree: spruce 4x at 815, 96, 542: all cut (0 logs left)
+  tree: spruce 1x at 810, 95, 544: all cut (0 logs left)
+  tree: spruce 1x at 817, 96, 547: all cut (0 logs left)
+  tree: spruce 1x at 814, 96, 551: all cut (0 logs left)
+  tree: spruce 1x at 823, 95, 551: all cut (0 logs left)
+  tree: spruce 4x at 820, 101, 537: all cut (0 logs left)

@@ -1,0 +1,7 @@
+flat: success
+real-taiga: success
+real-taiga-2: success
+real-darkforest: success
+real-jungle: success
+real-jungle-nopath: failure
+real-darkforest-night: failure

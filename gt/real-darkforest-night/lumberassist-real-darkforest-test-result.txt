@@ -1,0 +1,160 @@
+RESULT: FAIL (7)
+  FAIL stopped by itself: 체력이 낮아요 / 벌목을 멈췄어요
+  FAIL got hurt: health 5.0
+  FAIL 6 of 11 cut logs never reached the chest
+  FAIL 7 trunk columns still standing in the area
+  FAIL 88 of 99 logs left in the area
+  FAIL only 0 logs in the chest of 11 cut
+  FAIL no saplings planted
+
+biome ResourceKey[minecraft:worldgen/biome / minecraft:dark_forest] at 576, 704: best patch score 2
+biome ResourceKey[minecraft:worldgen/biome / minecraft:dark_forest] at 604, 764: best patch score 31
+area x 612..627, z 772..787, corner ground heights 74 and 72 (trunk columns 31)
+before: logs=99 (11 trunk columns), ground from y 56 to 80
+chest at 610, 72, 779
+trees found at the start: 5
+t=40 pos=611, 74, 775 status=나무 베는 중 (짙은 참나무) trees=0
+t=80 pos=614, 76, 775 status=나무 베는 중 (짙은 참나무) trees=0
+t=120 pos=616, 72, 781 status=나무 베는 중 (짙은 참나무) trees=0
+t=160 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=200 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=240 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=280 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=320 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=360 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=400 pos=616, 71, 782 status=나무 베는 중 (짙은 참나무) trees=0
+t=440 pos=617, 73, 781 status=나무 베는 중 (짙은 참나무) trees=0
+t=480 pos=617, 74, 780 status=나무 베는 중 (짙은 참나무) trees=0
+t=520 pos=617, 76, 778 status=나무 베는 중 (짙은 참나무) trees=0
+t=560 pos=617, 77, 776 status=나무 베는 중 (짙은 참나무) trees=0
+t=600 pos=617, 77, 775 status=나무 베는 중 (짙은 참나무) trees=0
+t=640 pos=617, 77, 773 status=나무 베는 중 (짙은 참나무) trees=0
+t=680 pos=617, 77, 772 status=나무 베는 중 (짙은 참나무) trees=0
+t=720 pos=619, 77, 770 status=나무 베는 중 (짙은 참나무) trees=0
+t=760 pos=620, 77, 768 status=나무 베는 중 (짙은 참나무) trees=0
+t=800 pos=620, 77, 766 status=나무 베는 중 (짙은 참나무) trees=0
+t=840 pos=621, 77, 766 status=높은 나무에 올라가는 중 trees=0
+t=880 pos=620, 77, 767 status=높은 나무에 올라가는 중 trees=0
+t=920 pos=618, 77, 771 status=높은 나무에 올라가는 중 trees=0
+t=960 pos=618, 77, 770 status=높은 나무에 올라가는 중 trees=0
+t=1000 pos=622, 77, 761 status=높은 나무에 올라가는 중 trees=0
+t=1040 pos=624, 77, 760 status=높은 나무에 올라가는 중 trees=0
+t=1080 pos=624, 77, 757 status=높은 나무에 올라가는 중 trees=0
+t=1120 pos=623, 77, 755 status=높은 나무에 올라가는 중 trees=0
+t=1160 pos=622, 77, 753 status=높은 나무에 올라가는 중 trees=0
+t=1200 pos=620, 77, 751 status=높은 나무에 올라가는 중 trees=0
+t=1240 pos=619, 77, 751 status=높은 나무에 올라가는 중 trees=0
+t=1280 pos=620, 77, 751 status=높은 나무에 올라가는 중 trees=0
+t=1320 pos=620, 76, 752 status=높은 나무에 올라가는 중 trees=0
+t=1360 pos=618, 76, 750 status=높은 나무에 올라가는 중 trees=0
+t=1400 pos=618, 77, 749 status=높은 나무에 올라가는 중 trees=0
+t=1440 pos=617, 77, 747 status=높은 나무에 올라가는 중 trees=0
+t=1480 pos=620, 79, 743 status=높은 나무에 올라가는 중 trees=0
+t=1520 pos=624, 79, 737 status=높은 나무에 올라가는 중 trees=0
+t=1560 pos=629, 79, 736 status=높은 나무에 올라가는 중 trees=0
+t=1600 pos=631, 79, 736 status=높은 나무에 올라가는 중 trees=0
+t=1640 pos=630, 79, 737 status=높은 나무에 올라가는 중 trees=0
+t=1680 pos=629, 79, 737 status=높은 나무에 올라가는 중 trees=0
+t=1720 pos=629, 80, 746 status=높은 나무에 올라가는 중 trees=0
+t=1760 pos=628, 79, 756 status=높은 나무에 올라가는 중 trees=0
+t=1800 pos=622, 77, 762 status=높은 나무에 올라가는 중 trees=0
+t=1840 pos=619, 77, 770 status=높은 나무에 올라가는 중 trees=0
+t=1880 pos=618, 77, 770 status=높은 나무에 올라가는 중 trees=0
+t=1920 pos=619, 76, 763 status=높은 나무에 올라가는 중 trees=0
+t=1960 pos=617, 76, 768 status=높은 나무에 올라가는 중 trees=0
+t=2000 pos=619, 76, 764 status=높은 나무에 올라가는 중 trees=0
+t=2040 pos=617, 77, 773 status=높은 나무에 올라가는 중 trees=0
+t=2080 pos=619, 77, 769 status=높은 나무에 올라가는 중 trees=0
+t=2120 pos=620, 77, 767 status=높은 나무에 올라가는 중 trees=0
+t=2160 pos=621, 77, 766 status=높은 나무에 올라가는 중 trees=0
+t=2200 pos=621, 77, 767 status=높은 나무에 올라가는 중 trees=0
+t=2240 pos=621, 77, 765 status=높은 나무에 올라가는 중 trees=0
+t=2280 pos=621, 77, 764 status=높은 나무에 올라가는 중 trees=0
+t=2320 pos=621, 77, 762 status=높은 나무에 올라가는 중 trees=0
+t=2360 pos=621, 77, 763 status=높은 나무에 올라가는 중 trees=0
+t=2400 pos=620, 77, 766 status=높은 나무에 올라가는 중 trees=0
+t=2440 pos=620, 77, 766 status=높은 나무에 올라가는 중 trees=0
+t=2480 pos=621, 77, 764 status=높은 나무에 올라가는 중 trees=0
+t=2520 pos=621, 77, 762 status=높은 나무에 올라가는 중 trees=0
+t=2560 pos=621, 77, 762 status=높은 나무에 올라가는 중 trees=0
+t=2600 pos=622, 77, 760 status=높은 나무에 올라가는 중 trees=0
+t=2640 pos=623, 77, 759 status=높은 나무에 올라가는 중 trees=0
+t=2680 pos=626, 78, 756 status=높은 나무에 올라가는 중 trees=0
+t=2720 pos=628, 80, 754 status=높은 나무에 올라가는 중 trees=0
+t=2760 pos=630, 80, 752 status=높은 나무에 올라가는 중 trees=0
+t=2800 pos=633, 80, 750 status=높은 나무에 올라가는 중 trees=0
+t=2840 pos=635, 80, 748 status=꺼짐 trees=0
+ended after 2840 ticks (142 s), running=false waiting=false lastStop=체력이 낮아요 / 벌목을 멈췄어요
+timing: 40 ticks took 2043 ms on average (game speed 98%), slowest 2358 ms, server tick 4.8 ms
+path: walks=59 arrived=1 gaveUp=0 {} plans=61 notFound=0 gaveUpGoals=[] waitTicks=62 walkTicks=1984 slowestPlan=82ms
+walk: 191 blocks in 84 s = 2.29 blocks/s, sprinting 20%, sprint-jumps 0
+defense: flees=35 dodges=34 creeperEscapes=0 fights=0 kills=0 hitsTaken=31 lowestHealth=9.0 unreachableTicks=0 fightsGivenUp=0 giveUp=null night=true
+blocks around 635, 80, 749 (each level: rows z-3..z+3, each row x-3..x+3; '.' air, 's' sapling):
+  y83:
+     .  .  .  .  .  .  . 
+     L  .  .  .  .  .  . 
+     .  .  .  .  .  .  . 
+     .  .  . [.] .  .  . 
+     .  .  .  .  .  .  . 
+     .  .  .  .  .  .  . 
+     .  .  .  .  .  .  . 
+  y82:
+     L  L  .  .  .  .  . 
+     L  L  .  .  .  .  . 
+     L  L  .  .  .  .  . 
+     L  .  . [.] .  .  . 
+     .  .  .  .  .  .  . 
+     .  .  .  .  .  .  . 
+     .  .  .  .  .  .  . 
+  y81:
+     .  .  .  .  .  .  . 
+     L  .  .  .  .  .  . 
+     .  .  .  .  .  .  . 
+     .  .  . [.] .  .  d 
+     .  .  .  .  .  .  d 
+     .  .  .  .  .  -  d 
+     .  .  .  .  .  .  d 
+  y80:
+     .  .  .  -  -  .  . 
+     .  .  .  .  -  .  d 
+     .  .  .  .  .  -  d 
+     .  .  . [.] .  .  d 
+     .  .  .  .  .  .  d 
+     -  .  .  .  -  d  d 
+     .  .  .  .  .  d  d 
+  y79:
+     d  d  d  d  d  d  d 
+     d  d  d  d  d  d  d 
+     d  d  d  d  d  d  d 
+     d  d  d [d] d  d  d 
+     d  d  d  d  d  d  d 
+     d  d  d  d  d  d  d 
+     d  d  d  d  d  d  d 
+  y78:
+     d  d  d  d  d  d  d 
+     d  d  d  d  d  d  d 
+     d  d  d  d  d  d  d 
+     d  d  d [d] d  d  # 
+     d  d  d  d  d  d  # 
+     d  d  d  d  d  d  # 
+     d  d  d  d  d  d  # 
+path: walks=59 arrived=1 gaveUp=0 {} plans=61 notFound=0 gaveUpGoals=[] waitTicks=62 walkTicks=1984 slowestPlan=82ms
+walk: 191 blocks in 84 s = 2.29 blocks/s, sprinting 20%, sprint-jumps 0
+trees=0 planted=0 logs=11 trips=0
+  logs dark_oak: 11
+player at 635, 80, 749 health 5.0
+after: logs=88 (7 trunk columns), saplings=0, pillar dirt left=0
+logs in chest = 0
+LOGS: picked up 5, lost 6 (lying), despawned 0, other 0
+  missing 2: LOST (still lying there) / landed on air / appeared while: 나무 베는 중 (짙은 참나무)
+  missing 4: LOST (still lying there) / landed on dirt / appeared while: 나무 베는 중 (짙은 참나무)
+  LOST (still lying there): dark_oak_log x1
+      t195 appeared at 616, 70, 784 on dirt | player 616, 71, 782 | 나무 베는 중 (짙은 참나무)
+      t205 moved 616, 70, 784 -> 616, 69, 785 on grass_block | 나무 베는 중 (짙은 참나무)
+  LOST (still lying there): dark_oak_log x3
+      t220 appeared at 617, 70, 784 on dirt | player 616, 71, 782 | 나무 베는 중 (짙은 참나무)
+  LOST (still lying there): dark_oak_log x2
+      t305 appeared at 617, 71, 784 on air | player 616, 71, 782 | 나무 베는 중 (짙은 참나무)
+      t310 moved 617, 71, 784 -> 618, 70, 783 on grass_block | 나무 베는 중 (짙은 참나무)
+LOSS: cut 11, chest 0, inventory 5, missing 6 (54.5%); 6 logs in 3 stacks on the ground [2@618, 70, 783 1@616, 69, 785 3@617, 70, 784], saplings on the ground 0
+trunks left: 618, 77, 774 oak_log h=5 on dirt; 621, 71, 785 dark_oak_log h=6 on dirt; 621, 71, 786 dark_oak_log h=6 on dirt; 622, 71, 781 oak_log h=6 on dirt; 622, 71, 785 dark_oak_log h=6 on dirt; 622, 71, 786 dark_oak_log h=6 on dirt; 623, 79, 772 spruce_log h=7 on dirt; 

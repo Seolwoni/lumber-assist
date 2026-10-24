@@ -1,0 +1,200 @@
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:964)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70)
+	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1461)
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1068)
+	at java.base/java.io.BufferedInputStream.fill(BufferedInputStream.java:289)
+	at java.base/java.io.BufferedInputStream.read1(BufferedInputStream.java:330)
+	at java.base/java.io.BufferedInputStream.read(BufferedInputStream.java:388)
+	at java.base/sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:795)
+	at java.base/sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:727)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1392)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1302)
+	at java.base/java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:493)
+	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:307)
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.readServiceResponse(MinecraftClient.java:130)
+	... 9 more
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+[04:52:00] [Render thread/ERROR] (Minecraft) Error starting SoundSystem. Turning off sounds & music
+
+java.lang.IllegalStateException: Failed to open OpenAL device
+	at knot//com.mojang.blaze3d.audio.Library.openDeviceOrFallback(Library.java:275)
+	at knot//com.mojang.blaze3d.audio.Library.init(Library.java:150)
+	at knot//net.minecraft.client.sounds.SoundEngine.loadLibrary(SoundEngine.java:120)
+	at knot//net.minecraft.client.sounds.SoundEngine.reload(SoundEngine.java:109)
+	at knot//net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:122)
+	at knot//net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:41)
+	at knot//net.minecraft.server.packs.resources.SimplePreparableReloadListener.lambda$reload$1(SimplePreparableReloadListener.java:15)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:739)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:503)
+	at knot//net.minecraft.server.packs.resources.SimpleReloadInstance.lambda$prepareTasks$3(SimpleReloadInstance.java:59)
+	at knot//net.minecraft.util.thread.BlockableEventLoop.doRunTask(BlockableEventLoop.java:173)
+	at knot//net.minecraft.util.thread.ReentrantBlockableEventLoop.doRunTask(ReentrantBlockableEventLoop.java:23)
+	at knot//net.minecraft.util.thread.BlockableEventLoop.pollTask(BlockableEventLoop.java:147)
+	at knot//net.minecraft.util.thread.BlockableEventLoop.runAllTasks(BlockableEventLoop.java:127)
+	at knot//net.minecraft.client.Minecraft.runTick(Minecraft.java:1235)
+	at knot//net.minecraft.client.Minecraft.run$mixinextras$wrapped$270(Minecraft.java:959)
+	at knot//net.minecraft.client.Minecraft.mixinextras$bridge$run$mixinextras$wrapped$270$271(Minecraft.java)
+	at knot//net.minecraft.client.Minecraft.wrapMethod$bdk000$fabric-client-gametest-api-v1$onRun(Minecraft.java:6179)
+	at knot//net.minecraft.client.Minecraft.run(Minecraft.java)
+	at knot//net.minecraft.client.main.Main.main(Main.java:292)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86)
+[04:52:00] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[04:52:00] [Render thread/INFO] (Minecraft) Created: 128x128x0 minecraft:textures/atlas/decorated_pot.png-atlas
+[04:52:00] [Render thread/INFO] (Minecraft) Created: 2048x1024x0 minecraft:textures/atlas/armor_trims.png-atlas
+[04:52:00] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[04:52:00] [Render thread/INFO] (Minecraft) Created: 1024x512x0 minecraft:textures/atlas/shield_patterns.png-atlas
+[04:52:00] [Render thread/INFO] (Minecraft) Created: 2048x2048x4 minecraft:textures/atlas/blocks.png-atlas
+[04:52:00] [Render thread/INFO] (Minecraft) Created: 512x512x0 minecraft:textures/atlas/chest.png-atlas
+[04:52:00] [Render thread/INFO] (Minecraft) Created: 256x128x0 minecraft:textures/atlas/celestials.png-atlas
+[04:52:00] [Render thread/INFO] (Minecraft) Created: 1024x512x0 minecraft:textures/atlas/banner_patterns.png-atlas
+[04:52:00] [Render thread/INFO] (Minecraft) Created: 1024x512x0 minecraft:textures/atlas/items.png-atlas
+[04:52:00] [Render thread/INFO] (Minecraft) Created: 1024x1024x0 minecraft:textures/atlas/gui.png-atlas
+[04:52:00] [Render thread/INFO] (Minecraft) Created: 128x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[04:52:00] [Render thread/INFO] (Minecraft) Created: 512x512x0 minecraft:textures/atlas/shulker_boxes.png-atlas
+[04:52:01] [Download-1/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
+[04:52:04] [Render thread/INFO] (Minecraft) Loaded 1585 recipes
+[04:52:04] [Render thread/INFO] (Minecraft) Loaded 1688 advancements
+[04:52:04] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.GenericMessageScreen@7a54d85d
+[04:52:04] [Render thread/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 66 new biomes in 1.095 ms
+[04:52:05] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 26.2
+[04:52:05] [Server thread/INFO] (Minecraft) Generating keypair
+[04:52:05] [Server thread/INFO] (Minecraft) Selecting global world spawn...
+[04:52:05] [Server thread/INFO] (Minecraft) Loading 0 persistent chunks...
+[04:52:05] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[04:52:05] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:52:05] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:52:05] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:52:05] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (world): All chunks are saved
+[04:52:05] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[04:52:05] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[04:52:05] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage: All dimensions are saved
+[04:52:05] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:05] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:05] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:05] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:06] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:06] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:06] [Server thread/INFO] (Minecraft) Loading 48 chunks for player spawn...
+[04:52:06] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[04:52:06] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:06] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:06] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[04:52:06] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:06] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:06] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:06] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:06] [Server thread/INFO] (Minecraft) Time elapsed: 1337 ms
+[04:52:06] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:06] [Server thread/INFO] (Minecraft) Player0[local:E:17ce9d7a] logged in with entity id 1 at (0.5, -60.0, 0.5)
+[04:52:06] [Server thread/INFO] (Minecraft) Player0 joined the game
+[04:52:06] [Server thread/INFO] (Minecraft) Changing view distance to 5, from 10
+[04:52:06] [Server thread/INFO] (Minecraft) Changing simulation distance to 12, from 0
+[04:52:06] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:07] [Render thread/INFO] (Minecraft) Loaded 2 advancements
+[04:52:07] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:07] [Download-1/ERROR] (Minecraft) Failed to retrieve profile key pair
+
+MinecraftClientHttpException[type=HTTP_ERROR, status=401, response=ErrorResponse[path=/player/certificates, error=null, errorMessage=null, details=null]]
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.buildHttpException(MinecraftClient.java:170)
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.readServiceResponse(MinecraftClient.java:147)
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.post(MinecraftClient.java:89)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilUserApiService.getKeyPair(YggdrasilUserApiService.java:62)
+	at knot//net.minecraft.client.multiplayer.AccountProfileKeyPairManager.fetchProfileKeyPair(AccountProfileKeyPairManager.java:128)
+	at knot//net.minecraft.client.multiplayer.AccountProfileKeyPairManager.lambda$readOrFetchProfileKeyPair$0(AccountProfileKeyPairManager.java:77)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1789)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+[04:52:07] [Render thread/INFO] (Minecraft) Resizing Dynamic Transforms UBO, capacity limit of 2 reached during a single frame. New capacity will be 4.
+[04:52:07] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:07] [Render thread/INFO] (Minecraft) Resizing Dynamic Transforms UBO, capacity limit of 4 reached during a single frame. New capacity will be 8.
+[04:52:07] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:07] [Render thread/INFO] (Minecraft) Resizing Dynamic Transforms UBO, capacity limit of 8 reached during a single frame. New capacity will be 16.
+[04:52:07] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:07] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:07] [Render thread/INFO] (Minecraft) Resizing Chunk Sections UBO, capacity limit of 2 reached during a single frame. New capacity will be 8.
+[04:52:07] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:07] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:08] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:08] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:08] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@51bc52ca
+[04:52:08] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: null
+[04:52:08] [Render thread/INFO] (Minecraft) Resizing Chunk Sections UBO, capacity limit of 8 reached during a single frame. New capacity will be 16.
+[04:52:08] [Render thread/INFO] (Minecraft) Resizing Chunk Sections UBO, capacity limit of 16 reached during a single frame. New capacity will be 32.
+[04:52:09] [Render thread/INFO] (Minecraft) Resizing Chunk Sections UBO, capacity limit of 32 reached during a single frame. New capacity will be 64.
+[04:52:09] [Server thread/INFO] (Minecraft) Marked 9 chunks in minecraft:overworld from [-1, -1] to [1, 1] to be force loaded
+[04:52:09] [Server thread/INFO] (Minecraft) The difficulty has been set to Peaceful
+[04:52:09] [Server thread/INFO] (Minecraft) Set minecraft:overworld to time marker minecraft:noon
+[04:52:09] [Server thread/INFO] (Minecraft) Incorrect argument for command
+[04:52:09] [Server thread/INFO] (Minecraft) gamerule randomTickSpeed 0<--[HERE]
+[04:52:09] [Server thread/INFO] (Minecraft) Gamerule random_tick_speed is now set to: 0
+[04:52:09] [Server thread/INFO] (Minecraft) Successfully filled 3136 block(s)
+[04:52:09] [Server thread/INFO] (Minecraft) Successfully filled 784 block(s)
+[04:52:09] [Server thread/INFO] (Minecraft) No blocks were filled
+[04:52:09] [Server thread/INFO] (Minecraft) Successfully filled 100 block(s)
+[04:52:09] [Server thread/INFO] (Minecraft) Successfully filled 6 block(s)
+[04:52:09] [Server thread/INFO] (Minecraft) Successfully filled 100 block(s)
+[04:52:09] [Server thread/INFO] (Minecraft) Successfully filled 7 block(s)
+[04:52:09] [Server thread/INFO] (Minecraft) Successfully filled 90 block(s)
+[04:52:09] [Server thread/INFO] (Minecraft) Successfully filled 14 block(s)
+[04:52:09] [Server thread/INFO] (Minecraft) Successfully filled 144 block(s)
+[04:52:09] [Server thread/INFO] (Minecraft) Successfully filled 24 block(s)
+[04:52:09] [Server thread/INFO] (Minecraft) Changed the block at -2, 101, 7
+[04:52:09] [Server thread/INFO] (Minecraft) No items were found on player Player0
+[04:52:09] [Server thread/INFO] (Minecraft) Gave 1 [Iron Axe] to Player0
+[04:52:09] [Server thread/INFO] (Minecraft) Gave 32 [Dirt] to Player0
+[04:52:09] [Server thread/INFO] (Minecraft) Replaced a slot at -2, 101, 7 with [Oak Sapling]
+[04:52:09] [Server thread/INFO] (Minecraft) Replaced a slot at -2, 101, 7 with [Birch Sapling]
+[04:52:09] [Server thread/INFO] (Minecraft) Replaced a slot at -2, 101, 7 with [Spruce Sapling]
+[04:52:09] [Server thread/INFO] (Minecraft) Replaced a slot at -2, 101, 7 with [Dark Oak Sapling]
+[04:52:09] [Server thread/INFO] (Minecraft) Gave 16 [Bread] to Player0
+[04:52:09] [Server thread/INFO] (Minecraft) Applied effect Saturation to Player0
+[04:52:09] [Server thread/INFO] (Minecraft) Teleported Player0 to 7.500000, 101.000000, 7.500000
+[04:52:10] [Render thread/INFO] (Minecraft) Loaded 4 advancements
+[04:52:15] [Render thread/INFO] (Minecraft) Loaded 7 advancements
+[04:52:24] [Render thread/INFO] (Minecraft) Loaded 9 advancements
+[04:53:20] [Render thread/INFO] (Minecraft) Loaded 11 advancements
+[04:53:52] [Render thread/INFO] (Minecraft) Loaded 13 advancements
+[04:54:21] [Server thread/INFO] (Minecraft) Player0 lost connection: Disconnected
+[04:54:21] [Server thread/INFO] (Minecraft) Player0 left the game
+[04:54:21] [Server thread/INFO] (Minecraft) Stopping singleplayer server as player logged out
+[04:54:21] [Server thread/INFO] (Minecraft) Stopping server
+[04:54:21] [Server thread/INFO] (Minecraft) Saving players
+[04:54:21] [Server thread/INFO] (Minecraft) Saving worlds
+[04:54:22] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:54:22] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:54:22] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:54:22] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (world): All chunks are saved
+[04:54:22] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[04:54:22] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[04:54:22] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage: All dimensions are saved
+[04:54:22] [Render thread/ERROR] (Minecraft) ########## GL ERROR ##########
+[04:54:22] [Render thread/ERROR] (Minecraft) @ Render
+[04:54:22] [Render thread/ERROR] (Minecraft) 65547: X11: Standard cursor shape unavailable
+[04:54:22] [Render thread/INFO] (Minecraft) Stopping!
+
+[Incubating] Problems report is available at: file:///home/runner/work/lumber-assist/lumber-assist/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 2m 38s
+18 actionable tasks: 6 executed, 12 up-to-date
+Configuration cache entry stored.

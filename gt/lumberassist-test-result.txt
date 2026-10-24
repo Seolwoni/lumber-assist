@@ -1,0 +1,61 @@
+RESULT: PASS
+
+debug: trees found=4 isLog=true kind=oak soilBelow=true below=Block{minecraft:grass_block}[snowy=false] state=Block{minecraft:oak_log}[axis=y] logsTag=true
+t=40 pos=4, 101, 4 status=나무 베는 중 (참나무) trees=0
+t=80 pos=4, 101, 4 status=나무 베는 중 (참나무) trees=0
+t=120 pos=4, 101, 4 status=나무 베는 중 (참나무) trees=0
+t=160 pos=4, 101, 4 status=나무 베는 중 (참나무) trees=0
+t=200 pos=4, 101, 7 status=나무 베는 중 (가문비나무) trees=1
+t=240 pos=4, 101, 10 status=나무 베는 중 (가문비나무) trees=1
+t=280 pos=4, 101, 10 status=나무 베는 중 (가문비나무) trees=1
+t=320 pos=4, 101, 10 status=나무 베는 중 (가문비나무) trees=1
+t=360 pos=3, 101, 11 status=높은 나무에 올라가는 중 trees=1
+return button at 3, 101, 11 (높은 나무에 올라가는 중): 돌아왔어요 / 상자에 보관하고 멈췄어요. 다시 켜면 이어서 해요 after 880 ticks, now at 0, 101, 10 onGround=true under=Block{minecraft:grass_block}
+t=1280 pos=5, 101, 10 status=나무 베는 중 (짙은 참나무) trees=0
+t=1320 pos=10, 101, 10 status=나무 베는 중 (짙은 참나무) trees=0
+t=1360 pos=10, 101, 10 status=나무 베는 중 (짙은 참나무) trees=0
+t=1400 pos=10, 101, 10 status=나무 베는 중 (짙은 참나무) trees=0
+t=1440 pos=10, 101, 10 status=나무 베는 중 (짙은 참나무) trees=0
+t=1480 pos=10, 101, 10 status=나무 베는 중 (짙은 참나무) trees=0
+t=1520 pos=10, 101, 10 status=나무 베는 중 (짙은 참나무) trees=0
+t=1560 pos=10, 101, 10 status=나무 베는 중 (짙은 참나무) trees=0
+t=1600 pos=10, 101, 10 status=나무 베는 중 (짙은 참나무) trees=0
+t=1640 pos=10, 101, 10 status=나무 베는 중 (짙은 참나무) trees=0
+t=1680 pos=10, 101, 10 status=나무 베는 중 (짙은 참나무) trees=0
+t=1720 pos=10, 101, 10 status=나무 베는 중 (짙은 참나무) trees=0
+t=1760 pos=10, 101, 10 status=높은 나무에 올라가는 중 trees=0
+t=1800 pos=11, 101, 11 status=높은 나무에 올라가는 중 trees=0
+t=1840 pos=11, 101, 11 status=높은 나무에 올라가는 중 trees=0
+t=1880 pos=12, 101, 13 status=나무 밑에 떨어진 것 줍는 중 trees=1
+t=1920 pos=10, 101, 8 status=나무 베는 중 (자작나무) trees=1
+t=1960 pos=11, 101, 4 status=나무 베는 중 (자작나무) trees=1
+t=2000 pos=11, 101, 4 status=나무 베는 중 (자작나무) trees=1
+t=2040 pos=11, 101, 4 status=나무 베는 중 (자작나무) trees=1
+t=2080 pos=12, 101, 3 status=높은 나무에 올라가는 중 trees=1
+t=2120 pos=12, 102, 3 status=높은 나무에 올라가는 중 trees=1
+t=2160 pos=12, 102, 3 status=나무에서 내려오는 중 trees=1
+t=2200 pos=12, 101, 3 status=나무에서 내려오는 중 trees=1
+t=2240 pos=10, 101, 3 status=상자에 보관하는 중 trees=2
+t=2280 pos=2, 101, 6 status=상자에 보관하는 중 trees=2
+t=2320 pos=2, 101, 5 status=빈 자리에 묘목 심는 중 (4곳) trees=2
+t=2360 pos=2, 101, 7 status=빈 자리에 묘목 심는 중 (4곳) trees=2
+t=2400 pos=4, 101, 10 status=빈 자리에 묘목 심는 중 (4곳) trees=2
+t=2440 pos=10, 101, 10 status=빈 자리에 묘목 심는 중 (4곳) trees=2
+t=2480 pos=10, 101, 10 status=빈 자리에 묘목 심는 중 (4곳) trees=2
+t=2520 pos=11, 101, 4 status=빈 자리에 묘목 심는 중 (4곳) trees=2
+t=2560 pos=11, 101, 4 status=다음 바퀴까지 4분 58초 trees=2
+ended after 2560 ticks, running=true waiting=true lastStop=돌아왔어요 / 상자에 보관하고 멈췄어요. 다시 켜면 이어서 해요
+path: walks=6 arrived=4 gaveUp=0 {} plans=6 notFound=0 gaveUpGoals=[] waitTicks=7 walkTicks=244 slowestPlan=69ms
+walk: 37 blocks in 9 s = 4.04 blocks/s, sprinting 0%, sprint-jumps 0
+  tree: oak 1x at 3, 101, 3: all cut from the ground (0 logs left)
+  tree: spruce 1x at 3, 101, 11: all cut (0 logs left)
+  tree: dark_oak 4x at 11, 101, 11: all cut (0 logs left)
+  tree: birch 1x at 12, 101, 3: all cut (0 logs left)
+trees=4 planted=7 logs=51 trips=2
+  logs oak: 6
+  logs spruce: 14
+  logs dark_oak: 24
+  logs birch: 7
+player at 11, 101, 4 health 20.0
+logs left = 0, pillar dirt left = 0
+items in chest = 51
